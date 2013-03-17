@@ -1615,6 +1615,24 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF3330124": {
+    "contest_id": 158,
+    "language": "GNU C++",
+    "path": "codeforces\\158\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Taxi",
+    "problem_url": "https://codeforces.com/contest/158/problem/B",
+    "submission_id": "CF3330124",
+    "submission_url": "https://codeforces.com/contest/158/submission/3330124",
+    "tags": [
+      "*special problem",
+      "greedy",
+      "implementation",
+      "*1100"
+    ],
+    "timestamp": "Mar/17/2013 14:02"
+  },
   "CF3346784": {
     "contest_id": 118,
     "language": "Java 7",
