@@ -1615,6 +1615,22 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF3402994": {
+    "contest_id": 116,
+    "language": "GNU C++",
+    "path": "codeforces\\116\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "Tram",
+    "problem_url": "https://codeforces.com/contest/116/problem/A",
+    "submission_id": "CF3402994",
+    "submission_url": "https://codeforces.com/contest/116/submission/3402994",
+    "tags": [
+      "implementation",
+      "*800"
+    ],
+    "timestamp": "Mar/25/2013 11:10"
+  },
   "CF3403033": {
     "contest_id": 112,
     "language": "Java 6",
