@@ -1615,6 +1615,22 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF46734766": {
+    "contest_id": 450,
+    "language": "GNU C++17",
+    "path": "codeforces\\450\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "Jzzhu and Children",
+    "problem_url": "https://codeforces.com/contest/450/problem/A",
+    "submission_id": "CF46734766",
+    "submission_url": "https://codeforces.com/contest/450/submission/46734766",
+    "tags": [
+      "implementation",
+      "*1000"
+    ],
+    "timestamp": "Dec/07/2018 21:14"
+  },
   "CF46735116": {
     "contest_id": 165,
     "language": "GNU C++17",
