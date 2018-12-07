@@ -1615,6 +1615,23 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF46704730": {
+    "contest_id": 233,
+    "language": "GNU C++17",
+    "path": "codeforces\\233\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "Perfect Permutation",
+    "problem_url": "https://codeforces.com/contest/233/problem/A",
+    "submission_id": "CF46704730",
+    "submission_url": "https://codeforces.com/contest/233/submission/46704730",
+    "tags": [
+      "implementation",
+      "math",
+      "*800"
+    ],
+    "timestamp": "Dec/07/2018 08:15"
+  },
   "CF46724889": {
     "contest_id": 200,
     "language": "GNU C++17",
