@@ -1,25 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 int main(){
-    int n ; 
-    cin >> n ; 
-    vector<int> v(n+1) ; 
-    map<int,pair<int,int> > m ; 
-    for(int i=1;i<=n;i++){
-        cin >> v[i];
-        m[v[i]].first = i ; 
-        m[v[i]].second = n - i + 1 ;
-    }
-    int q ; 
-    cin >> q ;
-    long long f = 0 , s = 0 ;
-    while(q--){
-        int x ;  
+    int n ;
+    cin >> n ;
+    vector<long long> v(n+1) ;
+    for(long long i=1;i<=n;i++){
+        int x ;
         cin >> x ;
-        f+=m[x].first ; 
-        s+=m[x].second ; 
+        v[x]=i ;
     }
-    cout << f << " " << s << endl;
+    int m ;
+    cin >> m ;
+    long long pat = 0 , vas = 0 ;
+    while(m--){
+        int x ;
+        cin >> x ;
+        vas += v[x] ;
+        pat += (n-v[x]+1LL);
+    }
+    cout << vas << " " << pat << endl;
     return 0 ;
 }
