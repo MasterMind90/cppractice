@@ -1615,6 +1615,23 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF46822006": {
+    "contest_id": 43,
+    "language": "GNU C++17",
+    "path": "codeforces\\43\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Letter",
+    "problem_url": "https://codeforces.com/contest/43/problem/B",
+    "submission_id": "CF46822006",
+    "submission_url": "https://codeforces.com/contest/43/submission/46822006",
+    "tags": [
+      "implementation",
+      "strings",
+      "*1100"
+    ],
+    "timestamp": "Dec/09/2018 17:53"
+  },
   "CF46822428": {
     "contest_id": 433,
     "language": "GNU C++17",
