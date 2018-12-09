@@ -4,27 +4,43 @@ using namespace std;
 int main(){
     int n , m ;
     cin >> n >> m ;
-    priority_queue<int> q1;
-    priority_queue<int,vector<int> ,greater<int> > q2 ;
+    vector<int> v(m) ;
     for(int i=0;i<m;i++){
-        int x ;
-        cin >> x ;
-        q1.push(x);
-        q2.push(x);
+        cin >> v[i];
     }
-    int sum = 0 ;
-    for(int i=0;i<n;i++){
-        int top = q1.top();q1.pop();
-        sum += top;
-        q1.push(top-1);
+    vector<int> t(v);
+    int nn = n ;
+    int maxSum = 0 ;
+    while(nn>0){
+        int high = t[0];
+        int hindex = 0 ;
+        for(int i=0;i<t.size();i++){
+            if ( t[i] > high ) {
+                high = t[i];
+                hindex = i ;
+            }
+        }
+        maxSum += high ;
+        t[hindex]-- ;
+        nn--;
     }
-    int sum2 = 0 ;
-    for(int i=0;i<n;i++){
-        while(q2.top()==0)q2.pop();
-        int top = q2.top();q2.pop();
-        sum2+=top;
-        q2.push(top-1);
+    int minSum = 0 ;
+    while(n>0){
+        int low = 999999;
+        int lindex = 0 ;
+        for(int i=0;i<v.size();i++){
+            if ( v[i] == 0 ) continue ;
+            if ( v[i] < low ) {
+                low = v[i] ;
+                lindex = i ;
+            }
+        }
+        minSum += low ;
+        v[lindex]--;
+        n--;
     }
-    cout << sum << " " << sum2 << endl;
+    cout << maxSum << " " << minSum << endl;
+
+
     return 0 ;
 }

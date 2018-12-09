@@ -1615,6 +1615,22 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF46783708": {
+    "contest_id": 218,
+    "language": "GNU C++17",
+    "path": "codeforces\\218\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Airport",
+    "problem_url": "https://codeforces.com/contest/218/problem/B",
+    "submission_id": "CF46783708",
+    "submission_url": "https://codeforces.com/contest/218/submission/46783708",
+    "tags": [
+      "implementation",
+      "*1100"
+    ],
+    "timestamp": "Dec/09/2018 06:50"
+  },
   "CF46788682": {
     "contest_id": 352,
     "language": "GNU C++17",
