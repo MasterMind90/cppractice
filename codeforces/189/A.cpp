@@ -3,14 +3,13 @@ using namespace std;
 vector<int> a ;
 int ar[5000];
 int backtrack(int n,int level){
-    if ( n < 0 ) return -1;
+    if ( n < 0 ) return -1e6 ;
     if ( n == 0 ){
         return level ;
     }
-    if ( ar[n] != -1e6 ) return ar[n];
-    int MAX = 0 ;
+    if ( ar[n] != 0 ) return ar[n];
+    int MAX = -1e6 ;
     for(int i=0;i<a.size();i++){
-        if ( a[i] > n )continue;
         int c = backtrack(n-a[i],level+1);
         MAX = max(MAX,c);
     }
@@ -18,7 +17,6 @@ int backtrack(int n,int level){
     return MAX ;
 }
 int main(){
-    for(int i=0;i<5000;i++) ar[i] = -1e6;
     int n ;
     a.resize(3);
     cin >> n >> a[0] >> a[1] >> a[2] ;
