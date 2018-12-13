@@ -1615,6 +1615,22 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF46959983": {
+    "contest_id": 253,
+    "language": "GNU C++17",
+    "path": "codeforces\\253\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "Boys and Girls",
+    "problem_url": "https://codeforces.com/contest/253/problem/A",
+    "submission_id": "CF46959983",
+    "submission_url": "https://codeforces.com/contest/253/submission/46959983",
+    "tags": [
+      "greedy",
+      "*1100"
+    ],
+    "timestamp": "Dec/13/2018 09:27"
+  },
   "CF46969498": {
     "contest_id": 236,
     "language": "GNU C++17",
