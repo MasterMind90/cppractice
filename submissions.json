@@ -1615,6 +1615,23 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF47001308": {
+    "contest_id": 246,
+    "language": "GNU C++17",
+    "path": "codeforces\\246\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Increase and Decrease",
+    "problem_url": "https://codeforces.com/contest/246/problem/B",
+    "submission_id": "CF47001308",
+    "submission_url": "https://codeforces.com/contest/246/submission/47001308",
+    "tags": [
+      "greedy",
+      "math",
+      "*1300"
+    ],
+    "timestamp": "Dec/14/2018 13:42"
+  },
   "CF47001876": {
     "contest_id": 353,
     "language": "GNU C++17",
