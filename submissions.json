@@ -1615,6 +1615,22 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF47563605": {
+    "contest_id": 1095,
+    "language": "GNU C++17",
+    "path": "codeforces\\1095\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Array Stabilization",
+    "problem_url": "https://codeforces.com/contest/1095/problem/B",
+    "submission_id": "CF47563605",
+    "submission_url": "https://codeforces.com/contest/1095/submission/47563605",
+    "tags": [
+      "implementation",
+      "*900"
+    ],
+    "timestamp": "Dec/27/2018 16:53"
+  },
   "CF47627859": {
     "contest_id": 1096,
     "language": "GNU C++17",
