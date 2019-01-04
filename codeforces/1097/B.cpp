@@ -9,26 +9,30 @@ int counterwise(int curr,int x){
     }
     return curr-x;
 }
+int n ;
+vector<int> v;
+bool dfs(int curr,int n){
+    if ( n == ::n ) {
+        if ( curr == 0 ) return true ;
+        else return false ;
+    }
+    if ( dfs(clockwise(curr,v[n]),n+1) == true ) return true ;
+    if ( dfs(counterwise(curr,v[n]),n+1) == true ) return true ;
+    return false ;
+}
+
 int main(){
     int n ;
     cin >> n ;
-    vector<int> v(n) ;
+    ::n = n ;
+    v.resize(n);
     for(int i=0;i<n;i++){
         cin >> v[i];
     }
-    for(int mask=0;mask<(1<<n);mask++){
-        int sum = 0 ;
-        for(int i=0;i<n;i++){
-            if ( (1<<i) & mask ){
-                sum = sum + v[i];
-            }
-            else sum  = sum - v[i];
-        }
-        if ( (sum % 360 + 360 )%360 == 0 ) {
-            cout << "YES" << endl;
-            return 0 ;
-        }
+    if ( dfs(0,0) == true ){
+        cout << "YES" << endl;
     }
-    cout << "NO" << endl;
+    else cout << "NO" << endl;
+
     return 0 ;
 }
