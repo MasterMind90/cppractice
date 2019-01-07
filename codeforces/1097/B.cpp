@@ -20,11 +20,11 @@ int main(){
         int sum = 0 ;
         for(int i=0;i<n;i++){
             if ( (1<<i) & mask ){
-                sum = clockwise(sum,v[i]);
+                sum = sum + v[i];
             }
-            else sum  = counterwise(sum,v[i]);
+            else sum  = sum - v[i];
         }
-        if ( sum == 0 ) {
+        if ( (sum % 360 + 360 )%360 == 0 ) {
             cout << "YES" << endl;
             return 0 ;
         }
