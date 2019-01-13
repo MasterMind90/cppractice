@@ -1615,6 +1615,22 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF48312343": {
+    "contest_id": 1101,
+    "language": "GNU C++17",
+    "path": "codeforces\\1101\\E.cpp",
+    "platform": "Codeforces",
+    "problem_index": "E",
+    "problem_name": "Polycarp's New Job",
+    "problem_url": "https://codeforces.com/contest/1101/problem/E",
+    "submission_id": "CF48312343",
+    "submission_url": "https://codeforces.com/contest/1101/submission/48312343",
+    "tags": [
+      "implementation",
+      "*1500"
+    ],
+    "timestamp": "Jan/13/2019 05:33"
+  },
   "CF48330828": {
     "contest_id": 285,
     "language": "GNU C++17",
