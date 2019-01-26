@@ -3,31 +3,33 @@ using namespace std;
 int main(){
     int n , q ;
     cin >> n >> q ;
-    int p[32] = {0} ;
-    memset(p,0,sizeof(p));
+    map<long long, long long> m ;
+
     for(int i=0;i<n;i++){
-        int x ;
+        long long x ;
         cin >> x ;
-        for(int i=0;i<=32;i++){
-            if ( x == 1<<i ) {
-                p[i]++;
-                break;
-            }
-        }
+        m[x]++;
     }
     while(q--){
-        int x ;
+        long long x ;
         cin >> x ;
+        auto it = m.lower_bound(x);
+        if ( it == m.end() ) it--;
         int ans = 0 ;
-        for(int i=31;i>=0;i--){
-            int mm = min(x/(1<<i),p[i]);
-            ans+= mm ;
-            x = x - mm*(1<<i);
+        for(;it!=m.begin();it--){
+            long long mm = min(x/it->first,it->second);
+            ans += mm ;
+            x = x - mm*it->first ;
         }
+        long long mm = min(x/it->first,it->second);
+        ans += mm ;
+        x = x - mm*it->first ;
         if ( x == 0 ) {
             cout << ans << endl;
         }
-        else cout << -1 << endl;
+        else {
+            cout << -1 << endl;
+        }
     }
     return 0 ;
 }
