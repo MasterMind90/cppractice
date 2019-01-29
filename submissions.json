@@ -1615,6 +1615,22 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF49150239": {
+    "contest_id": 998,
+    "language": "GNU C++17",
+    "path": "codeforces\\998\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Convert to Ones",
+    "problem_url": "https://codeforces.com/contest/998/problem/C",
+    "submission_id": "CF49150239",
+    "submission_url": "https://codeforces.com/contest/998/submission/49150239",
+    "tags": [
+      "math",
+      "*1500"
+    ],
+    "timestamp": "Jan/29/2019 14:22"
+  },
   "CF49159387": {
     "contest_id": 1004,
     "language": "GNU C++17",
