@@ -1615,6 +1615,23 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF49218739": {
+    "contest_id": 357,
+    "language": "GNU C++17",
+    "path": "codeforces\\357\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Flag Day",
+    "problem_url": "https://codeforces.com/contest/357/problem/B",
+    "submission_id": "CF49218739",
+    "submission_url": "https://codeforces.com/contest/357/submission/49218739",
+    "tags": [
+      "constructive algorithms",
+      "implementation",
+      "*1400"
+    ],
+    "timestamp": "Jan/30/2019 20:10"
+  },
   "CF49218973": {
     "contest_id": 357,
     "language": "GNU C++17",
