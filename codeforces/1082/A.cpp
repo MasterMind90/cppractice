@@ -27,26 +27,38 @@ int main(){
     int t ; 
     cin >> t ; 
     while(t--){
-        int n, s, e, d;
-        cin >> n >> s >> e >> d;
-        int direct = INT_MAX ; 
-        if ( abs(e-s)%d == 0 ) direct = abs(e-s)/d;
-        
-        int toStart = ceil( (s-1)/(double)d) ; 
-        int fromStart = INT_MAX ; 
-        if ( (e-1)%d == 0 ) fromStart = toStart + (e-1)/d ; 
-
-        int toEnd = ceil( (n-s)/(double)d ) ; 
-        int fromEnd = INT_MAX ; 
-        if ( (n-e) % d == 0 ) fromEnd = toEnd + (n-e) / d ; 
-
-        int result = min(direct,fromStart) ; 
-        result = min(result,fromEnd) ; 
-        if ( result == INT_MAX ){
-            cout << -1 << endl;
+        int n , s, e, d ; 
+        cin >> n >> s >> e >> d ; 
+        if ( s == e ) {
+            cout << 0 << endl;
+            continue ; 
         }
-        else cout << result << endl;
+        int diff = abs(e - s) ; 
+        if ( diff % d == 0 ) {
+            cout << diff/d << endl;
+            continue ; 
+        }
+        diff = e - 1 ; 
+        int diff2 = s - 1 ; 
+        int moves = diff2/d ; 
+        if ( diff2 % d != 0 ) moves++ ; 
+        if ( diff % d == 0 ) moves+=(diff/d);
+        else moves = INT_MAX ; 
 
+        diff = n-s;
+        int move2 = diff/d;
+        if ( diff % d != 0 ) move2++;
+        diff2 = n-e;
+        if ( diff2 % d == 0 ) move2+=diff2/d;
+        else move2 = INT_MAX ; 
+        if ( move2 == moves && moves == INT_MAX ){
+            cout << -1 << endl;
+            continue ;
+        }
+        if ( moves <= move2 ){
+            cout << moves << endl;
+        }
+        else cout << move2 << endl;
     }
     
     return 0;
