@@ -4342,6 +4342,24 @@
     ],
     "timestamp": "Feb/08/2019 06:58"
   },
+  "CF50005529": {
+    "contest_id": 1113,
+    "language": "GNU C++17",
+    "path": "codeforces\\1113\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "Sasha and His Trip",
+    "problem_url": "https://codeforces.com/contest/1113/problem/A",
+    "submission_id": "CF50005529",
+    "submission_url": "https://codeforces.com/contest/1113/submission/50005529",
+    "tags": [
+      "dp",
+      "greedy",
+      "math",
+      "*900"
+    ],
+    "timestamp": "Feb/16/2019 18:53"
+  },
   "CF50016265": {
     "contest_id": 1113,
     "language": "GNU C++17",
