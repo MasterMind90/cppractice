@@ -2,38 +2,44 @@
 using namespace std;
 
 int main(){
-    string ans[] = {"Grapes","Carrots","Kiwis"};
-    int n , m , w , q ;
-    cin >> n >> m >> w >> q;
+    int n , m , k , q ;
+    cin >> n >> m >> k >> q ;
     map<pair<int,int>,bool> waste ;
-    map<int,vector<int> > row ;
-    for(int i=0;i<w;i++){
-        int x , y  ;
+    map<int,set<int> > rowWaste ;
+    for(int i=0;i<k;i++){
+        int x , y ;
         cin >> x >> y ;
-        row[x].push_back(y);
         waste[{x,y}] = true ;
+        rowWaste[x].insert(y);
     }
-    vector<int> sum(n+1,0);
-    for(auto &p : row){
-        sum[p.first] = p.second.size();
-        sort(p.second.begin(),p.second.end());
-    }
+    int sum[4*10005];
+    memset(sum,0,sizeof sum);
     for(int i=1;i<=n;i++){
-        sum[i]+=sum[i-1];
+        sum[i] = sum[i-1] + (m-(int)rowWaste[i].size());
     }
-    while(q--){
+    for(int i=0;i<q;i++){
         int x , y ;
         cin >> x >> y ;
         if ( waste[{x,y}] ){
             cout << "Waste" << endl;
         }
         else{
-            int wst = sum[x-1];
-            int index = lower_bound(row[x].begin(),row[x].end(),y) - row[x].begin();
-            wst+=index;
-            int total = (x-1)*m + y ;
-            total-=wst ;
-            cout << ans[total%3] << endl;
+            int ans = sum[x-1];
+            int cnt = 0 ;
+            for(int c : rowWaste[x]){
+                if ( c < y ) cnt++;
+                else break;
+            }
+            ans += y-cnt ;
+            if ( ans % 3 == 1 ){
+                cout << "Carrots" << endl;
+            }
+            else if ( ans % 3 == 2 ) {
+                cout << "Kiwis" << endl;
+            }
+            else {
+                cout << "Grapes" << endl;
+            }
         }
     }
     return 0 ;
