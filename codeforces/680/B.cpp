@@ -1,22 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 int main(){
-    int n , a ;
+    int n , a ; 
     cin >> n >> a ;
-    vector<int> v(n+1);
+    vector<int> v(n+2,1) ;
     for(int i=1;i<=n;i++){
-        cin >> v[i] ; 
+        cin >> v[i];
     }
-    int cnt = v[a] ; 
-    int d = 1 ; 
-    while( a - d >= 1 || a + d <= n ){
-        if ( a - d >= 1 && a + d <= n ){
-            if ( v[a - d] && v[a + d] ) cnt+=2;
-        }
-        else if ( a - d >= 1 ) cnt+= v[a - d];
-        else if ( a + d <= n ) cnt+= v[a + d];
-        d++;
+    int cnt = 0 ; 
+    if ( v[a] ) cnt++;
+    for(int i=a-1,j=a+1;!(i==0&&j==n+1);){
+        if ( v[i] && v[j] && i!=0 && j!=n+1) cnt+=2;
+        else if ( v[i] && v[j] && i!=0 ) cnt++;
+        else if ( v[i] && v[j] && j!=n+1 ) cnt++;
+        i--;
+        j++;
+        if ( i <= 0 ) i = 0;
+        if ( j >= n+1 ) j = n+1;
     }
     cout << cnt << endl;
-    return 0 ;
+    return 0 ; 
 }
