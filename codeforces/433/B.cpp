@@ -4,30 +4,28 @@ using namespace std;
 int main(){
     int n ;
     cin >> n ;
-    vector<int> v(n) ;
-    vector<long long> sum(n+1);
-    sum[0] = 0LL ;
-    for(int i=0;i<n;i++){
-        cin >> v[i];
-        sum[i+1] = sum[i] + (long long)v[i];
+    vector<int> v(n,0);
+    vector<long long> sum(n+1,0);
+    vector<long long> sorted(n+1,0);
+    for(int i=1;i<=n;i++){
+        long long x ;
+        cin >> x ;
+        v[i-1] = x ;
+        sum[i] = sum[i-1] + x ;
     }
     sort(v.begin(),v.end());
-    vector<long long> u(n+1);
-    u[0] = 0LL ;
-    for(int i=0;i<n;i++){
-        u[i+1] = u[i] + (long long)v[i];
+    for(int i=1;i<=n;i++){
+        sorted[i] = sorted[i-1] + v[i-1];
     }
-    int m ;
-    cin >> m ;
-    while(m--){
-        int t , l , r ;
-        cin >> t >> l >> r ;
-        if ( t == 1 ) {
-            cout << sum[r] - sum[l-1] << endl;
+    int q;
+    cin >> q ;
+    while(q--){
+        int t , a , b ;
+        cin >> t >> a >> b ;
+        if ( t == 1 ){
+            cout << sum[b] - sum[a-1] << endl;
         }
-        else{
-            cout << u[r] - u[l-1] << endl;
-        }
+        else cout << sorted[b] - sorted[a-1] << endl;
     }
     return 0 ;
 }
