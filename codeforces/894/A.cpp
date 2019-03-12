@@ -7,16 +7,15 @@ int main(){
     vector<int> sum(s.size()+1,0);
     int cnt = 0 ;
     for(int i=0;i<s.size();i++){
-        sum[i+1] += sum[i];
-        if ( s[i] == 'Q' ) sum[i+1]++;
+        if ( s[i] == 'Q' ) cnt++ ;
+        if ( s[i] == 'A' ) sum[i] = cnt;
     }
     int ans = 0 ;
-    int n = s.size() ;
-    for(int i=1;i<s.size();i++){
-        if ( s[i] == 'A' ){
-            int after = sum[n] - sum[i+1] ;
-            int before = sum[i] ;
-            ans += after*before;
+    for(int i=0;i<s.size();i++){
+        if ( s[i] == 'Q' ){
+            for(int j=i-1;j>=0;j--){
+                if ( s[j] == 'A' ) ans += sum[j];
+            }
         }
     }
     cout << ans << endl;
