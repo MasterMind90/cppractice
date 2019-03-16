@@ -1,45 +1,32 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-
+vector<int> row = { 0 , 0 , -1 , 1 } ; 
+vector<int> col = { -1 , 1 , 0 , 0 } ; 
 int main(){
-    int n , m ;
-    char p ;
-    cin >> n >> m >> p ;
-    char a[n + 2][m + 2] ;
-    for(int i = 0; i < n + 2; i++){
-        for(int j = 0; j < m + 2; j++){
-            a[i][j] = '.' ;
+    int n , m  ; 
+    char c ; 
+    cin >> n >> m >> c ; 
+    char g[n+2][m+2] ; 
+    for(int i=0;i<=n+1;i++){
+        for(int j=0;j<=m+1;j++){
+            g[i][j] = '.' ; 
         }
     }
-    for(int i = 1; i <= n; i++){
-        for(int j = 1; j <= m; j++){
-            cin >> a[i][j] ;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=m;j++){
+            cin >> g[i][j] ; 
         }
     }
-    bool flag[26] = {0} ;
-    for(int i = 1; i <= n; i++){
-        for(int j = 1; j <= m; j++){
-            if ( a[i][j] == p ){
-                if ( a[i - 1][j] != p && a[i - 1][j] >= 'A' && a[i - 1][j] <= 'Z' ){
-                    flag[a[i - 1][j] - 'A'] = true ;
-                }
-                if ( a[i + 1][j] != p && a[i + 1][j] >= 'A' && a[i + 1][j] <= 'Z' ){
-                    flag[a[i + 1][j] - 'A'] = true ;
-                }
-                if ( a[i][j - 1] != p && a[i][j - 1] >= 'A' && a[i][j - 1] <= 'Z' ){
-                    flag[a[i][j - 1] - 'A'] = true ;
-                }
-                if ( a[i][j + 1] != p && a[i][j + 1] >= 'A' && a[i][j + 1] <= 'Z' ){
-                    flag[a[i][j + 1] - 'A'] = true ;
+    set<char> ans ; 
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=m;j++){
+            if ( g[i][j] == c ){
+                for(int k=0;k<4;k++){
+                    if ( g[i+row[k]][j+col[k]] != '.' && g[i+row[k]][j+col[k]] != c ) ans.insert(g[i+row[k]][j+col[k]]) ; 
                 }
             }
         }
     }
-    int cnt = 0 ;
-    for(int i = 0; i < 26; i++){
-        if ( flag[i] ) cnt++ ;
-    }
-    cout << cnt << endl;
-    return 0 ;
+    cout << ans.size() << endl;
+    return 0 ; 
 }
