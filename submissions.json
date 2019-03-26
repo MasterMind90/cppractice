@@ -4342,6 +4342,23 @@
     ],
     "timestamp": "Feb/08/2019 06:58"
   },
+  "CF51870882": {
+    "contest_id": 810,
+    "language": "GNU C++17",
+    "path": "codeforces\\810\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Summer sell-off",
+    "problem_url": "https://codeforces.com/contest/810/problem/B",
+    "submission_id": "CF51870882",
+    "submission_url": "https://codeforces.com/contest/810/submission/51870882",
+    "tags": [
+      "greedy",
+      "sortings",
+      "*1300"
+    ],
+    "timestamp": "Mar/26/2019 19:20"
+  },
   "CF51882911": {
     "contest_id": 79,
     "language": "GNU C++17",
