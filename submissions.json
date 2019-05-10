@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5331940": {
+    "contest_id": "abc046",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc046\\A.cpp",
+    "platform": "AtCoder",
+    "problem_index": "A",
+    "problem_name": "AtCoDeer and Paint Cans",
+    "problem_url": "https://atcoder.jp/contests/abc046/tasks/abc046_a",
+    "submission_id": "AC5331940",
+    "submission_url": "https://atcoder.jp/contests/abc046/submissions/5331940",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "May/10/2019 17:02"
+  },
   "AC5332134": {
     "contest_id": "abc046",
     "language": "C++14 (GCC 5.4.1)",
