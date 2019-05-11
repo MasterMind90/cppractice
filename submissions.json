@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5360361": {
+    "contest_id": "abc082",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc082\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Good Sequence",
+    "problem_url": "https://atcoder.jp/contests/abc082/tasks/arc087_a",
+    "submission_id": "AC5360361",
+    "submission_url": "https://atcoder.jp/contests/abc082/submissions/5360361",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "May/11/2019 16:25"
+  },
   "AC5368163": {
     "contest_id": "abc083",
     "language": "C++14 (GCC 5.4.1)",
