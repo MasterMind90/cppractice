@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5369881": {
+    "contest_id": "arc088",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\arc088\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Multiple Gift",
+    "problem_url": "https://atcoder.jp/contests/arc088/tasks/arc088_a",
+    "submission_id": "AC5369881",
+    "submission_url": "https://atcoder.jp/contests/arc088/submissions/5369881",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "May/11/2019 19:10"
+  },
   "AC5369977": {
     "contest_id": "abc084",
     "language": "C++14 (GCC 5.4.1)",
