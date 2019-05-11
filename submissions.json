@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5369977": {
+    "contest_id": "abc084",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc084\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Postal Code",
+    "problem_url": "https://atcoder.jp/contests/abc084/tasks/abc084_b",
+    "submission_id": "AC5369977",
+    "submission_url": "https://atcoder.jp/contests/abc084/submissions/5369977",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "May/11/2019 19:15"
+  },
   "AC5376790": {
     "contest_id": "abc047",
     "language": "C++14 (GCC 5.4.1)",
