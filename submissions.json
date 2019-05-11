@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5359384": {
+    "contest_id": "abc082",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc082\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Two Anagrams",
+    "problem_url": "https://atcoder.jp/contests/abc082/tasks/abc082_b",
+    "submission_id": "AC5359384",
+    "submission_url": "https://atcoder.jp/contests/abc082/submissions/5359384",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "May/11/2019 16:19"
+  },
   "AC5360361": {
     "contest_id": "abc082",
     "language": "C++14 (GCC 5.4.1)",
