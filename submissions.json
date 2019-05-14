@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5399845": {
+    "contest_id": "abc086",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc086\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Traveling",
+    "problem_url": "https://atcoder.jp/contests/abc086/tasks/arc089_a",
+    "submission_id": "AC5399845",
+    "submission_url": "https://atcoder.jp/contests/abc086/submissions/5399845",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "May/14/2019 15:44"
+  },
   "AC5408904": {
     "contest_id": "abc087",
     "language": "C++14 (GCC 5.4.1)",
