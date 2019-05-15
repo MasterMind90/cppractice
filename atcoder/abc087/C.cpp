@@ -1,32 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
-vector<int> g[2];
 int n ;
-int dfs(int x,int y,int cost){
-    if ( x >=2 || y >= n ) return 0 ;
+vector<int> v[2] ;
+int dfs(int x,int y,int sum){
+    sum += v[x][y] ;
     if ( x == 1 && y == n-1 ){
-        cost+=g[x][y] ;
-        return cost ;
+        return sum ;
     }
-    int first = dfs(x,y+1,cost+g[x][y]);
-    int second = dfs(x+1,y,cost+g[x][y]);
-    return max(first,second) ;
+    int right = 0, left = 0 ;
+    if ( y + 1 < n )
+        right = dfs(x,y+1,sum);
+    if ( x + 1 < 2 )
+        left = dfs(x+1,y,sum);
+    return max(right,left);
 }
-
 int main(){
-
     cin >> n ;
     for(int i=0;i<n;i++){
         int x ;
         cin >> x ;
-        g[0].push_back(x);
+        v[0].push_back(x);
     }
     for(int i=0;i<n;i++){
         int x ;
         cin >> x ;
-        g[1].push_back(x);
+        v[1].push_back(x);
     }
-    cout << dfs(0,0,0) << endl;
-
+    vector<int> sum1(n+1);
+    vector<int> sum2(n+1);
+    sum1[0] = 0 ;
+    sum2[0] = 0 ;
+    for(int i=1;i<=n;i++){
+        sum1[i] = sum1[i-1] + v[0][i-1];
+        sum2[i] = sum2[i-1] + v[1][i-1];
+    }
+    int ans = 0 ;
+    for(int i=0;i<n;i++){
+        int res = sum1[i+1] + sum2[n] - sum2[i] ;
+        ans = max(ans,res);
+    }
+    cout << ans << endl;
     return 0 ;
 }
