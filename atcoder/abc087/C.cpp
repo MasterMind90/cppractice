@@ -26,19 +26,7 @@ int main(){
         cin >> x ;
         v[1].push_back(x);
     }
-    vector<int> sum1(n+1);
-    vector<int> sum2(n+1);
-    sum1[0] = 0 ;
-    sum2[0] = 0 ;
-    for(int i=1;i<=n;i++){
-        sum1[i] = sum1[i-1] + v[0][i-1];
-        sum2[i] = sum2[i-1] + v[1][i-1];
-    }
-    int ans = 0 ;
-    for(int i=0;i<n;i++){
-        int res = sum1[i+1] + sum2[n] - sum2[i] ;
-        ans = max(ans,res);
-    }
-    cout << ans << endl;
+    cout << dfs(0,0,0) << endl;
+
     return 0 ;
 }
