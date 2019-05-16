@@ -1,23 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 const int MAXN = 5*1e5+10;
-int parent[MAXN] ;
+int cnt = 0 ;
+set<int> s[MAXN] ;
+bool vis[MAXN] ;
+bool vis2[MAXN] ;
 int ans[MAXN] ;
-int Find(int x){
-    if ( x != parent[x] ){
-        parent[x] = Find(parent[x]);
+
+void dfs(int x){
+    if ( vis[x] ) return ;
+    vis[x] = true ;
+    cnt++;
+    for(int c : s[x]){
+        dfs(c);
     }
-    return parent[x] ;
 }
-void Union(int x,int y){
-    parent[Find(x)] = Find(y);
+void dfs2(int x){
+    if ( vis2[x] ) return ;
+    vis2[x] = true ;
+    ans[x] = cnt ;
+    for(int c : s[x]){
+        dfs2(c);
+    }
 }
+
 int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
     int n , m ;
     cin >> n >> m ;
-    for(int i=1;i<=n;i++){
-        parent[i] = i ;
-    }
     for(int i=0;i<m;i++){
         int k ;
         cin >> k ;
@@ -26,17 +37,24 @@ int main(){
             int x ;
             cin >> x ;
             if ( i != 0 ){
-                Union(pre,x);
+                s[x].insert(pre);
+                s[pre].insert(x);
             }
             pre = x ;
         }
     }
     for(int i=1;i<=n;i++){
-        ans[Find(i)]++;
+        if ( vis2[i] ){
+            continue ;
+        }
+        cnt = 0 ;
+        dfs(i);
+        dfs2(i);
     }
     for(int i=1;i<=n;i++){
-        cout << ans[Find(i)] << ' ';
+        cout << ans[i] << ' ' ;
     }
     cout << endl;
+
     return 0 ;
 }
