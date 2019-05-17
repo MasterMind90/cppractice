@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5429820": {
+    "contest_id": "abc089",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc089\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Hina Arare",
+    "problem_url": "https://atcoder.jp/contests/abc089/tasks/abc089_b",
+    "submission_id": "AC5429820",
+    "submission_url": "https://atcoder.jp/contests/abc089/submissions/5429820",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "May/17/2019 17:31"
+  },
   "AC5430588": {
     "contest_id": "abc089",
     "language": "C++14 (GCC 5.4.1)",
