@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5431554": {
+    "contest_id": "abc090",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc090\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Palindromic Numbers",
+    "problem_url": "https://atcoder.jp/contests/abc090/tasks/abc090_b",
+    "submission_id": "AC5431554",
+    "submission_url": "https://atcoder.jp/contests/abc090/submissions/5431554",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "May/17/2019 22:25"
+  },
   "AC5431608": {
     "contest_id": "abc090",
     "language": "C++14 (GCC 5.4.1)",
