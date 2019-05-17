@@ -42,7 +42,6 @@ int main(){
         b*=2;
         debug() << imie(a) imie(b) ;
         if ( a > b ) {
-            assert(a > b) ;
             cout << i << endl;
             return 0 ;
         }
