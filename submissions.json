@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5446271": {
+    "contest_id": "abc087",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc087\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Candies",
+    "problem_url": "https://atcoder.jp/contests/abc087/tasks/arc090_a",
+    "submission_id": "AC5446271",
+    "submission_url": "https://atcoder.jp/contests/abc087/submissions/5446271",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "May/19/2019 12:07"
+  },
   "AC5450183": {
     "contest_id": "abc126",
     "language": "C++14 (GCC 5.4.1)",
