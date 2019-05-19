@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5480535": {
+    "contest_id": "abc126",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc126\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Dice and Coin",
+    "problem_url": "https://atcoder.jp/contests/abc126/tasks/abc126_c",
+    "submission_id": "AC5480535",
+    "submission_url": "https://atcoder.jp/contests/abc126/submissions/5480535",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "May/19/2019 16:52"
+  },
   "AC5480541": {
     "contest_id": "abc126",
     "language": "C++14 (GCC 5.4.1)",
