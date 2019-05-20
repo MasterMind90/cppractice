@@ -2,8 +2,6 @@
 #pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
-#include <ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
 using namespace std;
 #define sim template < class c
 #define ris return * this
@@ -33,25 +31,24 @@ sim dor(const c&) { ris; }
 #endif
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
 typedef long long ll;
-typedef tree<ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
 
 int main(){
-    fastio
-    ll n ; 
-    cin >> n ; 
-    ll cnt = 0 ; 
-    ll sum = 0 ; 
-    ll nax = 1e9 + 10 ; 
-    for(ll i=0;i<n;i++){
-    	ll x ; 
-    	cin >> x ; 
-    	if ( x < 0 ) cnt++ ; 
-    	sum += abs(x) ;
-    	nax = min(nax,abs(x));
-    }
-    if ( cnt & 1 ) sum -= 2*nax ; 
-    cout << sum << endl;
+	long long n ; 
+	cin >> n ; 
+	long long neg = 0 ; 
+	vector<long long> v(n) ; 
+	long long nax = 1e9 ; 
+	long long sum = 0 ; 
+	for(long long &x : v){
+		cin >> x ; 
+		sum+= abs(x) ; 
+		if ( x < 0 ) neg++ ; 
+		nax = min(nax,abs(x));
+	}
+	if ( neg & 1 ){
+		cout << sum - 2LL*nax << endl;
+	}
+	else cout << sum << endl;
     return 0 ;
 }
