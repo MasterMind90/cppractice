@@ -2,8 +2,6 @@
 #pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
-#include <ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
 using namespace std;
 #define sim template < class c
 #define ris return * this
@@ -33,35 +31,27 @@ sim dor(const c&) { ris; }
 #endif
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
 typedef long long ll;
-typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
 
 int main(){
-    fastio
-    string s ; 
-    cin >> s ; 
-    int n = (int) s.size() ; 
-    int ans = 0 ; 
-    int cnt = 0 ; 
-    for(int i=0;i<n;i++){
-    	if ( i & 1 ){
-    		if ( s[i] == '1' ) cnt++ ; 
-    	}
-    	else {
-    		if ( s[i] == '0' ) cnt++ ; 
-    	}
+    string s ;
+    cin >> s ;
+
+    int start = 0 ;
+    int cnt = 0 ;
+    for(int i=0;i<(int)s.size();i++){
+        if ( start != s[i]-'0' ) cnt++ ;
+        debug() << imie(start) ;
+        start = !start ;
     }
-    ans = cnt ; 
-    cnt = 0 ; 
-    for(int i=0;i<n;i++){
-    	if ( i & 1 ){
-    		if ( s[i] == '0' ) cnt++ ; 
-    	}
-    	else {
-    		if ( s[i] == '1' ) cnt++ ; 
-    	}
+    int nax = cnt ;
+    cnt = 0 ;
+    start = 1 ;
+    for(int i=0;i<(int)s.size();i++){
+        if ( start != s[i]-'0' ) cnt++ ;
+        start = !start ;
     }
-    cout << min(ans,cnt) << endl;
+    cout << min(nax,cnt) << endl;
+
     return 0 ;
 }
