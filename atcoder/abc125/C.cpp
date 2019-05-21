@@ -1,16 +1,9 @@
 #ifndef LOCAL
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
-#include <ext/pb_ds/assoc_container.hpp> // Common file
-#include <ext/pb_ds/tree_policy.hpp> // Including tree_order_statistics_node_update
-#include <ext/pb_ds/detail/standard_policies.hpp>
 using namespace std;
-using namespace __gnu_pbds;
 #define sim template < class c
-#define int long long
 #define ris return * this
 #define dor > debug & operator <<
 #define eni(x) sim > typename \
@@ -21,7 +14,7 @@ sim > auto dud(c* x) -> decltype(cerr << *x, 0);
 sim > char dud(...);
 struct debug {
 #ifdef LOCAL
-~debug() { cerr << '\n'; }
+~debug() { cerr << endl; }
 eni(!=) cerr << boolalpha << i; ris; }
 eni(==) ris << range(begin(i), end(i)); }
 sim, class b dor(pair < b, c > d) {
@@ -38,41 +31,39 @@ sim dor(const c&) { ris; }
 #endif
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
-typedef tree< pair<int,int>, null_type, less<pair<int,int> >, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef long long ll;
-const ll MOD = 1e9 + 7 ;
-const ll N = 2e5 + 10 ;
-const ll INF = 1e18 + 10 ;
-signed main(){
-    fastio
+
+ll gcd(ll a,ll b){
+    if ( b == 0 ) return a ;
+    return gcd(b,a%b);
+}
+
+int main(){
     int n ;
     cin >> n ;
     vector<int> v(n) ;
-    for(int &c : v) cin >> c ;
-    vector<int> left(n) , right(n) ;
-	int g = 0 ;
-	for(int i = 0; i < n; i++){
-		left[i] = __gcd(g, v[i]) ;
-		g = left[i] ;
-	}
-	g = 0 ;
-	for(int i = n - 1; i >= 0; i--){
-		right[i] = __gcd(g, v[i]) ;
-		g = right[i] ;
-	}
-	int ans = 0 ;
-	for(int i = 0; i < n; i++){
-		if ( i == 0 ) {
-			ans = max(ans, right[i + 1]) ;
-		}
-		else if ( i == n - 1 ) {
-			ans = max(ans, left[i - 1]) ;
-		}
-		else {
-			ans = max(ans, __gcd(left[i - 1] , right[i + 1])) ;
-		}
-	}
-	cout << ans << endl;
-    return 0; 
+    for(int &x : v){
+        cin >> x ;
+    }
+    vector<int> left(n+1) ;
+    vector<int> right(n+1) ;
+    left[0] = 0 ;
+    right[n] = 0 ;
+    for(int i=0;i<n;i++){
+        left[i+1] = gcd(left[i],v[i]);
+    }
+    for(int i=n-1;i>=0;i--){
+        right[i] = gcd(right[i+1],v[i]);
+    }
+    debug() << imie(left) ;
+    debug() << imie(right) ;
+    int nax = right[0] ;
+    debug() << imie(nax) ;
+    for(int i=1;i<=n;i++){
+        int ans = gcd(left[i-1],right[i]);
+        nax = max(nax,ans);
+        debug() << imie(nax) ;
+    }
+    cout << nax << endl;
+    return 0 ;
 }
