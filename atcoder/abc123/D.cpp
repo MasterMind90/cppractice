@@ -2,8 +2,6 @@
 #pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
-#include <ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
 using namespace std;
 #define sim template < class c
 #define ris return * this
@@ -33,45 +31,43 @@ sim dor(const c&) { ris; }
 #endif
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
 typedef long long ll;
-typedef tree<ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
 
 int main(){
-    fastio
-    ll x , y , z , k ; 
-    cin >> x >> y >> z >> k ; 
-    vector<ll> X(x) , Y(y) , Z(z) ; 
-    for(ll i=0;i<x;i++){
-    	cin >> X[i] ; 
-    }
-    for(ll i=0;i<y;i++){
-    	cin >> Y[i] ; 
-    }
-    for(ll i=0;i<z;i++){
-    	cin >> Z[i] ; 
-    }
-    sort(X.rbegin(),X.rend());
-    sort(Y.rbegin(),Y.rend());
-    sort(Z.rbegin(),Z.rend());
-    vector<ll> ans ; 
-    for(ll i=0;i<x;i++){
-    	for(ll j=0;j<y;j++){
-    		ans.push_back(X[i]+Y[j]);
-    	}
-    }
-    sort(ans.rbegin(),ans.rend());
-    ll n = (int) ans.size() ; 
-    vector<ll> res ; 
-    for(int i=0;i<min(k,n);i++){
-    	for(int j=0;j<z;j++){
-    		res.push_back(ans[i]+Z[j]);
-    	}
-    }
-    sort(res.rbegin(),res.rend());
-    for(int i=0;i<k;i++){
-    	cout << res[i] << endl;
-    }
-    return 0 ;
-}
+	ll x , y , z , k ; 
+	cin >> x >> y >> z >> k ; 
+	priority_queue<ll> q ; 
+	vector<ll> a(x) , b(y) , c(z) ; 
+	for(ll &g: a){
+		cin >> g ; 
+	}
+	for(ll &g: b){
+		cin >> g ; 
+	}
+	for(ll &g: c){
+		cin >> g ; 
+	}
+	vector<ll> ans ; 
+	for(int i=0;i<x;i++){
+		for(int j=0;j<y;j++){
+			ans.push_back(a[i]+b[j]);
+		}
+	}
+	sort(ans.rbegin(),ans.rend());
+	debug() << imie(ans) ; 
+	sort(c.rbegin(),c.rend());
+	debug() << imie(c) ; 
+	vector<ll> res ; 
+	for(int i=0;i<min(k,(ll)ans.size());i++){
+		for(int j=0;j<z;j++){
+			res.push_back(ans[i]+c[j]);
+		}
+	}
+	debug() << imie(res) ; 
+	sort(res.rbegin(),res.rend());
 
+	for(int i=0;i<min(k,x*y*z);i++){
+		cout << res[i] << endl;
+	}
+	return 0 ;
+}
