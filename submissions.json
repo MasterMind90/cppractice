@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5559205": {
+    "contest_id": "abc120",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc120\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Unification",
+    "problem_url": "https://atcoder.jp/contests/abc120/tasks/abc120_c",
+    "submission_id": "AC5559205",
+    "submission_url": "https://atcoder.jp/contests/abc120/submissions/5559205",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "May/24/2019 01:03"
+  },
   "AC5559311": {
     "contest_id": "abc080",
     "language": "C++14 (GCC 5.4.1)",
