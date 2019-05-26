@@ -33,6 +33,14 @@ sim dor(const c&) { ris; }
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 typedef long long ll;
 
+bool comp(pair<string,pair<int,int> > &p1, pair<string,pair<int,int> > &p2){
+	if ( p1.first < p2.first ) return true ; 
+	else if ( p1.first == p2.first ) {
+		return p1.second.first > p2.second.first ; 
+	}
+	return false ;
+}
+
 int main(){
 	int n ; 
 	cin >> n ; 
@@ -42,10 +50,10 @@ int main(){
 		cin >> x; 
 		int s ; 
 		cin >> s ;
-		v.push_back({x,{-s,i+1}}) ; 
+		v.push_back({x,{s,i+1}}) ; 
 	}
 	debug() << imie(v) ; 
-	sort(v.begin(),v.end());
+	sort(v.begin(),v.end(),comp);
 	debug() << imie(v) ; 
 	for(int i=0;i<n;i++){
 		cout << v[i].second.second << endl;
