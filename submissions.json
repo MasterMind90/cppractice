@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5662700": {
+    "contest_id": "abc117",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc117\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Polygon",
+    "problem_url": "https://atcoder.jp/contests/abc117/tasks/abc117_b",
+    "submission_id": "AC5662700",
+    "submission_url": "https://atcoder.jp/contests/abc117/submissions/5662700",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "May/27/2019 12:17"
+  },
   "AC5663078": {
     "contest_id": "abc117",
     "language": "C++14 (GCC 5.4.1)",
