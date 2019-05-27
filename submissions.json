@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5663078": {
+    "contest_id": "abc117",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc117\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Streamline",
+    "problem_url": "https://atcoder.jp/contests/abc117/tasks/abc117_c",
+    "submission_id": "AC5663078",
+    "submission_url": "https://atcoder.jp/contests/abc117/submissions/5663078",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "May/27/2019 12:46"
+  },
   "AC5679212": {
     "contest_id": "abc128",
     "language": "C++14 (GCC 5.4.1)",
