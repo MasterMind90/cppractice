@@ -35,24 +35,24 @@ typedef long long ll;
 int n ; 
 vector<ll> v ; 
 vector<ll> dp ; 
-ll dfs(int x){
-	if ( x == n-1 )
-		return 0 ; 
-	if ( dp[x] != 1e18 ) return dp[x] ; 
-	ll first = abs(v[x] - v[x+1]) + dfs(x+1) ; 
-	ll second = 1e18 ; 
-	if ( x + 2 < n )
-		second = abs(v[x]-v[x+2]) + dfs(x+2) ; 
-	dp[x] = min(first,second) ; 
+int dfs(int x){
+	if ( x == n-1 ) return 0 ; 
+	if ( dp[x] != 1e9 ) return dp[x] ; 
+	int first = 1e9 ; 
+	if ( x < n-2 )
+		first = abs(v[x]-v[x+2]) + dfs(x+2) ; 
+	int second = 1e9 ; 
+	if ( x < n-1 )
+		second = abs(v[x]-v[x+1]) + dfs(x+1) ; 
+	dp[x] = min(second,first) ; 
 	return dp[x] ; 
 }
-
 int main(){
 	cin >> n ; 
 	v.resize(n) ; 
-	dp.resize(n,1e18) ; 
-	for(ll &x : v){
-		cin >> x ; 
+	dp.resize(n+2,1e9) ; 
+	for(int i=0;i<n;i++){
+		cin >> v[i] ; 
 	}
 	cout << dfs(0) << endl;
     return 0 ;
