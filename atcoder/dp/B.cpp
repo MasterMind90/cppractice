@@ -2,8 +2,6 @@
 #pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
-#include <ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
 using namespace std;
 #define sim template < class c
 #define ris return * this
@@ -33,33 +31,30 @@ sim dor(const c&) { ris; }
 #endif
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
 typedef long long ll;
-typedef tree<ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
-const ll INF = 1e18 + 10 ; 
-const ll MAXN = 1e5 + 10 ; 
-ll n , k;
+int n, k ; 
 vector<ll> v ; 
-vector<ll> dp(MAXN,INF) ; 
-ll dfs(int idx){
-	if ( idx >= n-1 ){
+vector<ll> dp ; 
+ll dfs(int x){
+	if ( x == n-1 )
 		return 0 ; 
-	}
-	ll &res = dp[idx] ; 
-	if ( res != INF ) return res ; 
+	if ( dp[x] != 1e18 ) return dp[x] ; 
+	ll val = 1e18 ; 
 	for(int i=1;i<=k;i++){
-		if ( idx+i < n )
-			res = min(res,dfs(idx+i) + abs(v[idx]-v[idx+i]));
+		if ( x+i < n )
+			val = min(val,abs(v[x]-v[x+i]) + dfs(x+i));
 	}
-	return res ; 
+	dp[x] = val ; 
+	return dp[x] ; 
 }
+
 int main(){
-    fastio
-    cin >> n >> k; 
-    v.resize(n) ; 
-    for(ll i=0;i<n;i++){
-    	cin >> v[i] ; 
-    }
-    cout << dfs(0) << endl;
+	cin >> n >> k ; 
+	v.resize(n) ; 
+	dp.resize(n,1e18) ; 
+	for(ll &x : v){
+		cin >> x ; 
+	}
+	cout << dfs(0) << endl;
     return 0 ;
 }
