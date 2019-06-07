@@ -32,33 +32,32 @@ sim dor(const c&) { ris; }
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 typedef long long ll;
-const ll MAXW = 1e5 + 10 ;
-ll n , W ;
-ll w[110] , v[110] ;
-ll dp[110][MAXW] ;
-ll dfs(ll x,ll currWeight){
-    if ( x == n ) {
-        return 0 ;
-    }
-    if ( dp[x][currWeight] ) return dp[x][currWeight] ;
-    ll choice1 = 0 ;
-    ll choice2 = 0 ;
-    if ( currWeight < w[x] ){
-        choice1 = dfs(x+1,currWeight) ;
-    }
-    else{
-        choice1 = dfs(x+1,currWeight) ;
-        choice2 = v[x] + dfs(x+1,currWeight-w[x]) ;
-    }
-    dp[x][currWeight] = max(choice1,choice2) ;
-    return dp[x][currWeight] ;
+const ll MAXN = 1e5+10 ; 
+ll n , W ; 
+vector<ll> w; 
+vector<ll> v; 
+ll dp[110][MAXN] ; 
+
+ll dfs(int x,int currWeight){
+	if ( x == 0 || currWeight == 0 ) return 0 ; 
+	if ( w[x-1] > currWeight )
+		return dfs(x-1,currWeight) ; 
+	if ( dp[x-1][currWeight] ) return dp[x-1][currWeight] ; 
+	ll first = dfs(x-1,currWeight) ; 
+	ll second = v[x-1] + dfs(x-1,currWeight-w[x-1]) ; 
+	ll val = max(first,second) ; 
+	dp[x-1][currWeight] = val ; 
+	return val ; 
 }
 
+
 int main(){
-    cin >> n >> W ;
-    for(int i=0;i<n;i++){
-        cin >> w[i] >> v[i] ;
-    }
-    cout << dfs(0,W) << endl;
+	cin >> n >> W ; 
+	w.resize(n) ; 
+	v.resize(n) ; 
+	for(ll i=0;i<n;i++){
+		cin >> w[i] >> v[i] ; 
+	}
+	cout << dfs(n,W) << endl;
     return 0 ;
 }
