@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5878141": {
+    "contest_id": "abc106",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc106\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "To Infinity",
+    "problem_url": "https://atcoder.jp/contests/abc106/tasks/abc106_c",
+    "submission_id": "AC5878141",
+    "submission_url": "https://atcoder.jp/contests/abc106/submissions/5878141",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jun/11/2019 12:13"
+  },
   "AC5887858": {
     "contest_id": "abc129",
     "language": "C++14 (GCC 5.4.1)",
