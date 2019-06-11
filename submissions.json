@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5877740": {
+    "contest_id": "abc129",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc129\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "Lamp",
+    "problem_url": "https://atcoder.jp/contests/abc129/tasks/abc129_d",
+    "submission_id": "AC5877740",
+    "submission_url": "https://atcoder.jp/contests/abc129/submissions/5877740",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Jun/11/2019 11:30"
+  },
   "AC5877982": {
     "contest_id": "abc129",
     "language": "C++14 (GCC 5.4.1)",

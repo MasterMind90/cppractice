@@ -37,56 +37,51 @@ int main(){
     int n , m ;
     cin >> n >> m ;
     char grid[n][m] ;
+    vector<int> rows[n] , cols[m] ;
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
             cin >> grid[i][j] ;
-        }
-    }
-    int right[n][m] ;
-    int left[n][m] ;
-    int up[n][m] ;
-    int down[n][m] ;
-    // right
-    for(int i=0;i<n;i++){
-        int cnt = 0 ;
-        for(int j=m-1;j>=0;j--){
-            if ( grid[i][j] == '#' ) cnt = 0, right[i][j] = 0 ;
-            else if ( j == m-1 ) right[i][j] = 1 ;
-            else right[i][j] = right[i][j+1] + 1 ;
-        }
-    }
-    // left
-    for(int i=0;i<n;i++){
-        int cnt = 0 ;
-        for(int j=0;j<m;j++){
-            if ( grid[i][j] == '#' ) cnt = 0 , left[i][j] = 0 ;
-            else if ( j == 0 ) left[i][j] = 1 ;
-            else left[i][j] = left[i][j-1] + 1 ;
-        }
-    }
-    // up
-    for(int j=0;j<m;j++){
-        int cnt = 0 ;
-        for(int i=0;i<n;i++){
-            if ( grid[i][j] == '#' ) cnt = 0 , up[i][j] = 0 ;
-            else if ( i == 0 ) up[i][j] = 1 ;
-            else up[i][j] = up[i-1][j]+1 ;
-        }
-    }
-    // down
-    for(int j=0;j<m;j++){
-        int cnt = 0 ;
-        for(int i=n-1;i>=0;i--){
-            if ( grid[i][j] == '#' ) cnt = 0 , down[i][j] = 0 ;
-            else if ( i == n-1 ) down[i][j] = 1 ;
-            else down[i][j] = down[i+1][j] + 1 ;
+            if ( grid[i][j] == '#' ){
+                rows[i].push_back(j) ;
+                cols[j].push_back(i) ;
+            }
         }
     }
     int ans = 0 ;
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
             if ( grid[i][j] == '.' ){
-                ans = max(ans, right[i][j] + left[i][j] + up[i][j] + down[i][j] - 3);
+                int index = upper_bound(rows[i].begin(),rows[i].end(),j) - rows[i].begin() ;
+                // do not forget to minus one after you find row and col
+                int row = 0 ;
+
+                if ( (int) rows[i].size() == 0 )
+                    row = m ;
+                else if ( index == 0 ) {
+                    row = rows[i][index] ;
+                }
+                else if ( index == (int) rows[i].size() ){
+                    row = m - rows[i][index-1] - 1;
+                }
+                else {
+                    row = rows[i][index] - rows[i][index-1] - 1;
+                }
+                index = upper_bound(cols[j].begin(),cols[j].end(),i) - cols[j].begin() ;
+
+                int col = 0 ;
+                if ( (int) cols[j].size() == 0 )
+                    col = n ;
+                else if ( index == 0 ) {
+                    col = cols[j][index] ;
+                }
+                else if ( index == (int) cols[j].size() ){
+                    col = n - cols[j][index-1] - 1;
+                }
+                else {
+                    col = cols[j][index] - cols[j][index-1] - 1 ;
+                }
+                ans = max(ans,row+col-1) ;
+                debug() << imie(i) imie(j) imie(row) imie(col) imie(ans) ;
             }
         }
     }
