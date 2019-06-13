@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5900592": {
+    "contest_id": "yahoo-procon2019-qual",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\yahoo-procon2019-qual\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "When I hit my pocket...",
+    "problem_url": "https://atcoder.jp/contests/yahoo-procon2019-qual/tasks/yahoo_procon2019_qual_c",
+    "submission_id": "AC5900592",
+    "submission_url": "https://atcoder.jp/contests/yahoo-procon2019-qual/submissions/5900592",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Jun/13/2019 18:16"
+  },
   "AC5909971": {
     "contest_id": "abc072",
     "language": "C++14 (GCC 5.4.1)",
