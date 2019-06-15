@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5942105": {
+    "contest_id": "abc115",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc115\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Christmas Eve Eve",
+    "problem_url": "https://atcoder.jp/contests/abc115/tasks/abc115_b",
+    "submission_id": "AC5942105",
+    "submission_url": "https://atcoder.jp/contests/abc115/submissions/5942105",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "Jun/15/2019 20:41"
+  },
   "AC5942153": {
     "contest_id": "abc070",
     "language": "C++14 (GCC 5.4.1)",
