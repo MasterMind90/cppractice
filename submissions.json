@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5942153": {
+    "contest_id": "abc070",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc070\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "Transit Tree Path",
+    "problem_url": "https://atcoder.jp/contests/abc070/tasks/abc070_d",
+    "submission_id": "AC5942153",
+    "submission_url": "https://atcoder.jp/contests/abc070/submissions/5942153",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Jun/15/2019 20:49"
+  },
   "AC5942248": {
     "contest_id": "abc114",
     "language": "C++14 (GCC 5.4.1)",
