@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5942553": {
+    "contest_id": "diverta2019-2",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\diverta2019-2\\A.cpp",
+    "platform": "AtCoder",
+    "problem_index": "A",
+    "problem_name": "Ball Distribution",
+    "problem_url": "https://atcoder.jp/contests/diverta2019-2/tasks/diverta2019_2_a",
+    "submission_id": "AC5942553",
+    "submission_url": "https://atcoder.jp/contests/diverta2019-2/submissions/5942553",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "Jun/15/2019 22:14"
+  },
   "AC5942638": {
     "contest_id": "abc051",
     "language": "C++14 (GCC 5.4.1)",
