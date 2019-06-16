@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5948237": {
+    "contest_id": "abc107",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc107\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Candles",
+    "problem_url": "https://atcoder.jp/contests/abc107/tasks/arc101_a",
+    "submission_id": "AC5948237",
+    "submission_url": "https://atcoder.jp/contests/abc107/submissions/5948237",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jun/16/2019 11:55"
+  },
   "AC5998002": {
     "contest_id": "abc130",
     "language": "C++14 (GCC 5.4.1)",
