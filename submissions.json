@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5998643": {
+    "contest_id": "arc095",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\arc095\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "Binomial Coefficients",
+    "problem_url": "https://atcoder.jp/contests/arc095/tasks/arc095_b",
+    "submission_id": "AC5998643",
+    "submission_url": "https://atcoder.jp/contests/arc095/submissions/5998643",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Jun/17/2019 12:47"
+  },
   "AC5999258": {
     "contest_id": "abc130",
     "language": "C++14 (GCC 5.4.1)",
