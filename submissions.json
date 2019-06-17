@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5998272": {
+    "contest_id": "abc053",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc053\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "X: Yet Another Die Game",
+    "problem_url": "https://atcoder.jp/contests/abc053/tasks/arc068_a",
+    "submission_id": "AC5998272",
+    "submission_url": "https://atcoder.jp/contests/abc053/submissions/5998272",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jun/17/2019 12:11"
+  },
   "AC5998643": {
     "contest_id": "arc095",
     "language": "C++14 (GCC 5.4.1)",
