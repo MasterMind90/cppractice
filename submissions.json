@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC5998002": {
+    "contest_id": "abc130",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc130\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Rectangle Cutting",
+    "problem_url": "https://atcoder.jp/contests/abc130/tasks/abc130_c",
+    "submission_id": "AC5998002",
+    "submission_url": "https://atcoder.jp/contests/abc130/submissions/5998002",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jun/17/2019 11:50"
+  },
   "AC5998272": {
     "contest_id": "abc053",
     "language": "C++14 (GCC 5.4.1)",
