@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6011503": {
+    "contest_id": "abc119",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc119\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "Lazy Faith",
+    "problem_url": "https://atcoder.jp/contests/abc119/tasks/abc119_d",
+    "submission_id": "AC6011503",
+    "submission_url": "https://atcoder.jp/contests/abc119/submissions/6011503",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Jun/18/2019 14:59"
+  },
   "AC6057980": {
     "contest_id": "abc131",
     "language": "C++14 (GCC 5.4.1)",
