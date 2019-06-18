@@ -14,7 +14,7 @@ sim > auto dud(c* x) -> decltype(cerr << *x, 0);
 sim > char dud(...);
 struct debug {
 #ifdef LOCAL
-~debug() { cerr << '\n'; }
+~debug() { cerr << endl; }
 eni(!=) cerr << boolalpha << i; ris; }
 eni(==) ris << range(begin(i), end(i)); }
 sim, class b dor(pair < b, c > d) {
@@ -31,42 +31,39 @@ sim dor(const c&) { ris; }
 #endif
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
-typedef long long ll;
-const ll MOD = 1e9 + 7 ;
-const ll N = 4e5 + 10 ;
-const ll INF = 1e18 + 10 ;
+using ll = long long ;
+
 int main(){
-    fastio
-    ll n ;
-    cin >> n ; 
-    vector<ll> v(n) ; 
-    for(ll i = 0; i < n; i++){
-        cin >> v[i] ; 
+  int n ; 
+  cin >> n ; 
+  vector<ll> v(n) ; 
+  vector<ll> sum(n+1) ; 
+  sum[0] = 0 ; 
+  for(int i=0;i<n;i++){
+    cin >> v[i] ; 
+    sum[i+1] = sum[i] + v[i] ; 
+  }
+  debug() << imie(v) ;
+  debug() << imie(sum) ;
+  ll res = 0 ; 
+  for(int i=1;i<=n;i++){
+    ll target = sum[i] ; 
+    int L = i+1 , R = n ; 
+    while(L<=R){
+      int mid = L + (R-L)/2 ; 
+      if ( sum[n] - sum[mid-1] == target ){
+        res = max(res,target) ; 
+        break;
+      }
+      else if ( sum[n] - sum[mid-1] > target ){
+        L = mid + 1 ; 
+      }
+      else R = mid - 1 ; 
     }
-    vector<ll> sum(n + 1) ; 
-    for(ll i = 0; i < n; i++){
-        sum[i + 1] = sum[i] + v[i] ; 
-    }
-    ll ans = 0 ; 
-    for(ll i = 1; i < n; i++){
-        ll left = sum[i] ; 
-        ll L = i , R = n ; 
-        bool ok = false;
-        while(L <= R){
-            ll mid = L + (R - L) / 2 ;
-            if ( sum[n] - sum[mid] == left ){
-                ok = true ;
-            }
-            if ( sum[n] - sum[mid] > left ){
-                L = mid + 1 ;
-            }
-            else R = mid - 1 ;
-        }
-        if ( ok ){
-            ans = left ;
-        }
-    }
-    cout << ans << endl;
-    return 0; 
+  }
+  cout << res << endl;
+
+
+
+  return 0 ; 
 }
