@@ -32,28 +32,42 @@ sim dor(const c&) { ris; }
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 using ll = long long ;
-const long long INF = 1e18 ;
 int main(){
 	ll n , m , q ;
 	cin >> n >> m >> q ;
-	vector<ll> s(n+2) , t(m+2);
-	for(ll i=1;i<=n;i++){
+	vector<ll> s(n) , t(m);
+	for(ll i=0;i<n;i++){
 		cin >> s[i] ;
 	}
-	for(ll i=1;i<=m;i++){
+	for(ll i=0;i<m;i++){
 		cin >> t[i] ;
 	}
-	s[0] = t[0] = -INF ;
-	s[n+1] = t[m+1] = INF ;
 	while(q--){
 		ll x ;
 		cin >> x ;
-		ll a = lower_bound(s.begin(),s.end(),x) - s.begin() ;
-		ll b = lower_bound(t.begin(),t.end(),x) - t.begin() ;
+		ll index = lower_bound(s.begin(),s.end(),x) - s.begin() ;
+		vector<ll> first,second ;
+		if ( index == n ) first.push_back(s[index-1]) ;
+		else if ( index == 0 ) first.push_back(s[index]) ;
+		else {
+			first.push_back(s[index]) ;
+			first.push_back(s[index-1]) ;
+		}
+		index = lower_bound(t.begin(),t.end(),x) - t.begin() ;
+		if ( index == m ) second.push_back(t[index-1]) ;
+		else if ( index == 0 ) second.push_back(t[index]) ;
+		else {
+			second.push_back(t[index]) ;
+			second.push_back(t[index-1]) ;
+		}
+		sort(first.begin(),first.end());
+		sort(second.begin(),second.end());
+		debug() << imie(first) ;
+		debug() << imie(second) ;
 		ll ans = 1e18 ;
-		for(ll i=a-1;i<=a;i++){
-			for(ll j=b-1;j<=b;j++){
-				ans = min({ans,abs(s[i]-x)+abs(s[i]-t[j]),abs(t[j]-x)+abs(t[j]-s[i])});
+		for(ll i=0;i<(ll)first.size();i++){
+			for(ll j=0;j<(ll)second.size();j++){
+				ans = min({ans,abs(first[i]-x)+abs(first[i]-second[j]),abs(second[j]-x)+abs(second[j]-first[i])});
 			}
 		}
 		cout << ans << endl;
