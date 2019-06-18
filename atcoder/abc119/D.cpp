@@ -60,20 +60,30 @@ int main(){
 			second.push_back(t[index]) ;
 			second.push_back(t[index-1]) ;
 		}
-		sort(first.begin(),first.end());
-		sort(second.begin(),second.end());
+        sort(first.begin(),first.end());
+        sort(second.begin(),second.end());
 		debug() << imie(first) ;
 		debug() << imie(second) ;
 		ll ans = 1e18 ;
 		for(ll i=0;i<(ll)first.size();i++){
-			for(ll j=0;j<(ll)second.size();j++){
-				ans = min({ans,abs(first[i]-x)+abs(first[i]-second[j]),abs(second[j]-x)+abs(second[j]-first[i])});
-			}
+            for(ll j=0;j<(ll)second.size();j++){
+                if ( first[i] >= x && second[j] >= x ) ans = min(ans,max(first[i],second[j])-x);
+                else if ( first[i] <= x && second[j] <= x ) ans = min(ans,x-min(first[i],second[j]));
+                else{
+                    if ( abs(first[i]-x) <= abs(second[j]-x) ){
+                        ll ff = abs(first[i]-x) ;
+                        ll ss = abs(second[j]-x) ;
+                        ans = min(ans,2*ff+ss) ;
+                    }
+                    else{
+                        ll ff = abs(first[i]-x) ;
+                        ll ss = abs(second[j]-x) ;
+                        ans = min(ans,2*ss+ff) ;
+                    }
+                }
+            }
 		}
 		cout << ans << endl;
 	}
-
-	return 0 ;
+    return 0 ;
 }
-
-
