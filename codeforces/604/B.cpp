@@ -42,9 +42,7 @@ int main(){
     for(int &x : v){
     	cin >> x ; 
     }
-    int extra = k - n / 2 ; 
-    extra = extra * 2 ; 
-    if ( n % 2 ) extra--;
+    int extra = 2*k - n ; 
     int nax = v[n-1] ; 
     debug() << imie(extra) imie(nax) ; 
     for(int i=0,j=n-extra-1;i<=j;i++,j--){
