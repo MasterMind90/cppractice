@@ -36,52 +36,48 @@ typedef long long ll;
 const int MAXN = 1e5 + 10 ; 
 bool prime[MAXN] ; 
 int main(){
-  fastio
-  prime[0] = 1 ; 
-  prime[1] = 1 ; 
-  vector<int> primes ; 
-  for(int i=2;i*i<MAXN;i++){
-    if ( !prime[i] ){
-      for(int j=i+i;j<MAXN;j+=i){
-        prime[j] = true ; 
-      }
+    fastio
+    prime[0] = 1 ; 
+    prime[1] = 1 ; 
+    vector<int> primes ; 
+    for(int i=2;i*i<MAXN;i++){
+    	if ( !prime[i] ){
+    		for(int j=i+i;j<MAXN;j+=i){
+    			prime[j] = true ; 
+    		}
+    	}
     }
-  }
-  for(int i=0;i<MAXN;i++){
-    if ( !prime[i] ){
-      primes.push_back(i) ; 
+    for(int i=0;i<MAXN;i++){
+    	if ( !prime[i] ){
+    		primes.push_back(i) ; 
+    	}
     }
-  }
-  int n , m ; 
-  cin >> n >> m ; 
-  int g[n][m] ; 
-  for(int i=0;i<n;i++){
-    for(int j=0;j<m;j++){
-      cin >> g[i][j] ; 
+    int n , m ; 
+    cin >> n >> m ; 
+    int g[n][m] ; 
+    for(int i=0;i<n;i++){
+    	for(int j=0;j<m;j++){
+    		cin >> g[i][j] ; 
+    	}
     }
-  }
-  int last = 100003 ; 
-  vector<int> res(MAXN) ; 
-  for(int i=last;i>=1;i--){
-    if ( !prime[i] ) last = i ; 
-    res[i] = last - i ; 
-  }
-  vector<int> rows(510) ; 
-  vector<int> cols(510) ; 
-  int nax = 1e9 ; 
-  for(int i=0;i<n;i++){
-    for(int j=0;j<m;j++){
-      rows[i] += res[g[i][j]] ; 
+    int dist[n][m] ; 
+    int ans = 1e9 + 10 ; 
+    for(int i=0;i<n;i++){
+    	int cnt = 0 ; 
+    	for(int j=0;j<m;j++){
+    		int index = lower_bound(primes.begin(),primes.end(),g[i][j]) - primes.begin() ;
+    		dist[i][j] = primes[index] - g[i][j];
+    		cnt += dist[i][j] ; 
+    	}
+    	ans = min(ans,cnt) ; 
     }
-    nax = min(nax,rows[i]) ; 
-  }
-  for(int i=0;i<m;i++){
-    for(int j=0;j<n;j++){
-      cols[i] += res[g[j][i]] ; 
+    for(int i=0;i<m;i++){
+    	int cnt = 0 ; 
+    	for(int j=0;j<n;j++){
+    		cnt += dist[j][i] ; 
+    	}
+    	ans = min(ans,cnt) ; 
     }
-    nax = min(nax,cols[i]) ; 
-  }
-  cout << nax << endl;
-
-  return 0 ;
+    cout << ans << endl;
+    return 0 ;
 }
