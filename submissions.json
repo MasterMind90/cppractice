@@ -4342,6 +4342,22 @@
     ],
     "timestamp": "Feb/08/2019 06:58"
   },
+  "CF55849343": {
+    "contest_id": 5,
+    "language": "GNU C++17",
+    "path": "codeforces\\5\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "Chat Servers Outgoing Traffic",
+    "problem_url": "https://codeforces.com/contest/5/problem/A",
+    "submission_id": "CF55849343",
+    "submission_url": "https://codeforces.com/contest/5/submission/55849343",
+    "tags": [
+      "implementation",
+      "*1000"
+    ],
+    "timestamp": "Jun/21/2019 05:04"
+  },
   "CF55849791": {
     "contest_id": 5,
     "language": "GNU C++17",
