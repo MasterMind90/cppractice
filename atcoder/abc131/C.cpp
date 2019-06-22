@@ -31,18 +31,24 @@ sim dor(const c&) { ris; }
 #endif
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-using ll = long long ;
-
+#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
+typedef long long ll;
+ll lcm(ll a,ll b){
+	return a*b/__gcd(a,b) ; 
+}
 int main(){
+    fastio
     ll a , b , c , d ; 
     cin >> a >> b >> c >> d ; 
-    ll first = b/c - (a-1)/c ; 
-    ll second = b/d - (a-1)/d ; 
-    ll lcm = c*d / __gcd(c,d) ; 
-    ll third = b / lcm - (a-1) / lcm ; 
-    ll ans = (b-a+1) - (first + second - third) ; 
+    ll LCM = lcm(c,d) ; 
+    ll both = b/LCM - a/LCM ; 
+    if ( a % LCM == 0 ) both++ ; 
+    ll first = b/c - a/c ;
+    if ( a % c == 0 ) first++ ; 
+    ll second = b/d - a/d ; 
+    if ( a % d == 0 ) second++ ; 
+    debug() << imie(first) imie(second) imie(both) ;
+    ll ans = (b-a+1) - (first + second - both) ; 
     cout << ans << endl;
-    return 0 ; 
+    return 0 ;
 }
-
-
