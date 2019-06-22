@@ -56,7 +56,7 @@ int main(){
     	debug() << imie(mid) ; 
     	int sub = 0 ; 
     	int cnt[26] = {0} ; 
-    	for(int i=0;i+mid<=n;i++){
+    	for(int i=0;i<=n-mid;i++){
     		for(int j=0;j<26;j++){
     			cnt[j] += ((sum[j][i+mid] - sum[j][i] ) != 0 ) ;
     		}
