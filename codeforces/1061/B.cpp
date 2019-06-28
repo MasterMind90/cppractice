@@ -59,6 +59,19 @@ int main(){
     }
     debug() << imie(sum) imie(lastRow) imie(cnt);
     ll ans = sum - (nax - lastRow+1 + cnt) ; 
-    cout << ans << endl;
+    lastRow = 1 ; 
+    cnt = 0 ; 
+    for(ll i=n;i>=1;i--){
+    	if ( v[i] >= lastRow ){
+    		cnt++; 
+    		lastRow++;
+    	}
+    	else{
+    		cnt++;
+    	}
+    }
+    debug() << imie(sum) imie(lastRow) imie(cnt);
+    ll t = sum - (nax - lastRow+1 + cnt) ; 
+    cout << max(ans,t) << endl;
     return 0 ;
 }
