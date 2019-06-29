@@ -33,38 +33,48 @@ sim dor(const c&) { ris; }
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 #define fastio ios_base::sync_with_stdio(false);cin.tie(0);
 typedef long long ll;
-
+const ll INF = 1e18 ; 
 int main(){
-    int n , m ;
-    cin >> n >> m ;
-    vector<vector<int> > graph(3*n) ;
-    for(int i=0;i<m;i++){
-        int x , y ;
-        cin >> x >> y ;
-        x--, y-- ;
-        graph[x].push_back(y+n) ;
-        graph[x+n].push_back(y+2*n) ;
-        graph[x+2*n].push_back(y) ;
+    fastio
+    ll n , m ; 
+    cin >> n >> m ; 
+    vector<ll> v[n+1] ; 
+    vector<bool> vis(n+1) ; 
+    vector<int> indegree(n+1) ;
+    for(ll i=0;i<m;i++){
+    	ll x , y ; 
+    	cin >> x >> y ; 
+    	v[x].push_back(y) ; 
+    	indegree[y]++;
     }
-    int s , t ;
-    cin >> s >> t ;
-    s--,t-- ;
-    vector<int> dist(n*3,-1) ;
-    queue<int> q ;
-    dist[s] = 0 ;
-    q.push(s) ;
+    ll s , t ;
+    cin >> s >> t ; 
+    if ( indegree[t] == 0 ){
+    	cout << -1 << endl;
+    	return 0;
+    }
+    vector<ll> dist(n+1,INF) ; 
+    dist[s] = 0 ; 
+    vis[s] = true ; 
+    queue<ll> q; 
+    q.push(s) ; 
     while(!q.empty()){
-        int f = q.front() ; q.pop() ;
-        for(int c : graph[f]){
-            if ( dist[c] == -1 ){
-                dist[c] = dist[f] + 1 ;
-                if ( c == t ){
-                    cout << dist[c]/3 << endl;
-                    return 0 ;
-                }
-                q.push(c) ;
-            }
-        }
+    	ll f = q.front() ; q.pop() ; 
+    	for(ll c : v[f]){
+    		for(ll k : v[c]){
+    			for(ll h : v[k]){
+    				if ( !vis[h] ){
+    					dist[h] = dist[f] + 1 ;
+    					if ( h == t ){
+    						cout << dist[h] << endl;
+    						return 0 ; 
+    					}
+    					vis[h] = true ; 
+    					q.push(h) ; 
+    				}
+    			}
+    		}
+    	}
     }
     cout << -1 << endl;
     return 0 ;
