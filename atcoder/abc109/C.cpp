@@ -35,22 +35,52 @@ sim dor(const c&) { ris; }
 typedef long long ll;
 
 int main(){
-	int n , X ; 
-	cin >> n >> X ; 
-	vector<int> v(n) ; 
-	for(int &x : v){
-		cin >> x ; 
-	}
-	sort(v.begin(),v.end()) ; 
-	vector<int> diff ; 
-	diff.push_back(abs(X-v[0])) ; 
-	for(int i=1;i<n;i++){
-		diff.push_back(v[i]-v[i-1]) ; 
-	}
-	int g = diff[0] ; 
-	for(int i=1;i<n;i++){
-		g = __gcd(g,diff[i]) ; 
-	}
-	cout << g << endl;
-	return 0 ; 
+    fastio
+    int n , X ; 
+    cin >> n >> X ; 
+    vector<int> v(n) ; 
+    for(int &x : v){
+    	cin >> x ; 
+    }
+    if ( n == 1 ){
+    	cout << abs(X-v[0]) << endl;
+    	return 0 ; 
+    }
+    sort(v.begin(),v.end());
+    debug() << imie(v) ; 
+    vector<int> diff ; 
+    for(int i=1;i<n;i++){
+    	diff.push_back(v[i]-v[i-1]) ; 
+    }
+    debug() << imie(diff) ; 
+    int d = v[1] - v[0] ; 
+    vector<int> divisors ; 
+    for(int i=1;i<=sqrt(d);i++){
+    	if ( d % i == 0 ){
+    		if ( d / i == i ) divisors.push_back(i) ; 
+    		else {
+    			divisors.push_back(d/i) ; 
+    			divisors.push_back(i) ; 
+    		}
+    	}
+    }
+    sort(divisors.begin(),divisors.end()) ; 
+    reverse(divisors.begin(),divisors.end()) ; 
+    debug() << imie(d) ; 
+    for(int div : divisors){
+    	if ( d%div == 0 && abs(X-v[0]) % div == 0 ){
+    		bool flag = true ; 
+    		for(int c : diff){
+    			if ( c % div != 0 ) {
+    				flag = false ; 
+    				break ; 
+    			}
+    		}
+    		if ( flag ) {
+    			cout << div << endl;
+    			return 0 ; 
+    		}
+    	}
+    }
+    return 0 ;
 }

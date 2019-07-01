@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6208381": {
+    "contest_id": "abc109",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc109\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Skip",
+    "problem_url": "https://atcoder.jp/contests/abc109/tasks/abc109_c",
+    "submission_id": "AC6208381",
+    "submission_url": "https://atcoder.jp/contests/abc109/submissions/6208381",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jul/01/2019 16:39"
+  },
   "AC6208658": {
     "contest_id": "abc109",
     "language": "C++14 (GCC 5.4.1)",
