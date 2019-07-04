@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6233375": {
+    "contest_id": "abc101",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc101\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Minimization",
+    "problem_url": "https://atcoder.jp/contests/abc101/tasks/arc099_a",
+    "submission_id": "AC6233375",
+    "submission_url": "https://atcoder.jp/contests/abc101/submissions/6233375",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jul/04/2019 09:22"
+  },
   "AC6235861": {
     "contest_id": "arc098",
     "language": "C++14 (GCC 5.4.1)",
