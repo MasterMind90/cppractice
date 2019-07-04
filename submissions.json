@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6237200": {
+    "contest_id": "arc096",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\arc096\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Half and Half",
+    "problem_url": "https://atcoder.jp/contests/arc096/tasks/arc096_a",
+    "submission_id": "AC6237200",
+    "submission_url": "https://atcoder.jp/contests/arc096/submissions/6237200",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jul/04/2019 16:26"
+  },
   "AC6252302": {
     "contest_id": "arc095",
     "language": "C++14 (GCC 5.4.1)",
