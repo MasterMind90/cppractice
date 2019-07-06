@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6252712": {
+    "contest_id": "arc094",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\arc094\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Same Integers",
+    "problem_url": "https://atcoder.jp/contests/arc094/tasks/arc094_a",
+    "submission_id": "AC6252712",
+    "submission_url": "https://atcoder.jp/contests/arc094/submissions/6252712",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jul/06/2019 11:47"
+  },
   "AC6253108": {
     "contest_id": "arc093",
     "language": "C++14 (GCC 5.4.1)",
