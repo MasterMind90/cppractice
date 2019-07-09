@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6326432": {
+    "contest_id": "arc081",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\arc081\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Make a Rectangle",
+    "problem_url": "https://atcoder.jp/contests/arc081/tasks/arc081_a",
+    "submission_id": "AC6326432",
+    "submission_url": "https://atcoder.jp/contests/arc081/submissions/6326432",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jul/09/2019 21:21"
+  },
   "AC6326579": {
     "contest_id": "arc080",
     "language": "C++14 (GCC 5.4.1)",
