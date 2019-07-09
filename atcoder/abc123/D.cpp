@@ -40,33 +40,38 @@ typedef tree<ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update
 int main(){
     fastio
     ll x , y , z , k ; 
-    cin >> x >> y >> z >> k; 
-    vector<ll> a(x) , b(y) , c(z) ; 
-    for(ll &p : a){
-    	cin >> p ; 
+    cin >> x >> y >> z >> k ; 
+    vector<ll> X(x) , Y(y) , Z(z) ; 
+    for(ll i=0;i<x;i++){
+    	cin >> X[i] ; 
     }
-    for(ll &p : b){
-    	cin >> p ; 
+    for(ll i=0;i<y;i++){
+    	cin >> Y[i] ; 
     }
-    for(ll &p : c){
-    	cin >> p ; 
+    for(ll i=0;i<z;i++){
+    	cin >> Z[i] ; 
     }
-    sort(a.rbegin(),a.rend());
-    sort(b.rbegin(),b.rend());
-    sort(c.rbegin(),c.rend());
+    sort(X.rbegin(),X.rend());
+    sort(Y.rbegin(),Y.rend());
+    sort(Z.rbegin(),Z.rend());
     vector<ll> ans ; 
     for(ll i=0;i<x;i++){
     	for(ll j=0;j<y;j++){
-    		for(ll t=0;t<z;t++){
-    			if ( i * j * t <= k ) ans.push_back(a[i]+b[j]+c[t]);
-    			else break;
-    		}
+    		ans.push_back(X[i]+Y[j]);
     	}
     }
     sort(ans.rbegin(),ans.rend());
-    for(ll i=0;i<k;i++){
-    	cout << ans[i] << endl;
+    ll n = (int) ans.size() ; 
+    vector<ll> res ; 
+    for(int i=0;i<min(k,n);i++){
+    	for(int j=0;j<z;j++){
+    		res.push_back(ans[i]+Z[j]);
+    	}
     }
-    cout << endl;
+    sort(res.rbegin(),res.rend());
+    for(int i=0;i<k;i++){
+    	cout << res[i] << endl;
+    }
     return 0 ;
 }
+
