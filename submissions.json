@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6329674": {
+    "contest_id": "arc078",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\arc078\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Splitting Pile",
+    "problem_url": "https://atcoder.jp/contests/arc078/tasks/arc078_a",
+    "submission_id": "AC6329674",
+    "submission_url": "https://atcoder.jp/contests/arc078/submissions/6329674",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jul/10/2019 09:06"
+  },
   "AC6332618": {
     "contest_id": "arc077",
     "language": "C++14 (GCC 5.4.1)",
