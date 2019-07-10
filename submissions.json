@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6332918": {
+    "contest_id": "arc076",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\arc076\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Reconciled?",
+    "problem_url": "https://atcoder.jp/contests/arc076/tasks/arc076_a",
+    "submission_id": "AC6332918",
+    "submission_url": "https://atcoder.jp/contests/arc076/submissions/6332918",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jul/10/2019 13:41"
+  },
   "AC6351644": {
     "contest_id": "arc073",
     "language": "C++14 (GCC 5.4.1)",
