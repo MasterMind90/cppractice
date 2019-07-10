@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6332618": {
+    "contest_id": "arc077",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\arc077\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "pushpush",
+    "problem_url": "https://atcoder.jp/contests/arc077/tasks/arc077_a",
+    "submission_id": "AC6332618",
+    "submission_url": "https://atcoder.jp/contests/arc077/submissions/6332618",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jul/10/2019 12:53"
+  },
   "AC6332918": {
     "contest_id": "arc076",
     "language": "C++14 (GCC 5.4.1)",
