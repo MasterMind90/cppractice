@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6351644": {
+    "contest_id": "arc073",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\arc073\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Sentou",
+    "problem_url": "https://atcoder.jp/contests/arc073/tasks/arc073_a",
+    "submission_id": "AC6351644",
+    "submission_url": "https://atcoder.jp/contests/arc073/submissions/6351644",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jul/12/2019 14:40"
+  },
   "AC6376786": {
     "contest_id": "agc035",
     "language": "C++14 (GCC 5.4.1)",
