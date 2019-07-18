@@ -42,27 +42,52 @@ int main(){
     int n , m ;
     cin >> n >> m ; 
     vector<vector<int> > a(n,vector<int>(m));
-    vector<vector<int> > x(n+m-1) , y(n+m-1) ; 
+    vector<vector<bool> > doneA(n,vector<bool>(m));
     for(int i=0;i<n;i++){
     	for(int j=0;j<m;j++){
     		cin >> a[i][j] ; 
-    		x[i+j].push_back(a[i][j]);
+    		doneA[i][j] = false ;
     	}
     }
     debug() << imie(a) ;
     vector<vector<int> > b(n,vector<int>(m));
+    vector<vector<bool> > doneB(n,vector<bool>(m));
     for(int i=0;i<n;i++){
     	for(int j=0;j<m;j++){
     		cin >> b[i][j] ; 
-    		y[i+j].push_back(b[i][j]);
     	}
     }
-    for(int i=0;i<n+m-1;i++){
-    	sort(x[i].begin(),x[i].end()) ; 
-    	sort(y[i].begin(),y[i].end()) ; 
-    	debug() << imie(x[i]) ; 
-    	debug() << imie(y[i]) ; 
-    	if ( x[i] != y[i] ) return cout << "NO" << endl , 0 ; 
+    vector<multiset<int>> first ;
+    for(int i=0;i<n;i++){
+    	for(int j=0;j<m;j++){
+    		if ( !doneA[i][j] ){
+    			multiset<int> mm ; 
+    			for(int x=i,y=j;x<n&&y>=0;x++,y--){
+    				doneA[x][y] = true ; 
+    				mm.insert(a[x][y]);
+    			}
+    			first.push_back(mm) ; 
+    		}
+    	}
+    }
+    vector<multiset<int>> second ; 
+    for(int i=0;i<n;i++){
+    	for(int j=0;j<m;j++){
+    		if ( !doneB[i][j] ){
+    			multiset<int> mm ; 
+    			for(int x=i,y=j;x<n&&y>=0;x++,y--){
+    				doneB[x][y] = true ; 
+    				mm.insert(b[x][y]);
+    			}
+    			second.push_back(mm) ; 
+    		}
+    	}
+    }
+    for(int i=0;i<(int)first.size();i++){
+    	if ( first[i] != second[i] ){
+    		cout << "NO" << endl;
+    		return 0 ;
+    	}
     }
     cout << "YES" << endl;
     return 0 ;
