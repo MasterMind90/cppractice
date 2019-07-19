@@ -35,22 +35,25 @@ sim dor(const c&) { ris; }
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 #define fastio ios_base::sync_with_stdio(false);cin.tie(0);
 typedef long long ll;
-typedef tree<ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
+typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
 
 int main(){
     fastio
-    ll n ; 
+    int n ; 
     cin >> n ;
-    ll L = 1 , R = 1e9 ; 
-    ll ans = -1 ; 
-    while(L<=R){
-    	ll mid = L + (R-L) / 2 ;
-    	if ( (mid*(mid+1))/2 >= n ){
-    		ans = mid ; 
-    		R = mid - 1 ;
-    	}
-    	else L = mid + 1 ;
+    vector<pair<int,int> > v ; 
+    int cur = 0 ; 
+    for(int i=1;;i++){
+    	if ( cur > 1e9 )break;
+    	v.push_back({cur,cur+i});
+    	cur = cur+i ; 
     }
-    cout << ans << endl;
+    int m = (int) v.size() ;
+    for(int i=0;i<m;i++){
+    	if ( n <= v[i].second ){
+    		cout << i + 1 << endl;
+    		return 0 ; 
+    	}
+    }
     return 0 ;
 }
