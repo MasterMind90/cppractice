@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6545136": {
+    "contest_id": "arc065",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\arc065\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Daydream",
+    "problem_url": "https://atcoder.jp/contests/arc065/tasks/arc065_a",
+    "submission_id": "AC6545136",
+    "submission_url": "https://atcoder.jp/contests/arc065/submissions/6545136",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Jul/26/2019 15:23"
+  },
   "AC6595703": {
     "contest_id": "arc063",
     "language": "C++14 (GCC 5.4.1)",
