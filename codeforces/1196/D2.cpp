@@ -60,8 +60,9 @@ void solve(){
 			sum[j] += sum[j-1] ; 
 		}
 		debug() << imie(sum) ; 
-		for(int j=0;j+k<=n;j++){
-			ans = min(ans,sum[j+k]-sum[j]);
+		for(int j=1;j+k<=n+1;j++){
+			debug() << imie(j+k-1) imie(sum[j+k-1]) imie(sum[j-1])  ; 
+			ans = min(ans,sum[j+k-1]-sum[j-1]);
 		}
 	}
 	cout << ans << endl;
