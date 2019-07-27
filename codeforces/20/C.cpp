@@ -45,6 +45,7 @@ int main(){
     for(ll i=0;i<m;i++){
     	ll a , b , c ; 
     	cin >> a >> b >> c ; 
+    	if ( a == b ) continue ; 
     	graph[a].push_back({c,b});
     	graph[b].push_back({c,a});
     }
