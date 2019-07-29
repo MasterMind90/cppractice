@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6606677": {
+    "contest_id": "abc135",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc135\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "0 or 1 Swap",
+    "problem_url": "https://atcoder.jp/contests/abc135/tasks/abc135_b",
+    "submission_id": "AC6606677",
+    "submission_url": "https://atcoder.jp/contests/abc135/submissions/6606677",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "Jul/29/2019 15:01"
+  },
   "AC6606779": {
     "contest_id": "abc135",
     "language": "C++14 (GCC 5.4.1)",
