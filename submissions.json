@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC6877348": {
+    "contest_id": "abc136",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc136\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Build Stairs",
+    "problem_url": "https://atcoder.jp/contests/abc136/tasks/abc136_c",
+    "submission_id": "AC6877348",
+    "submission_url": "https://atcoder.jp/contests/abc136/submissions/6877348",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Aug/13/2019 05:52"
+  },
   "AC6877988": {
     "contest_id": "abc136",
     "language": "C++14 (GCC 5.4.1)",
