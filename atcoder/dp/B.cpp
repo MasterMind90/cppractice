@@ -38,26 +38,28 @@ typedef long long ll;
 typedef tree<ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
 const ll INF = 1e18 + 10 ; 
 const ll MAXN = 1e5 + 10 ; 
+ll n , k;
+vector<ll> v ; 
+vector<ll> dp(MAXN,INF) ; 
+ll dfs(int idx){
+	if ( idx >= n-1 ){
+		return 0 ; 
+	}
+	ll &res = dp[idx] ; 
+	if ( res != INF ) return res ; 
+	for(int i=1;i<=k;i++){
+		if ( idx+i < n )
+			res = min(res,dfs(idx+i) + abs(v[idx]-v[idx+i]));
+	}
+	return res ; 
+}
 int main(){
     fastio
-    ll n , k;
     cin >> n >> k; 
-    vector<int> v(n) ; 
+    v.resize(n) ; 
     for(ll i=0;i<n;i++){
     	cin >> v[i] ; 
     }
-    ll dp[n] ; 
-    for(int i=0;i<n;i++){
-    	dp[i] = INF ; 
-    }
-    dp[0] = 0 ; 
-    for(int i=1;i<n;i++){
-    	for(int j=0;j<=k;j++){
-    		if ( i - j >= 0 ){
-    			dp[i] = min(dp[i],abs(v[i]-v[i-j]) + dp[i-j]) ;
-    		}
-    	}
-    }
-    cout << dp[n-1] << endl;
+    cout << dfs(0) << endl;
     return 0 ;
 }
