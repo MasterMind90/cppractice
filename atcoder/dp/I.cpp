@@ -38,15 +38,15 @@ typedef long long ll;
 typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
 const int MAXN = 3e3 + 10; 
 int n ; 
-vector<double> v(MAXN) ; 
-double dp[MAXN][MAXN] ; 
-double dfs(int x,int curHeads){
+vector<long double> v(MAXN) ; 
+long double dp[MAXN][MAXN] ; 
+long double dfs(int x,int curHeads){
 	if ( x == n ){
 		if ( curHeads > n / 2 ) return 1 ;
 		return 0 ; 
 	}
 	if ( dp[x][curHeads] != -1 ) return dp[x][curHeads] ; 
-	double ans = 0 ; 
+	long double ans = 0 ; 
 	ans += v[x] * dfs(x+1,curHeads+1) ; 
 	ans += (1.0-v[x]) * dfs(x+1,curHeads) ; 
 	return dp[x][curHeads] = ans; 
