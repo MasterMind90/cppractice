@@ -2,6 +2,8 @@
 #pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
 using namespace std;
 #define sim template < class c
 #define ris return * this
@@ -31,33 +33,27 @@ sim dor(const c&) { ris; }
 #endif
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-#define fastio ios_base::sync_with_stdio(false); cin.tie(0) ;
-using ll = long long ;
-const ll N = 1e5 + 10;
-const ll INF = 1e9 + 10 ;
-ll n ;
-vector<ll> h;
-ll dp[N] ;
-ll dfs(ll x) {
-    if ( x == n - 1 ) return 0 ; 
-    if ( x >= n ) return INF ;
-    if ( dp[x] != -1 ) return dp[x] ; 
-    ll choice1 = abs(h[x + 1] - h[x]) + dfs(x + 1) ;
-    ll choice2 = INF ; 
-    if ( x + 2 < n )
-        choice2 = abs(h[x + 2] - h[x]) + dfs(x + 2);
-    ll ans = min(choice1, choice2) ; 
-    return dp[x] = ans ; 
-}
+#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
+typedef long long ll;
+typedef tree<ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
+const ll INF = 1e18 + 10 ; 
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(0) ; 
-    memset(dp, -1, sizeof dp) ; 
+    fastio
+    ll n ;
     cin >> n ; 
-    h.resize(n) ;
-    for(ll i = 0; i < n; i++){
-        cin >> h[i] ; 
+    vector<ll> v(n+1) ; 
+    for(ll i=1;i<=n;i++){
+    	cin >> v[i] ; 
     }
-    cout << dfs(0) << endl;
+    ll dp[n+1] ; // the minimum cost up the current stone
+    for(ll i=0;i<=n;i++){
+    	dp[i] = INF ; 
+    }
+    dp[0] = dp[1] = 0 ; 
+    dp[2] = abs(v[2]-v[1]) ;
+    for(ll i=3;i<=n;i++){
+    	dp[i] = min(abs(v[i]-v[i-1])+dp[i-1],abs(v[i]-v[i-2])+dp[i-2]);
+    }
+    cout << dp[n] << endl;
     return 0 ;
 }
