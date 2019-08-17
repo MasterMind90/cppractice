@@ -2,6 +2,8 @@
 #pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
 using namespace std;
 #define sim template < class c
 #define ris return * this
@@ -31,40 +33,42 @@ sim dor(const c&) { ris; }
 #endif
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-#define fastio ios_base::sync_with_stdio(false); cin.tie(0) ;
-using ll = long long ;
-const int N = 1010;
-const int INF = 1e9 + 10 ;
-int n, m;
-vector<vector<int> > graph;
-vector<int> vis; 
-ll dp[100010];
+#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
+typedef long long ll;
+typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
+const int MAXN = 1e5 + 10 ;
+const int INF = 1e9 + 10 ; 
+int n , m ;
+vector<vector<int> > v(MAXN) ; 
+vector<int> dist(MAXN,-1) ; 
 int dfs(int x){
-    if ( vis[x] ) return 0;
-    if ( dp[x] != -1 ) return dp[x] ;
-    int ans = 0 ; 
-    for(int v : graph[x]){
-        if ( !vis[v] )
-            ans = max(ans, 1 + dfs(v));
-    }
-    return dp[x] = ans;
+	if ( (int)v[x].size() == 0 ){
+		return 0 ; 
+	}
+	if ( dist[x] != -1 ) return dist[x] ;
+	int ans = 0 ; 
+	for(int &c : v[x]){
+		ans = max(ans,1+dfs(c));
+	}
+	debug() << imie(ans) ;
+	return dist[x] = ans ; 
 }
 int main(){
-    fastio 
-    memset(dp, -1, sizeof dp) ;
+    fastio
     cin >> n >> m ; 
-    graph.resize(n + 1) ;
-    vis.resize(n + 1) ;
-    for(int i = 0; i < m; i++){
-        int x , y ;
-        cin >> x >> y ; 
-        graph[x].push_back(y) ;
+    vector<int> deg(n) ; 
+    for(int i=0;i<m;i++){
+    	int x , y ; 
+    	cin >> x >> y ; 
+    	x--, y-- ; 
+    	v[x].push_back(y) ; 
+    	deg[y]++;
     }
     int ans = 0 ; 
-    for(int i = 1; i <= n; i++){
-        if ( !vis[i] ){
-            ans = max(ans, dfs(i));
-        }
+    for(int i=0;i<n;i++){
+    	if ( deg[i] == 0 ){
+    		ans = max(ans,dfs(i)) ; 
+    	}
     }
     cout << ans << endl;
     return 0 ;
