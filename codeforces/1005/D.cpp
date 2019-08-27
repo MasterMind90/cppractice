@@ -2,6 +2,8 @@
 #pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
 using namespace std;
 #define sim template < class c
 #define ris return * this
@@ -14,7 +16,7 @@ sim > auto dud(c* x) -> decltype(cerr << *x, 0);
 sim > char dud(...);
 struct debug {
 #ifdef LOCAL
-~debug() { cerr << '\n'; }
+~debug() { cerr << endl; }
 eni(!=) cerr << boolalpha << i; ris; }
 eni(==) ris << range(begin(i), end(i)); }
 sim, class b dor(pair < b, c > d) {
@@ -33,37 +35,37 @@ sim dor(const c&) { ris; }
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 #define fastio ios_base::sync_with_stdio(false);cin.tie(0);
 typedef long long ll;
-const ll MOD = 1e9 + 7 ;
-const ll N = 2e5 + 10 ;
-const ll INF = 1e18 + 10 ;
-string s ; 
-ll n ;
-ll dp[N][3] ; 
-ll fix(ll x){
-    return (x % 3 + 3) % 3 ; 
+typedef tree<ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
+const int N = 2e5 + 10 ;
+const int INF = 1e9 + 10 ;
+int n ;
+string s ;
+int dp[N][2][3] ;
+int F(char c){
+	return c - '0' ;
 }
-ll dfs(ll x, ll cur){
-    if ( x == n ) {
-        return 0 ; 
-    }
-    if ( dp[x][cur] != -1 ) return dp[x][cur] ;
-    ll val = s[x] - '0' ; 
-    ll ans = 0; 
-    if ( fix(cur + val) == 0 ){
-        ans = 1 + dfs(x + 1, 0) ; 
-    }
-    else{
-        ans = max(ans, dfs(x + 1, fix(cur + val) ));
-        ans = max(ans, dfs(x + 1, cur));
-    }
-    return dp[x][cur] = ans ; 
+int dfs(int x,int cut,int cur){
+	if ( x == n ){
+		if ( cut == 1 ) return 0 ;
+		else {
+			if ( cur == 0 ) return 1 ;
+			return 0 ;
+		}
+	}
+	if ( dp[x][cut][cur] != -1 ) return dp[x][cut][cur] ;
+	int ans = -INF ;
+
+    ans = max(ans,  (( cur + F(s[x]) ) % 3 == 0) + dfs(x+1,1,0) ) ;
+    ans = max(ans, dfs(x+1,0, ( cur+F(s[x]) ) % 3 ) ) ;
+
+	return dp[x][cut][cur] = ans ;
 }
+
 int main(){
-    fastio
-    memset(dp, -1, sizeof dp);
-    cin >> s ; 
-    n = (ll) s.size() ; 
-    ll ans = dfs(0, 0) ; 
-    cout << ans << endl;
-    return 0; 
+	fastio
+	memset(dp,-1,sizeof dp) ;
+	cin >> s ;
+	n = (int) s.size() ;
+	cout << dfs(0,1,0) << endl;
+	return 0 ;
 }
