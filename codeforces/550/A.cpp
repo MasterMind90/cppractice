@@ -2,6 +2,8 @@
 #pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
 using namespace std;
 #define sim template < class c
 #define ris return * this
@@ -33,28 +35,36 @@ sim dor(const c&) { ris; }
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 #define fastio ios_base::sync_with_stdio(false);cin.tie(0);
 typedef long long ll;
-const ll MOD = 1e9 + 7 ;
-const ll N = 1e6 + 10 ;
-const ll INF = 1e18 + 10 ;
 int main(){
-    fastio
-    string s ;
-    cin >> s ; 
-    int n = (int) s.size() ; 
-    vector<int> first, second ; 
-    for(int i = 0; i < n - 1; i++){
-        if ( s[i] == 'A' && s[i + 1] == 'B' ) first.push_back(i) ; 
-        if ( s[i] == 'B' && s[i + 1] == 'A' ) second.push_back(i) ; 
-    }
-    int x = (int) first.size() ; 
-    int y = (int) second.size() ; 
-    for(int i = 0; i < x; i++){
-        for(int j = 0; j < y; j++){
-            if ( abs(first[i] - second[j]) >= 2 ){
-                return cout << "YES" << endl, 0 ; 
-            }
-        }
-    }
-    cout << "NO" << endl;
-    return 0 ; 
+	fastio
+	string s ;
+	cin >> s ;
+	int n = (int) s.size() ;
+	int both = 0;
+	bool first = false ;
+	bool second = false;
+	for(int i=0;i+2<=n;i++){
+		debug() << imie(i) imie(s[i]) ;
+		if ( i + 3 <= n && s[i] == 'A' && s[i+1] == 'B' && s[i+2] == 'A' ) both++ , i += 2 ;
+		else if ( i + 3 <= n && s[i] == 'B' && s[i+1] == 'A' && s[i+2] == 'B' ) both++ , i += 2 ;
+		else if ( s[i] == 'A' && s[i+1] == 'B' ){
+			first = true , i++ ;
+		}
+		else if ( s[i] == 'B' && s[i+1] == 'A' ) second = true , i++;
+
+	}
+	if ( first && second ){
+		cout << "YES" << endl;
+	}
+	else if ( first && both ){
+		cout << "YES" << endl;
+	}
+	else if ( second && both ){
+		cout << "YES" << endl;
+	}
+	else if ( both > 1 ){
+        cout << "YES" << endl;
+	}
+	else cout << "NO" << endl;
+	return 0 ;
 }
