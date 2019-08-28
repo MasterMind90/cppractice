@@ -35,53 +35,57 @@ sim dor(const c&) { ris; }
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 #define fastio ios_base::sync_with_stdio(false);cin.tie(0);
 typedef long long ll;
-typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
+typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
+
+struct custom_hash {
+    static uint64_t splitmix64(uint64_t x) {
+        // http://xorshift.di.unimi.it/splitmix64.c
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+
+    size_t operator()(uint64_t x) const {
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+};
+
 
 int main(){
     fastio
     int n ;
-    cin >> n ; 
-    vector<int> v(n) ; 
+    cin >> n ;
+    vector<int> v(n) ;
     map<int,int> mp ;
     bool flag = false;
-    for(int i=0;i<n;i++){
-    	cin >> v[i] ; 
+    for(int i = 0; i < n; i++){
+    	cin >> v[i] ;
     	mp[v[i]]++;
     	if ( mp[v[i]] > 1 ) flag = true ;
     }
-    // compressing data to fit in array giving them ids so accessing them would be O(1)
-    int id = 1 ;
-    for(auto &p : mp){
-    	p.second = id++ ;
-    }
-    for(int i=0;i<n;i++){
-    	v[i] = mp[v[i]] ; 
-    }
-    debug() << imie(v) ; 
     if ( !flag ) return cout << 0 << endl , 0;
 
-    int ans = 1e9 + 10 ;
-    for(int i=0;i<n;i++){
-    	int L = i , R = n-1 ;
-    	while(L<=R){
-    		int mid = L + (R-L) / 2 ;
-    		set<int> s ;
-    		vector<int> cnt(2001) ;
-    		bool ok = true ;
-    		for(int j=0;j<i;j++){
-    			cnt[v[j]]++;
-    			if ( cnt[v[j]] > 1 ) ok = false ;
-    		}
-    		for(int j=mid+1;j<n;j++){
-    			cnt[v[j]]++;
-    			if ( cnt[v[j]] > 1 ) ok = false ;
-    		}
-    		if ( ok ){
-    			ans = min(ans,mid - i + 1) ;
-    			R = mid - 1;
-    		}
-    		else L = mid + 1 ;
-    	}
+    int ans = n ;
+    for(int i = 0; i < n; i++){
+        set<int> s ;
+        bool ok = false ;
+        for(int j = 0; j < i; j++){
+            if ( s.find(v[j]) != s.end() ){
+                ok = true ;
+                break;
+            }
+            s.insert(v[j]) ;
+        }
+        if ( ok ) break;
+        for(int j = 0; j < n; j++){
+            if ( s.find(v[n - j - 1]) != s.end() ){
+                ans = min(ans, n - (int) s.size() );
+                break;
+            }
+            s.insert(v[n - j - 1]) ;
+        }
     }
     cout << ans << endl;
     return 0 ;
