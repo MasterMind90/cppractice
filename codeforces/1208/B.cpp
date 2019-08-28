@@ -77,12 +77,12 @@ int main(){
             }
             s.insert(v[j]) ;
         }
-        for(int j = 0; j < n; j++){
-            if ( s.find(v[n - j - 1]) != s.end() ){
+        for(int j = n - 1; j >= i; j-- ){
+            if ( s.find(v[j]) != s.end() ){
                 ans = min(ans, n - (int) s.size() );
                 break;
             }
-            s.insert(v[n - j - 1]) ;
+            s.insert(v[j]) ;
         }
     }
     cout << ans << endl;
