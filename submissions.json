@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC7615265": {
+    "contest_id": "abc140",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc140\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Maximal Value",
+    "problem_url": "https://atcoder.jp/contests/abc140/tasks/abc140_c",
+    "submission_id": "AC7615265",
+    "submission_url": "https://atcoder.jp/contests/abc140/submissions/7615265",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Sep/20/2019 10:06"
+  },
   "AC7663122": {
     "contest_id": "code-festival-2017-quala",
     "language": "C++14 (GCC 5.4.1)",
