@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC7663122": {
+    "contest_id": "code-festival-2017-quala",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\code-festival-2017-quala\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Palindromic Matrix",
+    "problem_url": "https://atcoder.jp/contests/code-festival-2017-quala/tasks/code_festival_2017_quala_c",
+    "submission_id": "AC7663122",
+    "submission_url": "https://atcoder.jp/contests/code-festival-2017-quala/submissions/7663122",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Sep/23/2019 06:06"
+  },
   "AC7673132": {
     "contest_id": "abc054",
     "language": "C++14 (GCC 5.4.1)",
