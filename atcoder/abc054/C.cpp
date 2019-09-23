@@ -41,28 +41,38 @@ int main(){
     fastio
     int n , m ; 
     cin >> n >> m; 
-    vector<vector<int> > v(n, vector<int>(m));
+    vector<vector<int> > graph(n + 1);
     for(int i = 0; i < m; i++){
         int x , y ; 
         cin >> x >> y ; 
-        x--, y--;
-        v[x][y] = 1;
-        v[y][x] = 1;
+        graph[x].push_back(y) ; 
+        graph[y].push_back(x) ; 
     }
-    vector<int> a ; 
-    for(int i = 1; i < n; i++){
-        a.push_back(i);
+    vector<int> v ; 
+    for(int i = 1; i <= n; i++){
+        v.push_back(i) ; 
     }
-    int ans = 0 ;
+    int ans = 0 ; 
     do{
-        a.insert(a.begin(), 0);
-        bool ok = true ;
-        for(int i = 1; i < (int) a.size(); i++){
-            if ( !v[a[i]][a[i - 1]] ) ok = false;
+        if ( v[0] != 1 ) break;
+        debug() << imie(v) ;
+        bool flag = true;
+        for(int i = 1; i < (int) v.size(); i++){
+            int before = v[i - 1];
+            bool ok = false;
+            for(int &c : graph[v[i]]){
+                if ( c == before ) ok = true ;
+            }
+            if ( !ok ) {
+                flag = false;
+                break;
+            }
         }
-        a.erase(a.begin());
-        if ( ok ) ans++;
-    }while(next_permutation(a.begin(),a.end()));
+        if ( flag ) {
+            ans++ ;
+            debug() << "Result : "  imie(v) ;
+        }
+    }while(next_permutation(v.begin(),v.end()));
     cout << ans << endl;
     return 0 ;
 }
