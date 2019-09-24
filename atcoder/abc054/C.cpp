@@ -2,6 +2,8 @@
 #pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
 using namespace std;
 #define sim template < class c
 #define ris return * this
@@ -31,38 +33,36 @@ sim dor(const c&) { ris; }
 #endif
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-using ll = long long ;
-const int N = 10 ;
-vector<vector<int> > graph ;
-vector<bool> vis ;
-int n , m ;
-int dfs(int x){
-    bool flag = true;
-    for(int i = 1; i <= n; i++){
-        if ( !vis[i] ) flag = false;
-    }
-    if ( flag ) return 1;
-    int ans = 0 ; 
-    for(int &c : graph[x]){
-        if ( !vis[c] ){
-            vis[c] = true ;
-            ans += dfs(c) ;
-            vis[c] = false;
-        }
-    }
-    return ans ; 
-}
+#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
+typedef long long ll;
+typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
+
 int main(){
-    cin >> n >> m ;
-    graph.resize(n + 1);
-    vis.resize(n + 1);
+    fastio
+    int n , m ; 
+    cin >> n >> m; 
+    vector<vector<int> > v(n, vector<int>(m));
     for(int i = 0; i < m; i++){
-        int x , y ;
-        cin >> x >> y ;
-        graph[x].push_back(y);
-        graph[y].push_back(x);
+        int x , y ; 
+        cin >> x >> y ; 
+        x--, y--;
+        v[x][y] = 1;
+        v[y][x] = 1;
     }
-    vis[1] = true ;
-    cout << dfs(1) << endl;
+    vector<int> a ; 
+    for(int i = 1; i < n; i++){
+        a.push_back(i);
+    }
+    int ans = 0 ;
+    do{
+        a.insert(a.begin(), 0);
+        bool ok = true ;
+        for(int i = 1; i < (int) a.size(); i++){
+            if ( !v[a[i]][a[i - 1]] ) ok = false;
+        }
+        a.erase(a.begin());
+        if ( ok ) ans++;
+    }while(next_permutation(a.begin(),a.end()));
+    cout << ans << endl;
     return 0 ;
 }
