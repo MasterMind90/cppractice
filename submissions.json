@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC7675420": {
+    "contest_id": "abc054",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc054\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "One-stroke Path",
+    "problem_url": "https://atcoder.jp/contests/abc054/tasks/abc054_c",
+    "submission_id": "AC7675420",
+    "submission_url": "https://atcoder.jp/contests/abc054/submissions/7675420",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Sep/24/2019 06:22"
+  },
   "AC7693830": {
     "contest_id": "abc128",
     "language": "C++14 (GCC 5.4.1)",
