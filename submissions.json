@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC7693830": {
+    "contest_id": "abc128",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc128\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "equeue",
+    "problem_url": "https://atcoder.jp/contests/abc128/tasks/abc128_d",
+    "submission_id": "AC7693830",
+    "submission_url": "https://atcoder.jp/contests/abc128/submissions/7693830",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Sep/25/2019 15:58"
+  },
   "AC7776922": {
     "contest_id": "abc142",
     "language": "C++14 (GCC 5.4.1)",
