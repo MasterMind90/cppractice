@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC7853012": {
+    "contest_id": "abc139",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc139\\A.cpp",
+    "platform": "AtCoder",
+    "problem_index": "A",
+    "problem_name": "Tenki",
+    "problem_url": "https://atcoder.jp/contests/abc139/tasks/abc139_a",
+    "submission_id": "AC7853012",
+    "submission_url": "https://atcoder.jp/contests/abc139/submissions/7853012",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "Oct/05/2019 06:26"
+  },
   "AC7853057": {
     "contest_id": "abc139",
     "language": "C++14 (GCC 5.4.1)",
