@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC7896854": {
+    "contest_id": "abc044",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc044\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Tak and Cards",
+    "problem_url": "https://atcoder.jp/contests/abc044/tasks/arc060_a",
+    "submission_id": "AC7896854",
+    "submission_url": "https://atcoder.jp/contests/abc044/submissions/7896854",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Oct/07/2019 11:36"
+  },
   "AC7914270": {
     "contest_id": "abc043",
     "language": "C++14 (GCC 5.4.1)",
