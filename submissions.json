@@ -7101,6 +7101,22 @@
     ],
     "timestamp": "Jul/05/2019 19:42"
   },
+  "CF62177065": {
+    "contest_id": 870,
+    "language": "GNU C++17",
+    "path": "codeforces\\870\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Maximum of Maximums of Minimums",
+    "problem_url": "https://codeforces.com/contest/870/problem/B",
+    "submission_id": "CF62177065",
+    "submission_url": "https://codeforces.com/contest/870/submission/62177065",
+    "tags": [
+      "greedy",
+      "*1200"
+    ],
+    "timestamp": "Oct/09/2019 07:42"
+  },
   "CF62190292": {
     "contest_id": 339,
     "language": "GNU C++17",
