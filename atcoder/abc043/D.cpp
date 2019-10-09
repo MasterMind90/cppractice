@@ -42,12 +42,21 @@ int main(){
     string s ; 
     cin >> s ; 
     int n = (int) s.size() ;
+    vector<vector<int> > cnt(26) ; 
     for(int i = 0; i < n; i++){
-        if ( i + 1 < n && s[i] == s[i + 1] ){
-            return cout << i + 1 << ' ' << i + 2 << endl , 0 ;
-        }
-        if ( i + 2 < n && s[i] == s[i + 2] ){
-            return cout << i + 1 << ' ' << i + 3 << endl , 0 ;
+        cnt[s[i] - 'a'].push_back(i);
+    }
+    for(int i = 0; i < n; i++){
+        vector<int> &v = cnt[s[i] - 'a'];
+        int nextE = upper_bound(v.begin(), v.end(), i) - v.begin();
+        int c = 1;
+        for(int j = nextE; j < (int) v.size(); j++){
+            int len = v[j] - i + 1;
+            int half = len / 2 ;
+            c++;
+            if ( c > half ){
+                return cout << i + 1 << ' ' << v[j] + 1 << endl, 0;
+            }
         }
     }
     cout << -1 << ' ' << -1 << endl;
