@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC7914314": {
+    "contest_id": "abc043",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc043\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "Unbalanced",
+    "problem_url": "https://atcoder.jp/contests/abc043/tasks/arc059_b",
+    "submission_id": "AC7914314",
+    "submission_url": "https://atcoder.jp/contests/abc043/submissions/7914314",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Oct/09/2019 06:35"
+  },
   "AC7927538": {
     "contest_id": "abc124",
     "language": "C++14 (GCC 5.4.1)",
