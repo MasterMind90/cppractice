@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8061587": {
+    "contest_id": "abc143",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc143\\A.cpp",
+    "platform": "AtCoder",
+    "problem_index": "A",
+    "problem_name": "Curtain",
+    "problem_url": "https://atcoder.jp/contests/abc143/tasks/abc143_a",
+    "submission_id": "AC8061587",
+    "submission_url": "https://atcoder.jp/contests/abc143/submissions/8061587",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "Oct/20/2019 14:44"
+  },
   "AC8061619": {
     "contest_id": "abc143",
     "language": "C++14 (GCC 5.4.1)",
