@@ -1,69 +1,66 @@
-#include <bits/stdc++.h>
+#ifndef LOCAL
+#pragma GCC optimize("O3")
+#endif
+#include "bits/stdc++.h"
 using namespace std;
-long long toInt(string x){
-    stringstream ss ;
-    ss << x ;
-    long long y ;
-    ss >> y ;
-    return y ;
+#define sim template < class c
+#define ris return * this
+#define dor > debug & operator <<
+#define eni(x) sim > typename \
+  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {
+sim > struct rge { c b, e; };
+sim > rge<c> range(c i, c j) { return rge<c>{i, j}; }
+sim > auto dud(c* x) -> decltype(cerr << *x, 0);
+sim > char dud(...);
+struct debug {
+#ifdef LOCAL
+~debug() { cerr << endl; }
+eni(!=) cerr << boolalpha << i; ris; }
+eni(==) ris << range(begin(i), end(i)); }
+sim, class b dor(pair < b, c > d) {
+  ris << "(" << d.first << ", " << d.second << ")";
 }
-long long p(int x){
-    long long r = 1;
-    for(int i=0;i<x;i++){
-        r*=10;
-    }
-    return r ;
+sim dor(rge<c> d) {
+  *this << "[";
+  for (auto it = d.b; it != d.e; ++it)
+    *this << ", " + 2 * (it == d.b) << *it;
+  ris << "]";
+}
+#else
+sim dor(const c&) { ris; }
+#endif
+};
+#define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
+#define fastio ios_base::sync_with_stdio(false) ; cin.tie(0) ;
+using ll = long long ;
+const ll INF = 1e10 + 10 ;
+const ll N = 1e10 ;
+vector<ll> ans ;
+void dfs(ll x){
+    if ( x > N ) return ;
+    ans.push_back(x) ;
+    dfs(x * 10 + 4) ;
+    dfs(x * 10 + 7) ;
 }
 int main(){
-    string s ;
-    cin >> s ;
-    long long x = toInt(s);
-    long long digits = s.size() ;
-    if ( digits % 2 ) digits++;
-    vector<long long> res ;
-    for(int mask=0;mask<(1<<digits);mask++){
-        int ones = 0 ;
-        int zero = 0  ;
-        for(int i=0;i<digits;i++){
-            if ( mask & (1<<i) ) ones++;
-            else zero++;
+    fastio
+    dfs(0) ;
+    ans.erase(ans.begin()) ;
+    ll n ;
+    cin >> n ;
+    vector<ll> v ;
+    for(ll &x : ans){
+        ll c = x ;
+        ll a = 0 , b = 0 ;
+        while(c != 0){
+            if ( c % 10 == 7 ) b++ ;
+            else a++ ;
+            c /= 10 ;
         }
-        long long ans = 0;
-        if ( ones == zero ){
-            for(int i=0;i<digits;i++){
-                if ( mask & (1<<i) ) ans+=(4LL*p(i));
-                else ans+=(7LL*p(i));
-            }
-        }
-        res.push_back(ans);
+        if ( a == b ) v.push_back(x) ;
     }
-    sort(res.begin(),res.end());
-    int index = lower_bound(res.begin(),res.end(),x) - res.begin();
-    if ( index == -1 || index == res.size() ){
-        digits+=2;
-        for(int mask=0;mask<(1<<digits);mask++){
-            int ones = 0 ;
-            int zero = 0  ;
-            for(int i=0;i<digits;i++){
-                if ( mask & (1<<i) ) ones++;
-                else zero++;
-            }
-            long long ans = 0;
-            if ( ones == zero ){
-                for(int i=0;i<digits;i++){
-                    if ( mask & (1<<i) ) ans+=(4LL*p(i));
-                    else ans+=(7LL*p(i));
-                }
-            }
-            res.push_back(ans);
-        }
-        sort(res.begin(),res.end());
-        int index = lower_bound(res.begin(),res.end(),x) - res.begin();
-        cout << res[index] << endl;
-    }
-    else
-        cout << res[index] << endl;
+    sort(v.begin(), v.end()) ;
+    ll index = lower_bound(v.begin(), v.end(), n) - v.begin() ;
+    cout << v[index] << endl;
     return 0 ;
 }
-
-
