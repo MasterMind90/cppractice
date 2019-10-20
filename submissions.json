@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8061920": {
+    "contest_id": "abc143",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc143\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "Triangles",
+    "problem_url": "https://atcoder.jp/contests/abc143/tasks/abc143_d",
+    "submission_id": "AC8061920",
+    "submission_url": "https://atcoder.jp/contests/abc143/submissions/8061920",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Oct/20/2019 15:15"
+  },
   "AC8103755": {
     "contest_id": "abc122",
     "language": "C++14 (GCC 5.4.1)",
