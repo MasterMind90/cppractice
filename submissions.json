@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8118987": {
+    "contest_id": "abc120",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc120\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "Decayed Bridges",
+    "problem_url": "https://atcoder.jp/contests/abc120/tasks/abc120_d",
+    "submission_id": "AC8118987",
+    "submission_url": "https://atcoder.jp/contests/abc120/submissions/8118987",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Oct/25/2019 15:49"
+  },
   "AC8126498": {
     "contest_id": "abc117",
     "language": "C++14 (GCC 5.4.1)",
