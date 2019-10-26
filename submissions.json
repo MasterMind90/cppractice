@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8126498": {
+    "contest_id": "abc117",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc117\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "XXOR",
+    "problem_url": "https://atcoder.jp/contests/abc117/tasks/abc117_d",
+    "submission_id": "AC8126498",
+    "submission_url": "https://atcoder.jp/contests/abc117/submissions/8126498",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Oct/26/2019 10:28"
+  },
   "AC8157332": {
     "contest_id": "abc144",
     "language": "C++14 (GCC 5.4.1)",
