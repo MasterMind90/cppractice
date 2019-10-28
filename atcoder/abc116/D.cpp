@@ -80,6 +80,11 @@ int main(){
         ll b = solve(mid + 1) ;
         if ( mid + 1 > min(k,types) ) {
             b = solve(mid - 1) ;
+            ans = max(a, b) ;
+            if ( a > b ){
+                L = mid + 1;
+            }
+            else R = mid - 1;
         }
         ans = max(a, b);
         if ( a < b ){

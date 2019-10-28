@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8197374": {
+    "contest_id": "abc116",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc116\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "Various Sushi",
+    "problem_url": "https://atcoder.jp/contests/abc116/tasks/abc116_d",
+    "submission_id": "AC8197374",
+    "submission_url": "https://atcoder.jp/contests/abc116/submissions/8197374",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Oct/28/2019 21:03"
+  },
   "AC8197397": {
     "contest_id": "abc116",
     "language": "C++14 (GCC 5.4.1)",
