@@ -1,37 +1,63 @@
-#include <bits/stdc++.h>
+#ifndef LOCAL
+#pragma GCC optimize("O3")
+#endif
+#include "bits/stdc++.h"
 using namespace std;
-const int INF = 1e9 + 10 ;
-int n ;
-vector<int> v  ;
-int dp[100010] ;
-int dfs(int x){
-    if ( x == n - 1 ){
-        return 0 ;
-    }
-    if ( dp[x] != -1 ) return dp[x] ;
-    int choice1 = INF ;
-    int choice2 = INF ;
-    if ( x + 1 < n )
-        choice1 = abs(v[x] - v[x + 1]) + dfs(x + 1) ;
-    if ( x + 2 < n )
-        choice2 = abs(v[x] - v[x + 2]) + dfs(x + 2) ;
-
-
-    return dp[x] = min(choice1, choice2) ;
-
+#define sim template < class c
+#define ris return * this
+#define dor > debug & operator <<
+#define eni(x) sim > typename \
+  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {
+sim > struct rge { c b, e; };
+sim > rge<c> range(c i, c j) { return rge<c>{i, j}; }
+sim > auto dud(c* x) -> decltype(cerr << *x, 0);
+sim > char dud(...);
+struct debug {
+#ifdef LOCAL
+~debug() { cerr << endl; }
+eni(!=) cerr << boolalpha << i; ris; }
+eni(==) ris << range(begin(i), end(i)); }
+sim, class b dor(pair < b, c > d) {
+  ris << "(" << d.first << ", " << d.second << ")";
 }
-
+sim dor(rge<c> d) {
+  *this << "[";
+  for (auto it = d.b; it != d.e; ++it)
+    *this << ", " + 2 * (it == d.b) << *it;
+  ris << "]";
+}
+#else
+sim dor(const c&) { ris; }
+#endif
+};
+#define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
+#define fastio ios_base::sync_with_stdio(false); cin.tie(0) ;
+using ll = long long ;
+const ll N = 1e5 + 10;
+const ll INF = 1e9 + 10 ;
+ll n ;
+vector<ll> h;
+ll dp[N] ;
+ll dfs(ll x) {
+    if ( x == n - 1 ) return 0 ; 
+    if ( x >= n ) return INF ;
+    if ( dp[x] != -1 ) return dp[x] ; 
+    ll choice1 = abs(h[x + 1] - h[x]) + dfs(x + 1) ;
+    ll choice2 = INF ; 
+    if ( x + 2 < n )
+        choice2 = abs(h[x + 2] - h[x]) + dfs(x + 2);
+    ll ans = min(choice1, choice2) ; 
+    return dp[x] = ans ; 
+}
 int main(){
-    memset(dp, -1, sizeof dp) ;
-    cin >> n ;
-    v.resize(n) ;
-    for(int i = 0; i < n; i++){
-        cin >> v[i] ;
+    ios_base::sync_with_stdio(false);
+    cin.tie(0) ; 
+    memset(dp, -1, sizeof dp) ; 
+    cin >> n ; 
+    h.resize(n) ;
+    for(ll i = 0; i < n; i++){
+        cin >> h[i] ; 
     }
-
-    int ans = dfs(0) ;
-
-    cout << ans << endl;
-
+    cout << dfs(0) << endl;
     return 0 ;
 }
