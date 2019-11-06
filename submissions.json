@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8311769": {
+    "contest_id": "abc142",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc142\\A.cpp",
+    "platform": "AtCoder",
+    "problem_index": "A",
+    "problem_name": "Odds of Oddness",
+    "problem_url": "https://atcoder.jp/contests/abc142/tasks/abc142_a",
+    "submission_id": "AC8311769",
+    "submission_url": "https://atcoder.jp/contests/abc142/submissions/8311769",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "Nov/06/2019 11:15"
+  },
   "AC8311892": {
     "contest_id": "abc140",
     "language": "C++14 (GCC 5.4.1)",
