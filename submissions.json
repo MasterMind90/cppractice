@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8432864": {
+    "contest_id": "abc121",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc121\\A.cpp",
+    "platform": "AtCoder",
+    "problem_index": "A",
+    "problem_name": "White Cells",
+    "problem_url": "https://atcoder.jp/contests/abc121/tasks/abc121_a",
+    "submission_id": "AC8432864",
+    "submission_url": "https://atcoder.jp/contests/abc121/submissions/8432864",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "Nov/14/2019 14:05"
+  },
   "AC8481058": {
     "contest_id": "abc145",
     "language": "C++14 (GCC 5.4.1)",
