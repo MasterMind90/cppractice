@@ -7101,6 +7101,23 @@
     ],
     "timestamp": "Jul/05/2019 19:42"
   },
+  "CF64902574": {
+    "contest_id": 831,
+    "language": "GNU C++17",
+    "path": "codeforces\\831\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Keyboard Layouts",
+    "problem_url": "https://codeforces.com/contest/831/problem/B",
+    "submission_id": "CF64902574",
+    "submission_url": "https://codeforces.com/contest/831/submission/64902574",
+    "tags": [
+      "implementation",
+      "strings",
+      "*800"
+    ],
+    "timestamp": "Nov/14/2019 21:42"
+  },
   "CF65040513": {
     "contest_id": 1257,
     "language": "GNU C++17",
