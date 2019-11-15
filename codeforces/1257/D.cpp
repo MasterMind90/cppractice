@@ -33,32 +33,32 @@ sim dor(const c&) { ris; }
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 #define fastio ios_base::sync_with_stdio(false);cin.tie(0);
 typedef long long ll;
-const int MOD = 1e9 + 7 ;
-const int N = 1e5 + 10 ;
-const int INF = 1e9 + 10 ; 
-int n;
-vector<int> T;
-vector<int> a ; 
-void build(int node, int start, int end){
+const ll MOD = 1e9 + 7 ;
+const ll N = 1e5 + 10 ;
+const ll INF = 1e9 + 10 ; 
+ll n;
+vector<ll> T;
+vector<ll> a ; 
+void build(ll node, ll start, ll end){
     if ( start == end ){
         T[node] = a[start] ; 
     }
     else{
-        int mid = (start + end) / 2 ;
+        ll mid = (start + end) / 2 ;
         build(2 * node, start, mid) ;
         build(2 * node + 1, mid + 1, end) ; 
         T[node] = max(T[2 * node], T[2 * node + 1]);
     }
 }
-int query(int node, int start, int end, int l, int r){
+ll query(ll node, ll start, ll end, ll l, ll r){
     if ( start > r || end < l ) return -INF ; 
     if ( start >= l && end <= r ){
         return T[node] ; 
     }
     else{
-        int mid = (start + end) / 2 ;
-        int p1 = query(2 * node, start, mid, l , r) ; 
-        int p2 = query(2 * node + 1, mid + 1, end, l , r) ; 
+        ll mid = (start + end) / 2 ;
+        ll p1 = query(2 * node, start, mid, l , r) ; 
+        ll p2 = query(2 * node + 1, mid + 1, end, l , r) ; 
         return max(p1, p2) ;
     }
 }
@@ -66,18 +66,18 @@ void solve(){
     cin >> n ; 
     T.resize(4 * n + 1) ; 
     a.resize(n) ; 
-    int nax = 0 ; 
-    for(int i = 0; i < n; i++){
+    ll nax = 0 ; 
+    for(ll i = 0; i < n; i++){
         cin >> a[i] ; 
         nax = max(nax, a[i]) ; 
     }
     build(1, 0, n - 1) ; 
-    int m ; 
+    ll m ; 
     cin >> m ;
-    int nax2 = 0 ; 
-    vector<pair<int,int> > hero(m) ; 
-    vector<int> end(n + 1) ; 
-    for(int i = 0; i < m; i++){
+    ll nax2 = 0 ; 
+    vector<pair<ll,ll> > hero(m) ; 
+    vector<ll> end(n + 1) ; 
+    for(ll i = 0; i < m; i++){
         cin >> hero[i].first >> hero[i].second ;
         end[hero[i].second] = max(end[hero[i].second], hero[i].first) ; 
         nax2 = max(nax2, hero[i].first) ; 
@@ -86,17 +86,17 @@ void solve(){
         cout << -1 << endl ; 
         return ; 
     }
-    for(int i = n - 1; i >= 0; i--){
+    for(ll i = n - 1; i >= 0; i--){
         end[i] = max(end[i], end[i + 1]) ; 
     }
-    int days = 0 ; 
-    for(int i = 0; i < n;){
-        int L = i , R = n - 1;
-        int ans = -1; 
+    ll days = 0 ; 
+    for(ll i = 0; i < n;){
+        ll L = i , R = n - 1;
+        ll ans = -1; 
         while(L <= R){
-            int mid = L + (R - L) / 2;
-            int max = query(1, 0, n - 1, i, mid);
-            int len = mid - i + 1 ;
+            ll mid = L + (R - L) / 2;
+            ll max = query(1, 0, n - 1, i, mid);
+            ll len = mid - i + 1 ;
             if ( end[len] >= max ) {
                 ans = mid ; 
                 L = mid + 1;
@@ -110,7 +110,7 @@ void solve(){
 }
 int main(){
     fastio
-    int t ;
+    ll t ;
     cin >> t ; 
     while(t--){
         solve() ; 
