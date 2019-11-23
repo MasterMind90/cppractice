@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8591282": {
+    "contest_id": "ddcc2020-qual",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\ddcc2020-qual\\A.cpp",
+    "platform": "AtCoder",
+    "problem_index": "A",
+    "problem_name": "DDCC Finals",
+    "problem_url": "https://atcoder.jp/contests/ddcc2020-qual/tasks/ddcc2020_qual_a",
+    "submission_id": "AC8591282",
+    "submission_url": "https://atcoder.jp/contests/ddcc2020-qual/submissions/8591282",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "Nov/23/2019 18:41"
+  },
   "AC8592223": {
     "contest_id": "ddcc2020-qual",
     "language": "C++14 (GCC 5.4.1)",
