@@ -7101,6 +7101,24 @@
     ],
     "timestamp": "Jul/05/2019 19:42"
   },
+  "CF65590834": {
+    "contest_id": 274,
+    "language": "GNU C++17",
+    "path": "codeforces\\274\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "k-Multiple Free Set",
+    "problem_url": "https://codeforces.com/contest/274/problem/A",
+    "submission_id": "CF65590834",
+    "submission_url": "https://codeforces.com/contest/274/submission/65590834",
+    "tags": [
+      "binary search",
+      "greedy",
+      "sortings",
+      "*1500"
+    ],
+    "timestamp": "Nov/23/2019 16:03"
+  },
   "CF65979541": {
     "contest_id": 1263,
     "language": "GNU C++17",
