@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8592223": {
+    "contest_id": "ddcc2020-qual",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\ddcc2020-qual\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Iron Bar Cutting",
+    "problem_url": "https://atcoder.jp/contests/ddcc2020-qual/tasks/ddcc2020_qual_b",
+    "submission_id": "AC8592223",
+    "submission_url": "https://atcoder.jp/contests/ddcc2020-qual/submissions/8592223",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "Nov/23/2019 21:09"
+  },
   "AC8786881": {
     "contest_id": "abc143",
     "language": "C++14 (GCC 5.4.1)",
