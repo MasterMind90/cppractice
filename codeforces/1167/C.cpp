@@ -1,60 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int MAXN = 5*1e5+10;
-int cnt = 0 ;
-set<int> s[MAXN] ;
-bool vis[MAXN] ;
-bool vis2[MAXN] ;
-int ans[MAXN] ;
+const int N = 5e5 + 10;
 
-void dfs(int x){
-    if ( vis[x] ) return ;
-    vis[x] = true ;
-    cnt++;
-    for(int c : s[x]){
-        dfs(c);
-    }
+int rep[N] ; 
+int cnt[N] ; 
+
+int Find(int x){
+    if ( x == rep[x] ) return x ;
+    rep[x] = Find(rep[x]) ; 
+    return rep[x] ; 
 }
-void dfs2(int x){
-    if ( vis2[x] ) return ;
-    vis2[x] = true ;
-    ans[x] = cnt ;
-    for(int c : s[x]){
-        dfs2(c);
-    }
+void Union(int x,int y){
+    int X = Find(x) ; 
+    int Y = Find(y) ; 
+    if ( X == Y ) return  ;
+    rep[X] = Y ; 
+    cnt[Y] += cnt[X] ; 
 }
 
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    int n , m ;
-    cin >> n >> m ;
-    for(int i=0;i<m;i++){
-        int k ;
-        cin >> k ;
-        int pre = 0 ;
-        for(int i=0;i<k;i++){
-            int x ;
-            cin >> x ;
-            if ( i != 0 ){
-                s[x].insert(pre);
-                s[pre].insert(x);
+    for(int i = 0; i < N; i++) rep[i] = i, cnt[i] = 1 ;
+    int n , m ; 
+    cin >> n >> m ; 
+    for(int i = 0; i < m; i++){
+        int k ; 
+        cin >> k ; 
+        int pre = -1 ;
+        for(int j = 0; j < k; j++){
+            int x ; 
+            cin >> x ; 
+            if ( j == 0 ) pre = x ; 
+            else{
+                Union(x, pre) ; 
+                pre = x ;
             }
-            pre = x ;
         }
     }
-    for(int i=1;i<=n;i++){
-        if ( vis2[i] ){
-            continue ;
-        }
-        cnt = 0 ;
-        dfs(i);
-        dfs2(i);
-    }
-    for(int i=1;i<=n;i++){
-        cout << ans[i] << ' ' ;
+    for(int i = 1; i <= n; i++){
+        cout << cnt[Find(i)] << ' ' ; 
     }
     cout << endl;
-
     return 0 ;
 }
