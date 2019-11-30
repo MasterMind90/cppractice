@@ -36,43 +36,21 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 3e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int rep[N] ; 
-int cnt[N] ; 
-int Find(int x){
-    if ( x == rep[x] ) return x ; 
-    rep[x] = Find(rep[x]) ; 
-    return rep[x] ; 
-}
-void Union(int x,int y){
-    int X = Find(x) ; 
-    int Y = Find(y) ; 
-    if ( X == Y ) return ; 
-    rep[X] = Y ; 
-    cnt[Y] += cnt[X] ;  ; 
-}
 int main(){
     fastio
-    for(int i = 0; i < N; i++){
-        rep[i] = i ; 
-        cnt[i] = 1 ;
-    }
     int n ;
     cin >> n ; 
     vector<bool> mark(N) ; 
     cout << 1 ;
+    int rightPointer = n + 1 ;
     for(int i = 0; i < n; i++){
         int x ;
         cin >> x ; 
         mark[x] = true ; 
-        if ( mark[x - 1] ) Union(x - 1, x) ; 
-        if ( mark[x + 1] ) Union(x, x + 1) ; 
+        while(mark[rightPointer - 1]) rightPointer--; 
         int curX = i + 1 ;
-        debug() << imie(curX) imie(cnt[Find(n)]) ; 
-        if ( mark[n] ){
-            int count = cnt[Find(n)] ; 
-            cout << ' ' << curX - count + 1 ; 
-        }
-        else cout << ' ' << curX + 1 ;
+        int count = n - rightPointer + 1 ;
+        cout << ' ' << curX - count + 1 ;
     }
     cout << endl;
     
