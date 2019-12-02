@@ -7101,6 +7101,23 @@
     ],
     "timestamp": "Jul/05/2019 19:42"
   },
+  "CF66199183": {
+    "contest_id": 484,
+    "language": "GNU C++17",
+    "path": "codeforces\\484\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "Bits",
+    "problem_url": "https://codeforces.com/contest/484/problem/A",
+    "submission_id": "CF66199183",
+    "submission_url": "https://codeforces.com/contest/484/submission/66199183",
+    "tags": [
+      "bitmasks",
+      "constructive algorithms",
+      "*1700"
+    ],
+    "timestamp": "Dec/02/2019 21:55"
+  },
   "CF66199216": {
     "contest_id": 484,
     "language": "GNU C++17",

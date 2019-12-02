@@ -46,7 +46,7 @@ int main(){
         for(ll j = 0; j < 63; j++){
             debug() << imie(1LL << j) ; 
             debug() << imie(x) ; 
-            if ( (x | (1LL << j)) > y ){
+            if ( x + (1LL << j) > y ){
                 cout << x << endl;
                 break ;  
             }
