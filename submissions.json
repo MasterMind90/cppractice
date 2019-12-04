@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8792339": {
+    "contest_id": "abc146",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc146\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "ROT N",
+    "problem_url": "https://atcoder.jp/contests/abc146/tasks/abc146_b",
+    "submission_id": "AC8792339",
+    "submission_url": "https://atcoder.jp/contests/abc146/submissions/8792339",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "Dec/04/2019 20:50"
+  },
   "AC8792348": {
     "contest_id": "abc146",
     "language": "C++14 (GCC 5.4.1)",
