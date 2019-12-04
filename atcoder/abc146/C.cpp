@@ -1,16 +1,9 @@
 #ifndef LOCAL
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
-#include <ext/pb_ds/assoc_container.hpp> // Common file
-#include <ext/pb_ds/tree_policy.hpp> // Including tree_order_statistics_node_update
-#include <ext/pb_ds/detail/standard_policies.hpp>
 using namespace std;
-using namespace __gnu_pbds;
 #define sim template < class c
-#define int long long
 #define ris return * this
 #define dor > debug & operator <<
 #define eni(x) sim > typename \
@@ -21,7 +14,7 @@ sim > auto dud(c* x) -> decltype(cerr << *x, 0);
 sim > char dud(...);
 struct debug {
 #ifdef LOCAL
-~debug() { cerr << '\n'; }
+~debug() { cerr << endl; }
 eni(!=) cerr << boolalpha << i; ris; }
 eni(==) ris << range(begin(i), end(i)); }
 sim, class b dor(pair < b, c > d) {
@@ -39,32 +32,36 @@ sim dor(const c&) { ris; }
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 #define fastio ios_base::sync_with_stdio(false);cin.tie(0);
-typedef tree< pair<int,int>, null_type, less<pair<int,int> >, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef long long ll;
 const ll MOD = 1e9 + 7 ;
-const ll N = 2e5 + 10 ;
+const ll N = 1e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-signed main(){
+int main(){
     fastio
-    int a , b , x ;
-    cin >> a >> b >> x ;
-    int L = 0 , R = 1e9 ; 
-    int answer = 0 ;
+    ll a , b , x ;
+    cin >> a >> b >> x ; 
+    ll L = 1, R = 1e9 ; 
+    auto solve = [&](int x){
+        int cnt = 0 ;
+        while(x != 0){
+            cnt++ ; 
+            x /= 10 ; 
+        }
+        return cnt ; 
+    };
+    ll ans = -1 ; 
     while(L <= R){
-    	int mid = L + (R - L) / 2 ;
-    	int c = mid ;
-    	int cnt = 0 ;
-    	while(c != 0) {
-    		cnt++ ;
-    		c /= 10 ;
-    	}
-    	int F = a * mid + b * cnt ; 
-    	if ( F <= x ) {
-    		answer = mid ;
-    		L = mid + 1 ;
-    	}
-    	else R = mid - 1 ;
+        ll mid = L + (R - L) / 2 ; 
+        ll dn = solve(mid) ; 
+        if ( a * mid + b * dn <= x ){
+            ans = mid ; 
+            L = mid + 1 ;
+        }
+        else{
+            R = mid - 1 ;
+        }
     }
-    cout << answer << endl;
+    if ( ans == -1 ) cout << 0 << endl;
+    else cout << ans << endl;
     return 0; 
 }
