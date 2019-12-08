@@ -1,16 +1,9 @@
 #ifndef LOCAL
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
-#include <ext/pb_ds/assoc_container.hpp> // Common file
-#include <ext/pb_ds/tree_policy.hpp> // Including tree_order_statistics_node_update
-#include <ext/pb_ds/detail/standard_policies.hpp>
 using namespace std;
-using namespace __gnu_pbds;
 #define sim template < class c
-#define int long long
 #define ris return * this
 #define dor > debug & operator <<
 #define eni(x) sim > typename \
@@ -39,62 +32,62 @@ sim dor(const c&) { ris; }
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 #define fastio ios_base::sync_with_stdio(false);cin.tie(0);
-typedef tree< pair<int,int>, null_type, less<pair<int,int> >, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef long long ll;
 const ll MOD = 1e9 + 7 ;
-const ll N = 2e5 + 10 ;
+const ll N = 1e6 + 10 ;
 const ll INF = 1e18 + 10 ;
-signed main(){
-    fastio
 
-    int n;
-    cin >> n;
+int main(){
+    int n ;
+    cin >> n ;
+    vector<vector<int> > a(n, vector<int>(n, -1)) ;
+    for(int i = 0; i < n; i++){
+        int m ;
+        cin >> m ;
+        for(int j = 0; j < m; j++){
+            int x , y ;
+            cin >> x >> y ;
+            x--;
+            a[i][x] = y ;
+        }
 
-    vector <vector < pair < int , int > > > v;
-
-    for (int i = 0; i < n; i++){
-    	int x;
-    	cin >> x;
-    	vector < pair < int , int > > t;
-    	for (int j = 0; j < x; j++){
-    		int a , b;
-    		cin >> a >> b;
-    		a--;
-    		t.emplace_back(a,b);
-    		// v.push_back(make_pair(a,b));
-    	}
-    	v.push_back(t);
     }
-
-    int ans = 0;
-
-    for (int subset = 0; subset < (1 << n); subset++){
-    	int cnt = 0;
-    	for (int i = 0; i < n; i++){
-    		if (subset & (1 << i)){
-    			cnt++;
-    			for (int j = 0; j < v[i].size(); j++){
-    				int a = v[i][j].first; // person
-    				int b = v[i][j].second; // test.. 0/1
-    				if (b == 0){
-    					if ( (subset & (1 << a)) != 0){
-    						goto exit;
-    					}
-    				}
-    				else if ( b == 1 ) {
-    					if ( (subset & (1 << a)) == 0){
-    						goto exit;
-    					}
-    				}
-
-    			}
-    		}
-    	}
-    	ans = max(ans,cnt);
-    	exit:;
+    for(int i = 0; i < n; i++){
+        debug() << range(a[i].begin(), a[i].end() );
     }
-
+    int ans = 0 ;
+    for(int mask = 1; mask < (1 << n); mask++){
+        vector<int> honest(n) ;
+        for(int i = 0; i < n; i++){
+            if ( mask & (1 << i) ){
+                honest[i] = 1 ;
+            }
+        }
+        debug() << imie(honest) ;
+        vector<int> flag(n, -1) ;
+        bool ok = true ;
+        for(int i = 0; i < n; i++){
+            if ( honest[i] ){
+                for(int j = 0; j < n; j++){
+                    if ( a[i][j] == -1 ) continue ;
+                    else if ( flag[j] == a[i][j] ) continue ;
+                    else if ( flag[j] == -1 ){
+                        flag[j] = a[i][j] ;
+                        if ( flag[j] != honest[j] ) ok = false ;
+                    }
+                    else ok = false ;
+                }
+            }
+        }
+        if ( ok ){
+            int cnt = 0 ;
+            for(int i = 0; i < n; i++){
+                if ( honest[i] ) cnt++ ;
+            }
+            debug() << "TEST " << imie(honest) ;
+            ans = max(ans, cnt) ;
+        }
+    }
     cout << ans << endl;
-
-    return 0; 
+    return 0 ;
 }
