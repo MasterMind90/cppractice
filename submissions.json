@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8923149": {
+    "contest_id": "abc140",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc140\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "Face Produces Unhappiness",
+    "problem_url": "https://atcoder.jp/contests/abc140/tasks/abc140_d",
+    "submission_id": "AC8923149",
+    "submission_url": "https://atcoder.jp/contests/abc140/submissions/8923149",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Dec/12/2019 12:15"
+  },
   "AC8938768": {
     "contest_id": "abc130",
     "language": "C++14 (GCC 5.4.1)",
