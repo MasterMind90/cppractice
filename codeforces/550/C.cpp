@@ -37,47 +37,39 @@ sim dor(const c&) { ris; }
 typedef long long ll;
 typedef tree<ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update> indexed_set; 
 const ll INF = 1e9 + 10 ;
-const ll N = 110 ; 
-string s ;
-ll n ;
-ll dp[N][10] ; 
-ll dfs(ll x, ll cur){
-    if ( x == n ){
-        if ( cur == 0 ) return 0 ; 
-        return -INF ; 
+const int N = 110 ; 
+bool isSub(string x, string &y){
+    int m = (int) x.size()  ;
+    int n = (int) y.size() ; 
+    int posx = 0 ; 
+    for(int i = 0; i < n; i++){
+        if ( y[i] == x[posx] ) posx++;
     }
-    if ( dp[x][cur] != -1 ) return dp[x][cur] ; 
-    ll choice1 = dfs(x + 1, cur) ; 
-    ll choice2 = 1 + dfs(x + 1, (cur * 10 + (s[x] - '0')) % 8 );
-    return dp[x][cur] = max(choice1, choice2) ; 
-}
-string t = "" ; 
-void build(ll x,ll cur){
-    if ( x == n ) {
-        return ; 
-    }
-    ll choice1 = dfs(x + 1, cur) ; 
-    ll choice2 = 1 + dfs(x + 1, (cur * 10 + (s[x] - '0')) % 8 );
-    ll optimal = dfs(x, cur) ;
-    if ( optimal == choice1 ){
-        build(x + 1, cur) ; 
-    }
-    else if ( optimal == choice2 ) {
-        t += s[x] ; 
-        build(x + 1, (cur * 10 + (s[x] - '0')) % 8 ) ; 
-    }
+    if ( posx == m ) return true ; 
+    return false ;
 }
 int main(){
     fastio
-    memset(dp, -1, sizeof dp) ; 
+    string s ;
     cin >> s ;
-    n = (ll) s.size() ; 
-    ll ans = dfs(0, 0) ; 
-    if ( ans == 0 ) puts("NO") ; 
-    else{
-        build(0 , 0) ;
-        cout << "YES" << endl;
-        cout << t << endl;
+    vector<string> total;
+    total.push_back("0") ; 
+    for(int i = 8; i < 1000; i += 8){
+        int x = i;
+        string tmp = "" ; 
+        while(x != 0){
+            tmp = char(x % 10 + '0') + tmp ; 
+            x /= 10 ; 
+        }
+        total.push_back(tmp) ; 
     }
+    for(string &v : total){
+        if ( isSub(v, s) ){
+            cout << "YES" << endl;
+            cout << v << endl;
+            return 0 ; 
+        }
+    }
+    cout << "NO" << endl;
     return 0 ;
 }
