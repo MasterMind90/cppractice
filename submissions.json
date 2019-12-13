@@ -4607,6 +4607,22 @@
     ],
     "timestamp": "Jan/14/2021 21:30"
   },
+  "AC8938768": {
+    "contest_id": "abc130",
+    "language": "C++14 (GCC 5.4.1)",
+    "path": "atcoder\\abc130\\A.cpp",
+    "platform": "AtCoder",
+    "problem_index": "A",
+    "problem_name": "Rounding",
+    "problem_url": "https://atcoder.jp/contests/abc130/tasks/abc130_a",
+    "submission_id": "AC8938768",
+    "submission_url": "https://atcoder.jp/contests/abc130/submissions/8938768",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "Dec/13/2019 16:40"
+  },
   "AC8938840": {
     "contest_id": "abc135",
     "language": "C++14 (GCC 5.4.1)",
