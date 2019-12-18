@@ -1615,6 +1615,26 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF67146040": {
+    "contest_id": 385,
+    "language": "GNU C++17",
+    "path": "codeforces\\385\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Bear and Strings",
+    "problem_url": "https://codeforces.com/contest/385/problem/B",
+    "submission_id": "CF67146040",
+    "submission_url": "https://codeforces.com/contest/385/submission/67146040",
+    "tags": [
+      "brute force",
+      "greedy",
+      "implementation",
+      "math",
+      "strings",
+      "*1200"
+    ],
+    "timestamp": "Dec/18/2019 10:53"
+  },
   "CF67173901": {
     "contest_id": 205,
     "language": "GNU C++17",
