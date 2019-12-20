@@ -37,50 +37,42 @@ const ll MOD = 1e9 + 7 ;
 const ll N = 1e7 + 10 ;
 const ll INF = 1e18 + 10 ;
 void solve(){
-    int n ; 
-    cin >> n ;
-    vector<int> a(n) ;
-    map<int,int> MP ; 
-    int sum = 0 ;
-    for(int i = 0; i < n; i++){
-        cin >> a[i] ; 
-        if ( a[i] == 1 ) sum++ ; 
-        else sum--;
-        MP[sum] = i + 1; 
+    ll n ; 
+    cin >> n ; 
+    vector<ll> left(n) , right(n) ;
+    ll cur = 0 ; 
+    map<ll,ll> mpp ; 
+    for(ll i = 0; i < n; i++){
+        cin >> left[i] ;
+        if ( left[i] == 1 ){
+            cur++;
+        }
+        else cur--;
+        left[i] = cur ; 
+        mpp[cur] = i ; 
     }
-    vector<int> b(n) ; 
-    for(int i = 0; i < n; i++){
-        cin >> b[i] ; 
+    for(ll i = 0; i < n; i++){
+        cin >> right[i] ;
     }
-    reverse(b.begin(), b.end());
-    map<int,int> mp ; 
-    int cur = 0 ; 
-    for(int i = 0; i < n; i++){
-        if ( b[i] == 1 ) cur++ ;
+    reverse(right.begin(), right.end()) ; 
+    map<ll,ll> mp ; 
+    cur = 0 ; 
+    for(ll i = 0; i < n; i++){
+        if ( right[i] == 1 ) cur++ ; 
         else cur-- ; 
-        mp[cur] = i + 1 ; 
+        right[i] = cur ; 
+        mp[cur] = i ; 
     }
-    int ans = 0; 
-    auto it = mp.find(0) ;
-    if ( it != mp.end() ) ans = it->second ;
-    cur = 0 ; 
-    for(int i = 0; i < n; i++){
-        if ( a[i] == 1 ) cur++ ; 
-        else cur--;
-        it = mp.find(-cur) ;
-        if ( it != mp.end() )
-            ans = max(ans, i + 1 + it->second);
+    ll ans = 0 ; 
+    for(ll i = 0; i < n; i++){
+        if ( left[i] == 0 ) ans = max(ans, i + 1) ; 
+        if ( mp.find(-left[i]) != mp.end() ) ans = max(ans, i + 1 + mp.find(-left[i])->second + 1 );
     }
-    it = MP.find(0) ;
-    if ( it != MP.end() ) ans = max(ans, it->second) ;
-    cur = 0 ; 
-    for(int i = 0; i < n; i++){
-        if ( b[i] == 1 ) cur++ ; 
-        else cur--;
-        it = MP.find(-cur) ;
-        if ( it != MP.end() )
-            ans = max(ans, i + 1 + it->second);
+    for(ll i = 0; i < n; i++){
+        if ( right[i] == 0 ) ans = max(ans, i + 1) ; 
+        if ( mpp.find(-right[i]) != mpp.end() ) ans = max(ans, i + 1 + mpp.find(-right[i])->second + 1 );
     }
+    debug() << imie(ans) ; 
     cout << 2 * n - ans << endl;
 }
 int main(){
