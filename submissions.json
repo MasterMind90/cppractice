@@ -1615,6 +1615,23 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF67679456": {
+    "contest_id": 215,
+    "language": "GNU C++17",
+    "path": "codeforces\\215\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Olympic Medal",
+    "problem_url": "https://codeforces.com/contest/215/problem/B",
+    "submission_id": "CF67679456",
+    "submission_url": "https://codeforces.com/contest/215/submission/67679456",
+    "tags": [
+      "greedy",
+      "math",
+      "*1300"
+    ],
+    "timestamp": "Dec/27/2019 07:24"
+  },
   "CF67690778": {
     "contest_id": 714,
     "language": "GNU C++17",
