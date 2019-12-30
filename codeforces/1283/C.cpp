@@ -40,39 +40,64 @@ int main(){
     fastio
     int n ; 
     cin >> n ; 
-    vector<int> v(n) ; 
-    vector<int> mark(n + 1) ; 
-    for(int i = 0; i < n; i++){
-        cin >> v[i] ;
-        mark[v[i]]++; 
-    }
-    vector<int> t ; 
+    vector<int> in(n + 1) ; 
+    vector<int> out(n + 1) ; 
+    vector<int> v(n + 1) ;
     for(int i = 1; i <= n; i++){
-        if ( mark[i] == 0 ){
-            t.push_back(i) ; 
+        cin >> v[i] ; 
+        if ( v[i] == 0 ) continue ;
+        out[i]++ ; 
+        in[v[i]]++;
+    }
+    int pre = -1 ;
+    for(int i = 1; i <= n; i++){
+        if ( in[i] == 0 && out[i] == 0 ){
+            if ( pre == - 1 ) {
+                pre = i ; 
+                continue ; 
+            }
+            debug() << imie(pre) imie(i) ;
+            v[pre] = i ; 
+            out[pre]++ ; 
+            in[i]++;
+            pre = i ;
         }
     }
-    while(true){
-        random_shuffle(t.begin(), t.end()) ;
-        vector<int> a = v ;
-        int cur = 0 ; 
-        for(int i = 0; i < n; i++){
-            if ( a[i] == 0 ) a[i] = t[cur++];
+    queue<int> give, take ; 
+    int vertice = -1 ; 
+    for(int i = 1; i <= n; i++){
+        if ( in[i] == 0 && out[i] == 0 ){
+            vertice = i ;
         }
-        bool ok = true ; 
-        for(int i = 0; i < n; i++){
-            if ( a[i] == i + 1 ) {
-                ok = false;
+    }
+    for(int i = 1; i <= n; i++){
+        if ( i == vertice ) continue ;
+        if ( vertice != -1 ){
+            if ( in[i] == 0 ){
+                v[vertice] = i ; 
+                out[vertice]++;
+                in[i]++;
                 break;
             }
         }
-        if ( ok ) {
-            for(int i = 0; i < n; i++){
-                cout << a[i] << ' ' ; 
-            }
-            cout << endl;
-            return 0 ; 
+    }
+    for(int i = 1; i <= n; i++){
+        if ( out[i] == 0 ){
+            give.push(i) ;
+        }
+        else if ( in[i] == 0 ){
+            take.push(i) ;
         }
     }
+    while(not give.empty()){
+        int g = give.front() ; give.pop() ; 
+        int t = take.front() ; take.pop() ; 
+        v[g] = t ; 
+    }
+    for(int i = 1; i <= n; i++){
+        assert(v[i] != i) ; 
+        cout << v[i] << ' ' ; 
+    }
+    cout << endl;
     return 0; 
 }
