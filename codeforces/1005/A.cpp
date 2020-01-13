@@ -1,8 +1,3 @@
-/*
-MasterMind   
-2020 - 01 - 13
-18 - 28 - 03
-*/
 #ifndef LOCAL
 #pragma GCC optimize("O3")
 #endif
