@@ -34,38 +34,32 @@ sim dor(const c&) { ris; }
 #define fastio ios_base::sync_with_stdio(false);cin.tie(0);
 typedef long long ll;
 const ll MOD = 1e9 + 7 ;
-const ll N = 1e7 + 10 ;
+const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 int main(){
     fastio
     ll n , m ;
-    cin >> n >> m ; 
+    cin >> n >> m ;
     vector<ll> v(n) ; 
     ll index = 0 ; 
     for(ll i = 0; i < n; i++){
         cin >> v[i] ; 
         if ( v[i] == m ) index = i ; 
     }
-    map<ll,ll> after ;
-    ll cur = 0 ;
-    for(ll i = index; i < n; i++){
-        if ( v[i] > m ) cur++ ; 
-        else if ( v[i] < m ) cur-- ; 
-        after[cur]++;
+    ll ss = 0 ; 
+    map<ll,ll> mp ; 
+    mp[ss]++ ;
+    for(ll i = index + 1; i < n; i++){
+        if ( v[i] > m ) ss++ ; 
+        else ss-- ; 
+        mp[ss]++;
     }
-    cur = 0 ;
-    ll ans = 0 ;
+    ll sum = 0 ; 
+    ll ans = 0; 
     for(ll i = index; i >= 0; i--){
-        if ( v[i] > m ) cur++ ;
-        else if ( v[i] < m ) cur-- ;
-        auto it = after.find(-cur) ;
-        auto it2 = after.find(-cur + 1) ;
-        if ( it != after.end() ){
-            ans += it->second ;
-        }
-        if ( it2 != after.end() ){
-            ans += it2->second ;
-        }
+        if ( v[i] > m ) sum++ ; 
+        else sum--; 
+        ans += mp[-sum] + mp[-sum - 1] ; 
     }
     cout << ans << endl;
     return 0; 
