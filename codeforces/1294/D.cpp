@@ -40,21 +40,45 @@ int main(){
     fastio
     ll q , x ;
     cin >> q >> x ; 
-    vector<ll> cnt(x) ;
-    set<pair<ll, ll> > s ; 
-    for(ll i = 0; i < x; i++){
-        s.insert(make_pair(0, i)) ;
-    }
+    set<ll> s ; 
+    ll curMex = 0 ; 
     while(q--){
         ll a ; 
-        cin >> a; 
-        ll k = a % x ; 
-        s.erase(make_pair(cnt[k], k)) ;
-        cnt[k]++ ;
-        s.insert(make_pair(cnt[k], k));
-        auto p = s.begin() ;
-        debug() << imie(*p) ;
-        cout << p->first * x + p->second << endl;
+        cin >> a ;
+        if ( s.find(a) != s.end() ){
+            ll L = 1, R = 1e9 ; 
+            ll ans = -1 ;
+            while(L <= R){
+                ll mid = L + (R - L) / 2 ;
+                if ( s.find( mid * x + a ) == s.end() ){
+                    ans = mid ; 
+                    R = mid - 1 ;
+                }
+                else L = mid + 1 ;
+            }
+            if ( ans != -1 ) a = a + ans * x ; 
+        }
+        else{
+            ll L = 1, R = 1e9 ; 
+            ll ans = -1 ;
+            while(L <= R){
+                ll mid = L + (R - L) / 2 ;
+                if ( a - mid * x < 0 ) {
+                    R = mid - 1 ;
+                    debug() << "===" << imie(mid);
+                    continue ;
+                }
+                if ( s.find( a - mid * x ) == s.end() ){
+                    ans = mid ; 
+                    L = mid + 1 ;
+                }
+                else R = mid - 1 ;
+            }
+            if ( ans != -1 ) a = a - ans * x ; 
+        }
+        s.insert(a) ;
+        while ( s.find(curMex) != s.end() ) curMex++ ;
+        cout << curMex << endl;
     }
     return 0; 
 }
