@@ -17,26 +17,29 @@ int main(){
             cin >> a[i][j] ;
         }
     }
-    set<char> s ;
-    int X[] = {0, 0, 1, -1} ;
-    int Y[] = {1,-1, 0,  0} ;
+    bool flag[26] = {0} ;
     for(int i = 1; i <= n; i++){
         for(int j = 1; j <= m; j++){
             if ( a[i][j] == p ){
-                for(int k = 0; k < 4; k++){
-                    if ( a[i + X[k]][j + Y[k]] != p && a[i + X[k]][j + Y[k]] >= 'A' &&  a[i + X[k]][j + Y[k]] <= 'Z' ){
-                        s.insert(a[i + X[k]][j + Y[k]]);
-                    }
+                if ( a[i - 1][j] != p && a[i - 1][j] >= 'A' && a[i - 1][j] <= 'Z' ){
+                    flag[a[i - 1][j] - 'A'] = true ;
+                }
+                if ( a[i + 1][j] != p && a[i + 1][j] >= 'A' && a[i + 1][j] <= 'Z' ){
+                    flag[a[i + 1][j] - 'A'] = true ;
+                }
+                if ( a[i][j - 1] != p && a[i][j - 1] >= 'A' && a[i][j - 1] <= 'Z' ){
+                    flag[a[i][j - 1] - 'A'] = true ;
+                }
+                if ( a[i][j + 1] != p && a[i][j + 1] >= 'A' && a[i][j + 1] <= 'Z' ){
+                    flag[a[i][j + 1] - 'A'] = true ;
                 }
             }
         }
     }
-    cout << s.size() << endl;
-
-
-
-
-
-
+    int cnt = 0 ;
+    for(int i = 0; i < 26; i++){
+        if ( flag[i] ) cnt++ ;
+    }
+    cout << cnt << endl;
     return 0 ;
 }
