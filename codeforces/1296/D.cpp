@@ -48,7 +48,8 @@ int main(){
         if ( v[i] == 0 ) v[i] = a + b;
         v[i] -= a ;
         if ( v[i] <= 0 ) continue ;
-        int c = (v[i] + a - 1) / a ; 
+        int c = v[i] / a ; 
+        if ( v[i] % a != 0 ) c++ ;
         cnt[i] = c ; 
     }
     debug() << imie(v) ; 
