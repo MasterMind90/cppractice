@@ -12,11 +12,14 @@ int main(){
         for(int i = 0; i < n; i++){
             cin >> v[i] ;
         }
-        sort(v.begin(), v.end()) ;
         int ans = 0 ;
         for(int square = 1; square <= 1000; square++){
-            int index = lower_bound(v.begin(), v.end(), square) - v.begin() ;
-            int cnt = n - index ;
+            int cnt = 0 ;
+            for(int j = 0; j < n; j++){
+                if ( v[j] >= square ){
+                    cnt++ ;
+                }
+            }
             if ( cnt >= square ){
                 ans = square ;
             }
