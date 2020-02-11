@@ -17,24 +17,10 @@ int main(){
         sort(v.begin(), v.end()) ;
         int ans = 0 ;
         for(int square = 1; square <= nax; square++){
-
-            int L = 0 , R = n - 1 ;
-            int ok = -1 ;
-            while(L <= R){
-                int mid = ( L + R ) / 2 ;
-                if ( v[mid] >= square ){
-                    ok = mid ;
-                    R = mid - 1 ;
-                }
-                else {
-                    L = mid + 1 ;
-                }
-            }
-            if ( ok != -1 ){
-                int cnt = n - ok ;
-                if ( cnt >= square ){
-                    ans = square ;
-                }
+            int index = lower_bound(v.begin(), v.end(), square) - v.begin() ;
+            int cnt = n - index ;
+            if ( cnt >= square ){
+                ans = square ;
             }
         }
         cout << ans << endl;
