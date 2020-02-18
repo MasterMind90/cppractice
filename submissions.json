@@ -1615,6 +1615,24 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF71399863": {
+    "contest_id": 1237,
+    "language": "GNU C++17",
+    "path": "codeforces\\1237\\C1.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C1",
+    "problem_name": "Balanced Removals (Easier)",
+    "problem_url": "https://codeforces.com/contest/1237/problem/C1",
+    "submission_id": "CF71399863",
+    "submission_url": "https://codeforces.com/contest/1237/submission/71399863",
+    "tags": [
+      "constructive algorithms",
+      "geometry",
+      "greedy",
+      "*1700"
+    ],
+    "timestamp": "Feb/18/2020 21:05"
+  },
   "CF71400739": {
     "contest_id": 1234,
     "language": "GNU C++17",
