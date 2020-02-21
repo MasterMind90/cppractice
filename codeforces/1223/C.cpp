@@ -48,17 +48,24 @@ int lcm(int a, int b){
 }
 void solve(){
     int n ;
-    cin >> n ;
+    // cin >> n ;
+    read(n);
     vector<int> v(n) ;
     for(int i = 0; i < n; i++){
-        cin >> v[i] ;
+        // cin >> v[i] ;
+        read(v[i]);
     }
     int x , a ;
-    cin >> x >> a ;
+    // cin >> x >> a ;
+    read(x) ;
+    read(a) ;
     int y , b ; 
-    cin >> y >> b ; 
+    // cin >> y >> b ; 
+    read(y) ;
+    read(b) ;
     int k ;
-    cin >> k ;
+    // cin >> k ;
+    read(k);
     sort(v.begin(), v.end()) ;
     reverse(v.begin(), v.end());
     int L = 1 , R = n ; 
@@ -98,13 +105,14 @@ void solve(){
         }
         else L = mid + 1;
     }
-    cout << ans << endl;
-    // printf("%I64d\n", ans);
+    // cout << ans << endl;
+    printf("%I64d\n", ans);
 }
 signed main(){
-    fastio
+    //fastio
     int t; 
-    cin >> t ;
+    // cin >> t ;
+    read(t);
     while(t--) solve() ;
     return 0; 
 }
