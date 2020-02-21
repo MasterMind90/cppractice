@@ -37,37 +37,97 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int toInt(string bin){
-    int n = (int) bin.size() ;
-    reverse(bin.begin(), bin.end()) ;
-    int ans = 0 ; 
-    for(int i = 0; i < n; i++){
-        if ( bin[i] == '1' ) ans += (1 << i) ;
+int zeros[N];
+int count(int x){
+    int cnt = 0 ; 
+    while(x != 0){
+        x /= 2; 
+        cnt++ ; 
     }
-    return ans ; 
+    return cnt ;
+}
+bool isPower(int x){
+    int cnt = 0 ; 
+    for(int i = 0; i < 32; i++){
+        if ( x & (1LL << i) ) cnt++ ;
+    }
+    return cnt == 1 ;
+}
+string toBinary(int x){
+    string ans = "" ; 
+    while(x != 0){
+        if ( x % 2 == 0 ) ans.push_back('0');
+        else ans.push_back('1') ;
+        x /= 2 ;
+    }
+    reverse(ans.begin(), ans.end()) ;
+    return ans ;
 }
 void solve(){
     string s ;
     cin >> s ;
     int n = (int) s.size() ;
-    int cnt = 0 ;
-    int ans = 0 ; 
+    vector<int> sum(n + 1) ;
+    for(int i = 0; i < n; i++){
+        sum[i + 1] = sum[i] + (s[i] == '1') ;
+    }
+    // need to count 1s and 2s 
+    debug() << imie(sum) ;
+    int res = 0 ;
     for(int i = 0; i < n; i++){
         if ( s[i] == '1' ){
-            for(int j = 0; j < 18; j++){
-                if ( i + j + 1 > n ) break;
-                int t = toInt(s.substr(i , j + 1));
-                if ( cnt + j + 1 >= t ) ans++ ;
-                else break ;
-            }
-            cnt = 0 ; 
+            res++ ;
+            if ( i + 1 < n && s[i + 1] == '0' ) res++ ; 
         }
-        else cnt++ ;
+        if ( s[i] == '0' ){
+            int L = i + 1, R = n ; 
+            int ans = -1 ;
+            while(L <= R){
+                int mid = L + (R - L) / 2 ;
+                if ( sum[mid] - sum[i] == 0 ){
+                    ans = mid ; 
+                    L = mid + 1 ;
+                }
+                else {
+                    R = mid - 1;
+                }
+            }
+            int cnt = ans - i ; 
+            debug() << imie(cnt) imie(ans) ;
+            int val = zeros[cnt] ;
+            string t = toBinary(val) ;
+            int m = (int) t.size() ;
+            int c = 0 ; 
+            for(int j = 0; j < m; j++){
+                if ( ans + j < n && t[j] == s[ans + j] ){
+                    c++ ;
+                }
+            }
+            if ( c == m ){
+                res++ ;
+            }
+            if ( isPower(val) ){
+                t = toBinary(val - 1) ;
+                m = (int) t.size() ;
+                c = 0 ; 
+                for(int j = 0; j < m; j++){
+                    if ( ans + j < n && t[j] == s[ans + j] ){
+                        c++ ;
+                    }
+                }
+                if ( c == m ){
+                    res++ ;
+                }
+            }
+        }
     }
-    cout << ans << endl;
+    cout << res << endl;
 }
 signed main(){
     fastio
+    for(int i = 1; i <= 2e5; i++){
+        zeros[i - count(i)] = i ;
+    }
     int t ;
     cin >> t ;
     while(t--) solve() ;
