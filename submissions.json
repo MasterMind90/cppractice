@@ -1615,6 +1615,24 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF71849189": {
+    "contest_id": 4,
+    "language": "GNU C++17",
+    "path": "codeforces\\4\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Registration System",
+    "problem_url": "https://codeforces.com/contest/4/problem/C",
+    "submission_id": "CF71849189",
+    "submission_url": "https://codeforces.com/contest/4/submission/71849189",
+    "tags": [
+      "data structures",
+      "hashing",
+      "implementation",
+      "*1300"
+    ],
+    "timestamp": "Feb/25/2020 12:18"
+  },
   "CF71850101": {
     "contest_id": 1313,
     "language": "GNU C++17",
