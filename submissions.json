@@ -1615,6 +1615,24 @@
     ],
     "timestamp": "Jan/14/2021 17:23"
   },
+  "CF72582124": {
+    "contest_id": 1184,
+    "language": "GNU C++17",
+    "path": "codeforces\\1184\\A1.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A1",
+    "problem_name": "Heidi Learns Hashing (Easy)",
+    "problem_url": "https://codeforces.com/contest/1184/problem/A1",
+    "submission_id": "CF72582124",
+    "submission_url": "https://codeforces.com/contest/1184/submission/72582124",
+    "tags": [
+      "brute force",
+      "math",
+      "number theory",
+      "*1200"
+    ],
+    "timestamp": "Mar/06/2020 16:57"
+  },
   "CF72582843": {
     "contest_id": 1184,
     "language": "GNU C++17",
