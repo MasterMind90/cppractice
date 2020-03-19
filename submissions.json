@@ -9885,6 +9885,23 @@
     ],
     "timestamp": "Mar/07/2020 12:31"
   },
+  "CF73649056": {
+    "contest_id": 1269,
+    "language": "GNU C++17",
+    "path": "codeforces\\1269\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Long Beautiful Integer",
+    "problem_url": "https://codeforces.com/contest/1269/problem/C",
+    "submission_id": "CF73649056",
+    "submission_url": "https://codeforces.com/contest/1269/submission/73649056",
+    "tags": [
+      "greedy",
+      "implementation",
+      "*1700"
+    ],
+    "timestamp": "Mar/19/2020 13:44"
+  },
   "CF73677689": {
     "contest_id": 1326,
     "language": "GNU C++17",
