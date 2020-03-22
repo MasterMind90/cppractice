@@ -37,10 +37,20 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 1e7 + 10 ;
 const ll INF = 1e18 + 10 ;
+int choose(int n, int k){ 
+    int C[k+1]; 
+    memset(C, 0, sizeof(C)); 
+    C[0] = 1; 
+    for (int i = 1; i <= n; i++) { 
+        for (int j = min(i, k); j > 0; j--) 
+            C[j] = C[j] + C[j-1]; 
+    } 
+    return C[k]; 
+} 
 signed main(){
     fastio
     int n , m ;
     cin >> n >> m ; 
-    cout << n * (n - 1) / 2 + m * (m - 1) / 2 << endl;
+    cout << choose(n, 2) + choose(m, 2) << endl;
     return 0; 
 }
