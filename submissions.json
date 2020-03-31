@@ -7126,6 +7126,23 @@
     ],
     "timestamp": "Mar/07/2020 12:31"
   },
+  "CF74893234": {
+    "contest_id": 1137,
+    "language": "GNU C++17",
+    "path": "codeforces\\1137\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "Skyscrapers",
+    "problem_url": "https://codeforces.com/contest/1137/problem/A",
+    "submission_id": "CF74893234",
+    "submission_url": "https://codeforces.com/contest/1137/submission/74893234",
+    "tags": [
+      "implementation",
+      "sortings",
+      "*1600"
+    ],
+    "timestamp": "Mar/31/2020 09:48"
+  },
   "CF74935957": {
     "contest_id": 1332,
     "language": "GNU C++17",
