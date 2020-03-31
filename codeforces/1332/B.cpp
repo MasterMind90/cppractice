@@ -38,28 +38,51 @@ const ll MOD = 1e9 + 7 ;
 const ll N = 1e6 + 10 ;
 const ll INF = 1e18 + 10 ;
 void solve(){
-    int n ;
+    int n ; 
     cin >> n ; 
-    vector<int> v(n) ;
+    vector<int> v(n) ; 
+    set<int> s[n] ; 
+    set<int> total  ;
     for(int i = 0; i < n; i++){
-        cin >> v[i]; 
+        cin >> v[i] ; 
+        int x = v[i] ; 
+        for(int j = 2; j * j <= x; j++){
+            bool ok = false ;
+            while( x % j == 0 ){
+                ok = true ;
+                x /= j ; 
+            }
+            if ( ok ){
+                s[i].insert(j);
+                total.insert(j) ;
+            } 
+        }
+        if ( x > 1 ) {
+            s[i].insert(x) ; 
+            total.insert(x) ; 
+        }
     }
+    vector<int> ans(n) ; 
     int color = 1;
-    vector<int> ans(n) ;
-    for(int i = 2; i <= 1000; i++){
+    for(int c : total){
         bool used = false;
-        for(int j = 0; j < n; j++){
-            if ( ans[j] ) continue ;
-            if ( v[j] % i == 0 ){
-                ans[j] = color ; 
-                used = true;
+        for(int i = 0; i < n; i++){
+            if ( ans[i] ) continue ; 
+            if ( s[i].count(c) ){
+                ans[i] = color ; 
+                used = true ;
             }
         }
-        if ( used ) color++;
+        if ( used ) color++ ;
     }
-    cout << color - 1 << endl;
+    int nax = 0 ; 
     for(int i = 0; i < n; i++){
-        cout << ans[i] << ' ' ;
+        nax = max(nax, ans[i]) ;
+    }
+    assert(nax <= 11) ;
+    cout << nax << endl;
+    for(int &c : ans){
+        cout << c << ' ' ;
     }
     cout << endl;
 }
