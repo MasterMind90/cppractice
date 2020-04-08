@@ -38,21 +38,38 @@ const ll MOD = 1e9 + 7 ;
 const ll N = 1e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 void solve(){
-    int n ;
-    cin >> n ;
+    int n ; 
+    cin >> n ; 
     vector<int> a(n) , b(n) ; 
-    for(int i = 0; i < n; i++) cin >> a[i] ; 
-    for(int i = 0; i < n; i++) cin >> b[i] ; 
-    bool one = false;
-    bool minus = false;
-    bool ok = true;
     for(int i = 0; i < n; i++){
-        if ( a[i] < b[i] && not one ) ok = false;
-        if ( a[i] > b[i] && not minus ) ok = false;
-        if ( a[i] == 1 ) one = true ;
-        if ( a[i] == -1 ) minus = true ;
+        cin >> a[i] ; 
     }
-    if ( ok ) cout << "YES" << endl;
+    for(int i = 0; i < n; i++){
+        cin >> b[i] ; 
+    }
+    vector<int> minusOne(n) ;
+    minusOne[0] = 0 ; 
+    bool ok = (a[0] == -1);
+    for(int i = 1; i < n; i++){
+        minusOne[i] = ok ; 
+        ok = max(ok, a[i] == -1) ;
+    }
+    vector<int> One(n) ;
+    One[0] = 0 ; 
+    ok = (a[0] == 1) ;
+    for(int i = 1; i < n; i++){
+        One[i] = ok ; 
+        ok = max(ok, a[i] == 1) ;
+    }
+    ok = true;
+    for(int i = 0; i < n; i++){
+        if ( a[i] == b[i] ) continue ;
+        if ( a[i] < b[i] && not One[i] ) ok = false ;
+        if ( a[i] > b[i] && not minusOne[i] ) ok = false;
+    }
+    if ( ok ){
+        cout << "YES" << endl;
+    }
     else cout << "NO" << endl;
 }
 signed main(){
