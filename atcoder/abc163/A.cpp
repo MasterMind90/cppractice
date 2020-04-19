@@ -42,7 +42,6 @@ signed main(){
     fastio
     int r ;
     cin >> r ;
-    double ans = r * pi * 2.0 ;
-    cout << fixed << setprecision(9) << ans << endl;
+    cout << fixed << setprecision(12) << r * pi * 2.0 << endl;
     return 0; 
 }
