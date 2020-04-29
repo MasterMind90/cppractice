@@ -7126,6 +7126,19 @@
     ],
     "timestamp": "Mar/07/2020 12:31"
   },
+  "CF78522451": {
+    "contest_id": 1089,
+    "language": "GNU C++17",
+    "path": "codeforces\\1089\\E.cpp",
+    "platform": "Codeforces",
+    "problem_index": "E",
+    "problem_name": "Easy Chess",
+    "problem_url": "https://codeforces.com/contest/1089/problem/E",
+    "submission_id": "CF78522451",
+    "submission_url": "https://codeforces.com/contest/1089/submission/78522451",
+    "tags": [],
+    "timestamp": "Apr/30/2020 02:12"
+  },
   "CF78609034": {
     "contest_id": 1081,
     "language": "GNU C++17",
