@@ -45,44 +45,59 @@ const ll INF = 1e18 + 10 ;
 signed main(){
     fastio
     int n ;
-    cin >> n ; 
+    cin >> n ;
     string s ;
-    cin >> s ; 
-    int cnt = 0 ;
-    for(char &c : s){
-        if ( c == 'G' ) cnt++ ;
-    }
-    vector<int> L(n + 1) ;
-    vector<int> R(n + 2) ;
-    for(int i = 0; i < n; i++){
-        if ( s[i] == 'G' ) L[i + 1] = 1 ;
-    }
-    for(int i = 1; i < n + 1; i++){
-        L[i] += L[i - 1] ;
-        if ( s[i - 1] == 'S' ) {
-            L[i] = 0 ; 
+    cin >> s ;
+    vector<int> v ;
+    for(int i = 0; i < n; ){
+        char c = s[i] ;
+        int cnt = 0 ;
+        while(i < n && c == s[i]){
+            cnt++ ;
+            i++ ;
         }
+        v.push_back(cnt) ;
     }
-    for(int i = 0; i < n; i++){
-        if ( s[n - i - 1] == 'G' ){
-            R[n - i] = 1 ; 
+    int m = (int) v.size() ;
+    if ( s[0] == 'S' ){
+        int goldGroups = m / 2 ;
+        if ( m & 1 ) {
+            m = m + 1; 
+            v.push_back(0) ;
         }
-    }
-    for(int i = 0; i < n; i++){
-        R[n - i] += R[n - i + 1] ;
-        if ( s[n - i - 1] == 'S' ){
-            R[n - i] = 0 ; 
+        int nax = 0 ; 
+        for(int i = 1; i < m; i+= 2) nax = max(nax, v[i]) ;
+        if ( goldGroups > 1 ) nax = nax + 1;
+        for(int i = 2; i < m; i += 2){
+            if ( v[i] == 1 ){
+                if ( goldGroups > 2 ) {
+                    nax = max(nax, v[i - 1] + v[i + 1] + 1) ; 
+                }
+                else nax = max(nax, v[i - 1] + v[i + 1]);
+            }
         }
+        cout << nax << endl;
     }
-    int ans = 0 ;
-    for(int i = 0; i < n; i++){
-        ans = max(ans, L[i + 1]) ;
-        if ( s[i] == 'S' ){
-            int p = i + 1 ; 
-            ans = max(ans, L[p - 1] + R[p + 1] + 1);
+    else{
+        int goldGroups = (m + 1) / 2;
+        if ( !(m & 1) ) {
+            m = m + 1 ;
+            v.push_back(0) ;
         }
+        int nax = 0 ; 
+        for(int i = 0; i < m; i += 2){
+            nax = max(nax, v[i]) ;
+        }
+        if ( goldGroups > 1 ) nax = nax + 1; 
+        for(int i = 1; i < m; i += 2){
+            if ( v[i] == 1 ){
+                if ( goldGroups > 2 ){
+                    nax = max(nax, v[i - 1] + v[i + 1] + 1 ) ;
+                }
+                else nax = max(nax, v[i - 1] + v[i + 1]) ;
+            }
+        }
+        cout << nax << endl;
     }
-    ans = min(ans, cnt) ;
-    cout << ans << endl;
     return 0; 
 }
