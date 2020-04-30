@@ -43,22 +43,41 @@ typedef long long ll;
 const ll MOD = 998244353 ; 
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int n , m , k ; 
-int dp[2005][2005] ;
-int dfs(int x, int diff){
-    if ( x == n ) {
-        return diff == k ; 
+int fast(int a, int b){
+    if ( b == 0 ) return 1 ;
+    if ( b == 1 ) return a ;
+    int y = fast(a, b / 2) ;
+    int ans = 1 ;
+    if ( b & 1 ) ans = a ;
+    return ((((y % MOD) * (y % MOD)) % MOD) * ans) % MOD ; 
+}
+int inv(int x){
+    return fast(x, MOD - 2) ;
+}
+int choose(int n, int k){
+    int ans = 1 ;
+    for(int i = 1; i <= n; i++){
+        ans = ans * i ; 
+        ans %= MOD ;
     }
-    if ( dp[x][diff] != -1 ) return dp[x][diff] ;
-    int choice1 = dfs(x + 1, diff) % MOD ; // same color as previous 
-    int choice2 = (dfs(x + 1, diff + 1) % MOD) * (m - 1) ; // different color than prev
-    return dp[x][diff] = (choice1 % MOD + choice2 % MOD) % MOD ;
+    for(int i = 0; i < n - k; i++){
+        ans = ans * inv(i + 1);
+        ans %= MOD ;
+    }
+    for(int i = 0; i < k; i++){
+        ans = ans * inv(i + 1) ;
+        ans %= MOD ;
+    }
+    return ans % MOD ;
 }
 signed main(){
     fastio
-    memset(dp, -1, sizeof dp) ;
-    cin >> n >> m >> k ; 
-    int ans = m * dfs(1, 0) ;
+    int n , m , k ; 
+    cin >> n >> m >> k ;
+    int ans = choose(n - 1, k) ;
+    ans = ans * m ; 
+    ans %= MOD ;
+    ans = ans * fast(m - 1, k) ;
     ans %= MOD ;
     cout << ans << endl;
     return 0; 
