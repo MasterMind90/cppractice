@@ -1,7 +1,5 @@
 #ifndef LOCAL
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
 #include <ext/pb_ds/assoc_container.hpp> // Common file
@@ -44,44 +42,40 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int n , m , q;
-vector<vector<int> > all ; 
-vector<int> curSequence ; 
-void recur(int x, int last){
-	if ( x == n ){
-		all.push_back(curSequence) ;
-		return ;
-	}
-	for(int i = last; i <= m; i++){
-		curSequence.push_back(i) ;
-		recur(x + 1, i) ;
-		curSequence.pop_back() ;
-	}
+int n , m , q ;
+vector<int> a , b , c , d ;
+vector<int> v ;
+int ans = 0 ;
+void dfs(int x, int last){
+    if ( x == n ){
+        int sum = 0 ;
+        for(int i = 0; i < q; i++){
+            if ( v[b[i]] - v[a[i]] == c[i] ) sum += d[i] ;
+        }
+        ans = max(ans, sum) ;
+    }
+    else{
+        for(int i = last; i <= m; i++){
+            v.push_back(i) ; 
+            dfs(x + 1, i) ;
+            v.pop_back() ;
+        }
+    }
 }
+
 signed main(){
     fastio
     cin >> n >> m >> q ;
-    recur(0, 1) ;
-    vector<array<int, 4>> v(q) ;
+    a.resize(q) ;
+    b.resize(q) ;
+    c.resize(q) ;
+    d.resize(q) ;
     for(int i = 0; i < q; i++){
-    	for(int j = 0; j < 4; j++){
-    		cin >> v[i][j] ;
-    	}
-    	v[i][0]--;
-    	v[i][1]--;
+        cin >> a[i] >> b[i] >> c[i] >> d[i] ;
+        a[i]--;
+        b[i]--;
     }
-    int ans = 0 ;
-    for(auto &seq : all){
-    	int sum = 0 ;
-    	for(int i = 0; i < q; i++){
-    		int a = v[i][0] ;
-    		int b = v[i][1] ;
-    		int c = v[i][2] ;
-    		int d = v[i][3] ;
-    		if ( seq[b] - seq[a] == c ) sum += d ;
-    	}
-    	ans = max(ans, sum) ;
-    }
+    dfs(0, 1) ;
     cout << ans << endl;
     return 0; 
 }
