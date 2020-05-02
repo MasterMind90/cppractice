@@ -42,40 +42,221 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int n , m , q ;
-vector<int> a , b , c , d ;
-vector<int> v ;
-int ans = 0 ;
-void dfs(int x, int last){
-    if ( x == n ){
-        int sum = 0 ;
-        for(int i = 0; i < q; i++){
-            if ( v[b[i]] - v[a[i]] == c[i] ) sum += d[i] ;
-        }
-        ans = max(ans, sum) ;
-    }
-    else{
-        for(int i = last; i <= m; i++){
-            v.push_back(i) ; 
-            dfs(x + 1, i) ;
-            v.pop_back() ;
-        }
-    }
-}
-
 signed main(){
     fastio
+    int n , m , q ;
     cin >> n >> m >> q ;
-    a.resize(q) ;
-    b.resize(q) ;
-    c.resize(q) ;
-    d.resize(q) ;
+    vector<int> aa(q) , bb(q) , cc(q) , dd(q) ;
     for(int i = 0; i < q; i++){
-        cin >> a[i] >> b[i] >> c[i] >> d[i] ;
-        a[i]--;
-        b[i]--;
+        cin >> aa[i] >> bb[i] >> cc[i] >> dd[i] ;
     }
-    dfs(0, 1) ;
+    vector<int> v ;
+    auto solve = [&](){
+        int sum = 0 ;
+        for(int i = 0; i < q; i++){
+            if ( v[bb[i] - 1] - v[aa[i] - 1] == cc[i] ) sum += dd[i] ;
+        }
+        return sum ;
+    };
+    int ans = 0 ; 
+    if ( n == 2 ){
+        for(int i = 1; i <= m; i++){
+            for(int j = i; j <= m; j++){
+                v.clear() ;
+                v.push_back(i) ;
+                v.push_back(j) ;
+                ans = max(ans, solve()) ;
+            }
+        }
+    }
+    else if ( n == 3 ){
+        for(int i = 1; i <= m; i++){
+            for(int j = i; j <= m; j++){
+                for(int k = j; k <= m; k++){
+                    v.clear() ;
+                    v.push_back(i) ;
+                    v.push_back(j) ;
+                    v.push_back(k) ;
+                    ans = max(ans, solve()) ;
+                }
+            }
+        }
+    }
+    else if ( n == 4 ){
+        for(int i = 1; i <= m; i++){
+            for(int j = i; j <= m; j++){
+                for(int k = j; k <= m; k++){
+                    for(int x = k; x <= m; x++){
+                        v.clear() ;
+                        v.push_back(i) ;
+                        v.push_back(j) ;
+                        v.push_back(k) ;
+                        v.push_back(x) ;
+                        ans = max(ans, solve());
+                    }
+                }
+            }
+        }
+    }
+    else if ( n == 5 ){
+        for(int i = 1; i <= m; i++){
+            for(int j = i; j <= m; j++){
+                for(int k = j; k <= m; k++){
+                    for(int x = k; x <= m; x++){
+                        for(int y = x; y <= m; y++){
+                            v.clear() ;
+                            v.push_back(i) ;
+                            v.push_back(j) ;
+                            v.push_back(k) ;
+                            v.push_back(x) ;
+                            v.push_back(y) ;
+                            ans = max(ans, solve());
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if ( n == 6 ){
+        for(int i = 1; i <= m; i++){
+            for(int j = i; j <= m; j++){
+                for(int k = j; k <= m; k++){
+                    for(int x = k; x <= m; x++){
+                        for(int y = x; y <= m; y++){
+                            for(int u = y; u <= m; u++){
+                                v.clear() ;
+                                v.push_back(i) ;
+                                v.push_back(j) ;
+                                v.push_back(k) ;
+                                v.push_back(x) ;
+                                v.push_back(y) ;
+                                v.push_back(u) ;
+                                ans = max(ans, solve());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if ( n == 7 ){
+        for(int i = 1; i <= m; i++){
+            for(int j = i; j <= m; j++){
+                for(int k = j; k <= m; k++){
+                    for(int x = k; x <= m; x++){
+                        for(int y = x; y <= m; y++){
+                            for(int u = y; u <= m; u++){
+                                for(int e = u; e <= m; e++){
+                                    v.clear() ;
+                                    v.push_back(i) ;
+                                    v.push_back(j) ;
+                                    v.push_back(k) ;
+                                    v.push_back(x) ;
+                                    v.push_back(y) ;
+                                    v.push_back(u) ;
+                                    v.push_back(e) ;
+                                    ans = max(ans, solve());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if ( n == 8 ){
+        for(int i = 1; i <= m; i++){
+            for(int j = i; j <= m; j++){
+                for(int k = j; k <= m; k++){
+                    for(int x = k; x <= m; x++){
+                        for(int y = x; y <= m; y++){
+                            for(int u = y; u <= m; u++){
+                                for(int e = u; e <= m; e++){
+                                    for(int w = e; w <= m; w++){
+                                        v.clear() ;
+                                        v.push_back(i) ;
+                                        v.push_back(j) ;
+                                        v.push_back(k) ;
+                                        v.push_back(x) ;
+                                        v.push_back(y) ;
+                                        v.push_back(u) ;
+                                        v.push_back(e) ;
+                                        v.push_back(w) ;
+                                        ans = max(ans, solve());
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if ( n == 9 ){
+        for(int i = 1; i <= m; i++){
+            for(int j = i; j <= m; j++){
+                for(int k = j; k <= m; k++){
+                    for(int x = k; x <= m; x++){
+                        for(int y = x; y <= m; y++){
+                            for(int u = y; u <= m; u++){
+                                for(int e = u; e <= m; e++){
+                                    for(int w = e; w <= m; w++){
+                                        for(int z = w; z <= m; z++){
+                                            v.clear() ;
+                                            v.push_back(i) ;
+                                            v.push_back(j) ;
+                                            v.push_back(k) ;
+                                            v.push_back(x) ;
+                                            v.push_back(y) ;
+                                            v.push_back(u) ;
+                                            v.push_back(e) ;
+                                            v.push_back(w) ;
+                                            v.push_back(z) ;
+                                            ans = max(ans, solve());
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if ( n == 10 ){
+        for(int i = 1; i <= m; i++){
+            for(int j = i; j <= m; j++){
+                for(int k = j; k <= m; k++){
+                    for(int x = k; x <= m; x++){
+                        for(int y = x; y <= m; y++){
+                            for(int u = y; u <= m; u++){
+                                for(int e = u; e <= m; e++){
+                                    for(int w = e; w <= m; w++){
+                                        for(int z = w; z <= m; z++){
+                                            for(int p = z; p <= m; p++){
+                                                v.clear() ;
+                                                v.push_back(i) ;
+                                                v.push_back(j) ;
+                                                v.push_back(k) ;
+                                                v.push_back(x) ;
+                                                v.push_back(y) ;
+                                                v.push_back(u) ;
+                                                v.push_back(e) ;
+                                                v.push_back(w) ;
+                                                v.push_back(z) ;
+                                                v.push_back(p) ;
+                                                ans = max(ans, solve());
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     cout << ans << endl;
     return 0; 
 }
