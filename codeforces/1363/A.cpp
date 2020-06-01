@@ -2,7 +2,11 @@
 #pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
+#include <ext/pb_ds/assoc_container.hpp> // Common file
+#include <ext/pb_ds/tree_policy.hpp> // Including tree_order_statistics_node_update
+#include <ext/pb_ds/detail/standard_policies.hpp>
 using namespace std;
+using namespace __gnu_pbds;
 #define sim template < class c
 #define int long long
 #define ris return * this
@@ -32,33 +36,40 @@ sim dor(const c&) { ris; }
 #endif
 };
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-#define fastio ios_base::sync_with_stdio(false);cin.tie(0)
+#define fastio ios_base::sync_with_stdio(false);cin.tie(0);
+typedef tree< pair<int,int>, null_type, less<pair<int,int> >, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef long long ll;
 const ll MOD = 1e9 + 7 ;
-const ll N = 1e7 + 1 ;
+const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 void solve(){
     int n , x ;
-    cin >> n >> x ; 
+    cin >> n >> x ;
+    vector<int> v(n) ;
     int even = 0 , odd = 0 ; 
     for(int i = 0; i < n; i++){
-        int x ;
-        cin >> x ;
-        if ( x & 1 ) odd++ ;
+        cin >> v[i] ;
+        if ( v[i] & 1 ) odd++ ;
     }
     even = n - odd ;
-    bool ok = false ;
-    for(int i = 1; i < odd + 1 && i <= x; i++){
-        if ( (i & 1) && (x - i) <= even ) ok = true ;
+    int c = min(even, x - 1) ;
+    if ( (x - c) % 2 == 0 && c > 0 ){
+        c--;
     }
-    if ( ok ){
-        cout << "YES" << endl;
+    bool odding = 0 ; 
+    for(int i = 0; i < n; i++){
+        if ( c < x ){
+            if ( v[i] & 1 ){
+                odding = !odding ;
+                c++;
+            }
+        }
     }
+    if ( c == x && odding ) cout << "YES" << endl;
     else cout << "NO" << endl;
 }
-
 signed main(){
-    fastio;
+    fastio
     int t ;
     cin >> t ;
     while(t--) solve() ;
