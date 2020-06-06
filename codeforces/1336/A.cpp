@@ -95,35 +95,19 @@ signed main(){
     }
     // place them as far as possible when there is a tie put on the lower number of children (subtree size);
     debug() << imie(h) ;
-    dfs(1, -1, 0) ;
+    dfs(1, -1, 1) ;
     subtree(1, -1) ;
     debug() << imie(sub) ;
-    vector<pair<int,int> > v ;
+    vector<int> v ;
     for(int i = 1; i < n + 1; i++){
-        int diff = dist[i] - sub[i]; 
-        v.emplace_back(diff, i) ;
+        int diff = sub[i] - dist[i]; 
+        v.emplace_back(diff) ;
     }
     sort(v.rbegin(), v.rend()) ;
-    for(auto &p : v){
-        if ( k > 0 ){
-            h[p.second] = 0 ;
-            k--;
-        }
+    int ans = 0 ;
+    for(int i = 0; i < n - k; i++){
+        ans += v[i] ;
     }
-    // vector<pair<int,pair<int,int> > > v ;
-    // for(int i = 1; i < n + 1; i++){
-    //     v.emplace_back(-dist[i], make_pair(sub[i], i));
-    // }
-    // sort(v.begin(), v.end()) ;
-    // for(auto &p : v){
-    //     if ( k > 0 ){
-    //         h[p.second.second] = 0 ;
-    //         k--;
-    //     }
-    // }
-    debug() << imie(h) ;
-    dfs2(1, -1) ;
-    recur(1) ;
-    cout << answer << endl;
+    cout << ans << endl;
     return 0; 
 }
