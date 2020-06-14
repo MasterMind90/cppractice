@@ -7126,6 +7126,25 @@
     ],
     "timestamp": "Mar/07/2020 12:31"
   },
+  "CF83767879": {
+    "contest_id": 1348,
+    "language": "GNU C++17",
+    "path": "codeforces\\1348\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Phoenix and Distribution",
+    "problem_url": "https://codeforces.com/contest/1348/problem/C",
+    "submission_id": "CF83767879",
+    "submission_url": "https://codeforces.com/contest/1348/submission/83767879",
+    "tags": [
+      "constructive algorithms",
+      "greedy",
+      "sortings",
+      "strings",
+      "*1600"
+    ],
+    "timestamp": "Jun/14/2020 19:47"
+  },
   "CF83936618": {
     "contest_id": 1367,
     "language": "GNU C++17",
