@@ -43,26 +43,46 @@ const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 void solve(){
-    int n , k ;
-    cin >> n >> k ;
+    int n , k ; 
+    cin >> n >> k ; 
     string s ;
     cin >> s ;
-    string zero(k, '0') ;
-    s = "1" + zero + s + zero + "1" ;
-    int cnt = 0 ;
-    int ans = 0 ;
-    for(int i = 0; i < s.size(); i++){
-        if ( s[i] == '1' ) {
-            if ( cnt ) {
-                cnt -= 2 * k ;
-                cnt = max(cnt, 0LL) ;
-                ans += cnt / (k + 1) ;
-                if ( cnt % (k + 1) != 0 ) ans++;
-                // if ( cnt % (k + 1) == 0 ) ans--;
-            }
-            cnt = 0 ;
+    vector<bool> mark(n) ;
+    int cnt = 0 ; 
+    for(int i = 0; i < n; i++){
+        if ( s[i] == '1' ){
+            mark[i] = true ;
+            cnt = k ; 
         }
-        else cnt++ ;
+        else if ( s[i] == '0' && cnt > 0 ){
+            mark[i] = true ;
+            cnt-- ;
+        }
+    }
+    cnt = 0 ;
+    for(int i = n - 1; i >= 0; i--){
+        if ( s[i] == '1' ){
+            mark[i] = true ;
+            cnt = k ; 
+        }
+        else if ( s[i] == '0' && cnt > 0 ){
+            mark[i] = true ;
+            cnt-- ;
+        }
+    }
+    debug() << imie(mark) ;
+    int ans = 0 ;
+    for(int i = 0; i < n; i++){
+        if ( mark[i] == false ){
+            int j ;
+            for(j = i; j < n; j += (k + 1)){
+                if ( mark[j] == false ){
+                    ans++;
+                }
+                else break ;
+            }
+            i = j ;
+        }
     }
     cout << ans << endl;
 }
