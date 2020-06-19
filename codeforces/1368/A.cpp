@@ -45,13 +45,24 @@ const ll INF = 1e18 + 10 ;
 int a , b , n ;
 void solve(){
     cin >> a >> b >> n ; 
-    int ans = 0 ;
-    while(max(a, b) <= n){
-        if ( a < b ) a += b ;
+    int A = a, B = b ; 
+    int cnt = 0 ; 
+    int ans1 = 0 ;
+    while(a <= n && b <= n){
+        if ( cnt & 1 ) a += b ;
         else b += a ;
-        ans++;
+        cnt++ ;
+        ans1++;
     }
-    cout << ans << endl;
+    cnt = 0 ;
+    int ans2 = 0 ;
+    while(A <= n && B <= n){
+        if ( !(cnt & 1) ) A += B ;
+        else B += A ;
+        cnt++ ;
+        ans2++;
+    }
+    cout << min(ans1, ans2) << endl;
 }
 signed main(){
     fastio
