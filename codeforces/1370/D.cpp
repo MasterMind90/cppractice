@@ -56,21 +56,32 @@ signed main(){
     int ans = -1 ;
     while(L <= R){
         int mid = L + (R - L) / 2;
-        int cnt = 0 ; 
-        for(int cur : {0 , 1}){
-            int len = 0 ;
-            for(int i = 0; i < n; i++){
-                if ( cur == 1 ){
-                    len++;
-                    cur = !cur ;
-                }
-                else if ( cur == 0 && v[i] <= mid ){
-                    len++;
-                    cur = !cur ;
-                }
+        int cur = 0 ;
+        int cnt1 = 0 ;
+        int cnt2 = 0 ;
+        for(int i = 0; i < n; i++){
+            if ( cur == 1 ){
+                cnt1++ ;
+                cur = !cur ;
             }
-            cnt = max(cnt, len) ;
+            else if ( cur == 0 && v[i] <= mid ){
+                cnt1++;
+                cur = !cur ;
+            }
         }
+        cur = 1;
+        for(int i = 0; i < n; i++){
+            if ( cur == 1 ){
+                cnt2++ ;
+                cur = !cur ;
+            }
+            else if ( cur == 0 && v[i] <= mid ){
+                cnt2++;
+                cur = !cur ;
+            }
+        }
+        debug() << imie(mid) imie(cnt1) imie(cnt2);
+        int cnt = max(cnt1, cnt2) ;
         if ( cnt >= k ){
             ans = mid ;
             R = mid - 1;
