@@ -42,47 +42,46 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+int n , k ;
+vector<int> a ;
+vector<bool> vis ;
+vector<int> dp ;
+int start = -1 ;
+int current = -1 ;
+void dfs(int x, int cur){
+    if ( cur == 0 ){
+        cout << x + 1 << endl;
+        exit(0) ;
+    }
+    if ( vis[x] ) {
+        start = x ;
+        current = cur ;
+        return ;
+    }
+    vis[x] = true ;
+    dp[x] = 0 ;
+    dfs(a[x], cur - 1) ;
+    dp[x] = 1 + dp[a[x]] ;
+}
+void dfs2(int x, int cur){
+    if ( cur == 0 ){
+        cout << x + 1 << endl;
+        exit(0) ;
+    }
+    dfs2(a[x], cur - 1) ;
+}
 signed main(){
     fastio
-    int n , k; 
     cin >> n >> k ;
-    vector<int> a(n) ;
-    vector<bool> vis(n) ;
+    a = vector<int>(n) ;
+    dp = vector<int>(n, -1) ;
+    vis = vector<bool>(n) ;
     for(int i = 0; i < n; i++){
         cin >> a[i] ;
         a[i]--;
     }
-    int start = 0 ;
-    vis[start] = true ;
-    while(k >= 0){
-        k--;
-        if ( k == 0 ){
-            cout << a[start] + 1 << endl;
-            return 0 ;
-        }
-        if ( vis[a[start]] ) break ; 
-        vis[a[start]] = true ;
-        start = a[start] ;
-    }
-    int current = a[start] ;
-    vis.clear() ;
-    vis = vector<bool>(n) ;
-    int len = 0 ;
-    while(not vis[a[start]]) {
-        vis[a[start]] = true ;
-        len++;
-        start = a[start] ;
-    }
-    debug() << imie(len) ;
-    k %= len ;
-    while(k >= 0){
-        if ( k == 0 ){
-            cout << current + 1 << endl;
-            return 0 ;
-        }
-        k--;
-        current = a[current] ;
-    }
-    assert(false) ;
-    return 0;
+    dfs(0, k) ;
+    debug() << imie(dp) ;
+    dfs2(start, current % dp[start]);
+    return 0; 
 }
