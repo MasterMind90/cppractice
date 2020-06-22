@@ -42,8 +42,35 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+int n , k ;
+int get(int len, vector<int> cnt){
+    int L = 1, R = 1e5 ;
+    int ans = -1;
+    while(L <= R){
+        int mid = L + (R - L) / 2 ;
+        if ( mid * len > n ){
+            R = mid - 1;
+            continue ;
+        }
+        debug() << imie(mid) imie(len) imie(ans) ;
+        int t = 0 ;
+        for(int &c : cnt){
+            t += c / mid ;
+        }
+        debug() << imie(t)  ;
+        if ( t < len ){
+            R = mid - 1;
+        }
+        else {
+            ans = mid ;
+            L = mid + 1;
+        }
+    }
+    debug() << imie(ans) ;
+    assert(ans != -1) ;
+    return ans * len ;
+}
 void solve(){
-    int n , k ;
     cin >> n >> k ; 
     string s ;
     cin >> s ;
@@ -53,14 +80,9 @@ void solve(){
     }
     int ans = 1;
     for(int i = 0; i < n; i++){
-        int periodLen = __gcd(i + 1, k) ;
-        int periodCount = (i + 1) / periodLen ; 
-        int t = 0 ;
-        for(int &c : cnt){
-            t += c / periodCount ;
-        }
-        if ( t >= periodLen ) {
+        if ( k % (i + 1) == 0 ){
             ans = max(ans, i + 1) ;
+            ans = max(ans, get(i + 1, cnt));
         }
     }
     cout << ans << endl;
