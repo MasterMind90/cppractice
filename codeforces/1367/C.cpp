@@ -56,7 +56,9 @@ void solve(){
             if ( cnt ) {
                 cnt -= 2 * k ;
                 cnt = max(cnt, 0LL) ;
-                ans += (cnt + k) / (k + 1) ;
+                ans += cnt / (k + 1) ;
+                if ( cnt % (k + 1) != 0 ) ans++;
+                // if ( cnt % (k + 1) == 0 ) ans--;
             }
             cnt = 0 ;
         }
