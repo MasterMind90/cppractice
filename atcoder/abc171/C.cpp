@@ -1,7 +1,5 @@
 #ifndef LOCAL
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
 #include <ext/pb_ds/assoc_container.hpp> // Common file
@@ -44,22 +42,23 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+int fix(int x){
+    return (x % 26 + 26) % 26 ; 
+}
 signed main(){
     fastio
-    int n ; 
+    int n ;
     cin >> n ;
-    vector<char> v ; 
+    string ans = "" ;
     while(n != 0){
-    	int r = n % 26 ; 
-    	r-- ; 
-    	r = (r % 26 + 26) % 26 ;
-    	v.push_back(r + 'a') ;
-    	n = (n - 1) / 26 ;
+        ans.push_back(fix(n % 26 - 1) + 'a') ; 
+        if ( n % 26 == 0 ) {
+            n /= 26 ; 
+            n--;
+        }
+        else n /= 26 ; 
     }
-    reverse(v.begin(), v.end()) ;
-    for(char &c : v){
-    	cout << c ;
-    }
-    cout << endl;
+    reverse(ans.begin(), ans.end()) ;
+    cout << ans << endl;
     return 0; 
 }
