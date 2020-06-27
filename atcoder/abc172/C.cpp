@@ -61,9 +61,18 @@ signed main(){
     for(int i = 0; i < n + 1; i++){
         if ( A[i] <= k ){
             int target = k - A[i] ;
-            int index = upper_bound(B.begin(), B.end(), target) - B.begin();
-            index--;
-            answer = max(answer, i + index) ;
+            int L = 0, R = m ;
+            int ans = -1 ;
+            while(L <= R){
+                int mid = L + (R - L) / 2 ;
+                if ( B[mid] <= target ){
+                    ans = mid ;
+                    L = mid + 1;
+                }
+                else R = mid - 1;
+            }
+            assert(ans != -1) ;
+            answer = max(answer, i + ans) ;
         }
     }
     cout << answer << endl;
