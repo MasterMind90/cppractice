@@ -43,20 +43,80 @@ const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 void solve(){
-    int a , b , n , m ; 
-    cin >> a >> b >> n >> m ; 
-    if ( a + b >= n + m && min(a, b) >= m){
-        cout << "Yes" << endl ;
+    int a , b , n , m ;
+    cin >> a >> b >> n >> m ;
+    int v = a ;
+    int c = b ; 
+    int first = n , second = m ;
+    if ( v + c < n + m ) {
+        cout << "No" << endl;
         return ;
     }
-    cout << "No" << endl; 
+    bool ok = false ;
+    if ( v > c ) {
+        int diff = v - c ;
+        int nix = min(first, diff) ;
+        first -= nix ;
+        v -= nix ;
+        if ( first > 0 ) {
+            int firstHalf = first / 2 ;
+            int secondHalf = (first + 1) / 2;
+            v -= firstHalf ;
+            c -= secondHalf ;
+        }
+        if ( v > c && c >= second ) {
+            cout << "Yes" << endl;
+            return ;
+        }
+        else if ( v <= c && v >= second ) {
+            cout << "Yes" << endl; 
+            return ;
+        }
+    }
+    else{ // 5 10 6 7 
+        // 10 6
+        // 9 5
+        // 8 4
+        // 7 3
+        // 6 2
+        // 5 1
+        // 4 0
+        int diff = c - v ;
+        int nix = min(first, diff) ;
+        first -= nix ;
+        c -= nix ;
+        if ( first > 0 ) {
+            int firstHalf = first / 2 ;
+            int secondHalf = (first + 1) / 2;
+            v -= firstHalf ;
+            c -= secondHalf ;
+        }
+        if ( v > c && c >= second ) {
+            cout << "Yes" << endl;
+            return ; 
+        }
+        else if ( v <= c && v >= second ) {
+            cout << "Yes" << endl;
+            return ; 
+        }
+    }
+    v = a , c = b ; 
+    if ( v > c && c < second ) {
+        cout << "No" << endl;
+        return ;
+    }
+    if ( v <= c && v < second ){
+        cout << "No" << endl;
+        return ;
+    }
+    cout << "Yes" << endl;
 }
 signed main(){
     fastio
     int t ;
     cin >> t ;
     while(t--){
-        solve() ; 
+        solve() ;
     }
     return 0; 
 }
