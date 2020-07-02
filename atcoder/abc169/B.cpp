@@ -1,7 +1,5 @@
 #ifndef LOCAL
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
 #include <ext/pb_ds/assoc_container.hpp> // Common file
@@ -44,29 +42,29 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-signed main () {
+signed main(){
+    fastio
     int n ; 
     cin >> n ; 
-    int limit = (int)1e18 ;
-    int ans = 1 ; 
-    vector<int> v(n) ;
-    bool zero = false ;
+    vector<int> v(n) ; 
+    bool ok = false ;
     for(int i = 0; i < n; i++){
-        cin >> v[i] ;
-        if ( v[i] == 0 ) zero = true ;
+    	cin >> v[i] ;
+    	if ( v[i] == 0 ) {
+    		ok = true ;
+    	}
     }
-    if ( zero ) {
-        cout << 0 << endl;
-        return 0 ;
+    if ( ok ) {
+    	cout << 0 << endl ;
+    	return 0 ; 
     }
+    int ans = 1 ;
+    int limit = 1e18 ; 
     for(int i = 0; i < n; i++){
-        int x = v[i] ;
-        if ( ans  > limit / x ) {
-            cout << -1 << endl;
-            return 0 ;
-        }
-        ans *= x ;
+    	int &x = v[i] ;
+    	if ( ans > limit / x ) return cout << -1 << endl, 0 ; 
+    	ans *= x ; 
     }
     cout << ans << endl;
-    return 0 ;
+    return 0; 
 }
