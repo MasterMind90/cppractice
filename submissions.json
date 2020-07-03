@@ -1,4 +1,20 @@
 {
+  "AC14925885": {
+    "contest_id": "abc171",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc171\\E.cpp",
+    "platform": "AtCoder",
+    "problem_index": "E",
+    "problem_name": "Red Scarf",
+    "problem_url": "https://atcoder.jp/contests/abc171/tasks/abc171_e",
+    "submission_id": "AC14925885",
+    "submission_url": "https://atcoder.jp/contests/abc171/submissions/14925885",
+    "tags": [
+      "AtCoder",
+      "*500"
+    ],
+    "timestamp": "Jul/03/2020 18:08"
+  },
   "AC14936514": {
     "contest_id": "arc067",
     "language": "C++ (GCC 9.2.1)",
