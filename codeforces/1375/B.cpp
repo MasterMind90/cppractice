@@ -51,36 +51,46 @@ void solve(){
             cin >> v[i][j] ; 
         }
     }
-    set<pair<int,int> > s = {{0, 0} , {0, m - 1} , {n - 1, 0} , {n - 1, m - 1} } ;
+    if ( v[0][0] > 2 || v[0][m - 1] > 2 || v[n - 1][0] > 2 || v[n - 1][m - 1] > 2 ) {
+        cout << "NO" << endl ;
+        return ;
+    }
+    vector<vector<int> > ans(n, vector<int>(m)) ;
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
-            if ( s.count(make_pair(i, j))){
-                if ( v[i][j] > 2 ) {
-                    cout << "NO" << endl ;
-                    return ; 
-                }
-                v[i][j] = 2 ;
+            if ( j == 0 && i > 0 && i < n - 1 && v[i][j] > 3 ) {
+                cout << "NO" << endl ;
+                return ;
             }
-            else if ( i == 0 || i == n - 1 || j == 0 || j == m - 1 ){
-                if ( v[i][j] > 3 ) {
-                    cout << "NO" << endl ;
-                    return ; 
-                }
-                v[i][j] = 3 ;
+            if ( j == m - 1 && i > 0 && i < n - 1 && v[i][j] > 3 ) {
+                cout << "NO" << endl ;
+                return ;
             }
-            else {
-                if ( v[i][j] > 4 ) {
-                    cout << "NO" << endl ;
-                    return ; 
-                }
-                v[i][j] = 4; 
+            if ( i == 0 && j > 0 && j < m - 1 && v[i][j] > 3 ) {
+                cout << "NO" << endl ;
+                return ;
             }
+            if ( i == n - 1 && j > 0 && j < m - 1 && v[i][j] > 3 ) {
+                cout << "NO" << endl ;
+                return ;
+            }
+            ans[i][j] = 3 ;
+        }
+    }
+    ans[0][0] = ans[0][m - 1] = ans[n - 1][0] = ans[n - 1][m - 1] = 2 ;
+    for(int i = 1; i < n - 1; i++){
+        for(int j = 1; j < m - 1; j++){
+            if ( v[i][j] > 4 ) {
+                cout << "NO" << endl ;
+                return ;
+            }
+            ans[i][j] = 4 ;
         }
     }
     cout << "YES" << endl ;
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
-            cout << v[i][j] << ' ' ; 
+            cout << ans[i][j] << ' ' ;
         }
         cout << endl ;
     }
