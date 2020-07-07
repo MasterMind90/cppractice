@@ -48,10 +48,14 @@ signed main(){
     cin >> a >> b ;
     while(a != 0 && b != 0){
         if ( a >= 2 * b ){
-            a %= 2 * b ;
+            int cnt = a / b ;
+            cnt /= 2 ;
+            a -= cnt * 2 * b ; 
         }
         else if ( b >= 2 * a ){
-            b %= 2 * a ;
+            int cnt = b / a ;
+            cnt /= 2 ;
+            b -= cnt * 2 * a ; 
         }
         else break ; 
     }
