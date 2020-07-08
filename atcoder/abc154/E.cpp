@@ -45,32 +45,44 @@ const ll INF = 1e18 + 10 ;
 string s ;
 int k ; 
 int n ; 
-int dp[101][4][2] ;
+int dp[101][101][3] ;
 int dfs(int x, int cur, int flag){
     if ( x == n ){
-        if ( cur == k ) return 1 ;
-        return 0 ; 
+        if ( cur == k ) return 1;
+        return 0 ;
     }
     if ( dp[x][cur][flag] != -1 ) return dp[x][cur][flag] ;
-    int ans = 0 ; 
+    int ans = 0 ;
     int digit = s[x] - '0' ;
-    if ( not flag ) {
-        for(int i = 0; i < digit; i++){
-            if ( i > 0 && cur < k ) ans += dfs(x + 1, cur + 1, 1) ;
-            else if ( i == 0 ) ans += dfs(x + 1, cur, 1) ;
+    if ( !flag ){
+        for(int i = 0; i <= digit; i++){
+            if ( i == digit ){
+                if ( i == 0 ){
+                    ans += dfs(x + 1, cur, 0) ;
+                }
+                else{
+                    ans += dfs(x + 1, cur + 1, 0) ;
+                }
+            }
+            else{
+                if ( i == 0 ){
+                    ans += dfs(x + 1, cur, 1) ;
+                }
+                else{
+                    ans += dfs(x + 1, cur + 1, 1) ;
+                }
+            }
         }
-        if ( digit != 0 && cur < k ) {
-            ans += dfs(x + 1, cur + 1, 0) ;
-        }
-        else if ( digit == 0 ) ans += dfs(x + 1, cur, 0) ;
     }
     else{
-        ans += dfs(x + 1, cur, 1) ;
-        for(int i = 1; i < 10; i++){
-            if ( cur < k ) ans += dfs(x + 1, cur + 1, 1) ;
+        for(int i = 0; i <= 9; i++){
+            if ( i == 0 ) {
+                ans += dfs(x + 1, cur, flag) ;
+            }
+            else ans += dfs(x + 1, cur + 1, flag) ;
         }
     }
-    return dp[x][cur][flag] = ans ;
+    return dp[x][cur][flag] = ans ; 
 }
 signed main(){
     fastio
