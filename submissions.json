@@ -7126,6 +7126,24 @@
     ],
     "timestamp": "Mar/07/2020 12:31"
   },
+  "CF86453042": {
+    "contest_id": 929,
+    "language": "GNU C++17",
+    "path": "codeforces\\929\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "\u041f\u0440\u043e\u043a\u0430\u0442 \u0432\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u043e\u0432",
+    "problem_url": "https://codeforces.com/contest/929/problem/A",
+    "submission_id": "CF86453042",
+    "submission_url": "https://codeforces.com/contest/929/submission/86453042",
+    "tags": [
+      "*special problem",
+      "greedy",
+      "implementation",
+      "*1400"
+    ],
+    "timestamp": "Jul/10/2020 21:26"
+  },
   "CF86524510": {
     "contest_id": 1372,
     "language": "GNU C++17",
