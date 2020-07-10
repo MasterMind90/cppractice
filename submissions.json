@@ -7126,6 +7126,22 @@
     ],
     "timestamp": "Mar/07/2020 12:31"
   },
+  "CF86424680": {
+    "contest_id": 370,
+    "language": "GNU C++17",
+    "path": "codeforces\\370\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Berland Bingo",
+    "problem_url": "https://codeforces.com/contest/370/problem/B",
+    "submission_id": "CF86424680",
+    "submission_url": "https://codeforces.com/contest/370/submission/86424680",
+    "tags": [
+      "implementation",
+      "*1300"
+    ],
+    "timestamp": "Jul/10/2020 15:04"
+  },
   "CF86425635": {
     "contest_id": 682,
     "language": "GNU C++17",
