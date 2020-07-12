@@ -1,4 +1,20 @@
 {
+  "AC15213392": {
+    "contest_id": "aising2020",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\aising2020\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "Anything Goes to Zero",
+    "problem_url": "https://atcoder.jp/contests/aising2020/tasks/aising2020_d",
+    "submission_id": "AC15213392",
+    "submission_url": "https://atcoder.jp/contests/aising2020/submissions/15213392",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Jul/13/2020 00:22"
+  },
   "AC15230792": {
     "contest_id": "abc142",
     "language": "C++ (GCC 9.2.1)",
