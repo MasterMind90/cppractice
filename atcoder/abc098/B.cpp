@@ -1,7 +1,5 @@
 #ifndef LOCAL
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
 #include <ext/pb_ds/assoc_container.hpp> // Common file
@@ -44,26 +42,26 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-#define int long long
 signed main(){
     fastio
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
-    int ans = 0;
-    for(int i = 0; i < n; i++) { 
-        int cnt = 0;
-        vector<bool> v(26);
-        for(int j = i + 1; j < n; j++) {
-            for(int k = 0; k <= i; k++) {
-                if(s[j] == s[k] && !v[s[j] - 'a']) {
-                    cnt++;
-                    v[s[j] - 'a'] = true;
-               }
+    int n ;
+    cin >> n ;
+    string s ;
+    cin >> s ;
+    vector<vector<int> > p(26) ;
+    for(int i = 0; i < n; i++){
+        p[s[i] - 'a'].emplace_back(i) ;
+    }
+    int ans = 0 ;
+    for(int cut = 0; cut < n; cut++){
+        int cnt = 0 ;
+        for(int i = 0; i < 26; i++){
+            vector<int> &v = p[i];
+            if ( (int)v.size() >= 2 ){
+                if ( v[0] <= cut && v.back() > cut ) cnt++ ;
             }
         }
-        ans = max(ans , cnt);
+        ans = max(ans, cnt) ;
     }
     cout << ans << endl;
     return 0; 
