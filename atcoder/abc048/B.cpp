@@ -1,7 +1,5 @@
 #ifndef LOCAL
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
 #include <ext/pb_ds/assoc_container.hpp> // Common file
@@ -48,9 +46,11 @@ signed main(){
     fastio
     int a , b , x ;
     cin >> a >> b >> x ;
-    if ( a == 0 ) {
-    	cout << b / x + 1 << endl;
+    int ans = 0 ;
+    if ( a == 0 ){
+        ans = b / x + 1 ;
     }
-    else cout << b / x - (a - 1) / x << endl;
+    else ans = b / x - (a - 1) / x ; 
+    cout << ans << endl;
     return 0; 
 }
