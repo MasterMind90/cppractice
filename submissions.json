@@ -1,4 +1,20 @@
 {
+  "AC15253878": {
+    "contest_id": "abc097",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc097\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "Equals",
+    "problem_url": "https://atcoder.jp/contests/abc097/tasks/arc097_b",
+    "submission_id": "AC15253878",
+    "submission_url": "https://atcoder.jp/contests/abc097/submissions/15253878",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Jul/15/2020 10:32"
+  },
   "AC15258856": {
     "contest_id": "abc071",
     "language": "C++ (GCC 9.2.1)",
