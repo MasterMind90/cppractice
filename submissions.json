@@ -1,4 +1,20 @@
 {
+  "AC15262232": {
+    "contest_id": "abc073",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc073\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": "joisino's travel",
+    "problem_url": "https://atcoder.jp/contests/abc073/tasks/abc073_d",
+    "submission_id": "AC15262232",
+    "submission_url": "https://atcoder.jp/contests/abc073/submissions/15262232",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Jul/15/2020 18:26"
+  },
   "AC15275760": {
     "contest_id": "abc154",
     "language": "C++ (GCC 9.2.1)",
