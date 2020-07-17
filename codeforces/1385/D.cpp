@@ -43,33 +43,49 @@ const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 int n ;
+vector<string> v ;
 string s ;
-int dfs(int l, int r, int letter){
-    if ( l == r ){
-        return (letter + 'a') == s[l] ;
-    }
-    int mid = (l + r) / 2 ;
-    int cnt1 = 0 ;
-    for(int i = l; i <= mid; i++){
-        if ( s[i] == (letter + 'a') ) cnt1++ ;
-    }
-    int choice1 = cnt1 + dfs(mid + 1, r, letter + 1) ;
-    int cnt2 = 0 ;
-    for(int i = mid + 1; i <= r; i++){
-        if ( s[i] == (letter + 'a') ) cnt2++ ;
-    }
-    int choice2 = cnt2 + dfs(l, mid, letter + 1) ;
-    return max(choice1, choice2) ;
-}
 void solve(){
+    v.clear() ;
     cin >> n ;
     cin >> s ;
-    int ans = dfs(0, n - 1, 0) ;
+    vector<int> pos[26] ;
+    for(int i = 0; i < n; i++){
+        pos[s[i] - 'a'].emplace_back(i) ;
+    }
+    char c = 'a' ;
+    int x = n ;
+    while(x != 0){
+        v.push_back(string( (x + 1) / 2, c));
+        x /= 2 ;
+        c++ ;
+    }
+    int m = (int)v.size() ;
+    int ans = 0 ;
+    for(int mask = 0; mask < (1LL << m); mask++){
+        int L = 0, R = n ;
+        int cnt = 0 ;
+        for(int i = 0; i < m; i++){
+            vector<int> &t = pos[i] ;
+            int mid = (L + R) / 2 ;
+            if ( (1LL << i) & mask ) {
+                cnt += upper_bound(t.begin(), t.end(), mid - 1) - lower_bound(t.begin(), t.end(), L) ;
+                L = mid ;
+            }
+            else{
+                cnt += upper_bound(t.begin(), t.end(), R - 1) - lower_bound(t.begin(), t.end(), mid) ;
+                R = mid ;
+            }
+            // debug() << imie(L) imie(R) imie(cnt) ;
+        }
+        ans = max(ans, cnt) ;
+    }
+    debug() << imie(ans) ;
     cout << n - ans << endl;
 }
 signed main(){
     fastio
-    int t ; 
+    int t ;
     cin >> t ;
     while(t--) solve() ;
     return 0; 
