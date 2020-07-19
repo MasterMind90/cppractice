@@ -56,6 +56,6 @@ signed main(){
     };
     int x = get(n) ;
     debug() << imie(x) ;
-    cout << max({n / a , x, x + (n - (t * x)) / a }) << endl;
+    cout << max({n / a + get(n % a), x, x + (n - (t * x)) / a }) << endl;
     return 0; 
 }
