@@ -1,7 +1,5 @@
 #ifndef LOCAL
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
 #include <ext/pb_ds/assoc_container.hpp> // Common file
@@ -46,34 +44,28 @@ const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 signed main(){
     fastio
-    int n , m ; 
-    cin >> n >> m ; 
-    vector<vector<char> > g(n + 2, vector<char>(m + 2)) ;
-    vector<vector<int> > ans(n + 2, vector<int>(m + 2)) ;
-    for(int i = 1; i <= n; i++){
-    	for(int j = 1; j <= m; j++){
-    		cin >> g[i][j] ;
-    	}
+    int X[] = {-1, -1, -1, 0, 0, 1, 1, 1} ;
+    int Y[] = { 0, -1,  1,-1, 1, 0, -1, 1} ;
+    int n , m ;
+    cin >> n >> m ;
+    vector<vector<char> > v(n + 2, vector<char>(m + 2));
+    for(int i = 1; i < n + 1; i++){
+        for(int j = 1; j < m + 1; j++){
+            cin >> v[i][j] ;
+        }
     }
-    vector<int> X = {0, 0, 1, 1, 1, -1, -1, -1} ; 
-    vector<int> Y = {1,-1, 0,-1, 1, 0,   1, -1 } ; 
-    for(int i = 1; i <= n; i++){
-    	for(int j = 1; j <= m; j++){
-    		if ( g[i][j] == '.' ) {
-    			int cnt = 0 ; 
-    			for(int k = 0; k < 8; k++){
-    				if ( g[i + X[k]][j + Y[k]] == '#' ) cnt++ ; 
-	    		}	
-	    		ans[i][j] = cnt ; 
-    		}
-    		
-    	}
+    for(int i = 1; i < n + 1; i++){
+        for(int j = 1; j < m + 1; j++){
+            if ( v[i][j] == '.' ) {
+                int cnt = 0 ;
+                for(int k = 0; k < 8; k++){
+                    if ( v[i + X[k]][j + Y[k]] == '#' ) cnt++ ;
+                }
+                cout << cnt ;
+            }
+            else cout << '#' ;
+        }
+        cout << endl;
     }
-    for(int i = 1; i <= n; i++){
-    	for(int j = 1; j <= m; j++){
-    		if ( g[i][j] == '.' ) cout << ans[i][j] ;
-    		else cout << g[i][j] ;
-    	}
-    	cout << endl;
-    }
+    return 0; 
 }
