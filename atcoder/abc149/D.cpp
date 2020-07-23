@@ -42,56 +42,61 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int m ;
-int R , P , S ; 
-string s ;
-vector<int> cost(4) ;
-vector<vector<int> > dp ;
-int n , k ;
-int dfs(int x, int cur){
-    if ( x == m ) {
-        return 0 ;
-    }
-    if ( dp[x][cur] != -1 ) return dp[x][cur];
-    int ans = 0 ; 
-    for(int c : {1, 2, 3}){
-        if ( c != cur ) {
-            if ( s[x] == 'r' ){
-                if ( c == 3 ) ans = max(ans, cost[c] + dfs(x + 1, c)) ;
-                else ans = max(ans, dfs(x + 1, c));
-            }
-            else if ( s[x] == 's' ){
-                if ( c == 1 ) ans = max(ans, cost[c] + dfs(x + 1, c)) ;
-                else ans = max(ans, dfs(x + 1, c));
-            }
-            else if ( s[x] == 'p' ) {
-                if ( c == 2 ) ans = max(ans, cost[c] + dfs(x + 1, c)) ;
-                else ans = max(ans, dfs(x + 1, c));
-            }
-        }
-    }
-    return dp[x][cur] = ans ;
-}
-int solve(){
-    m = (int) s.size() ;
-    dp = vector<vector<int> >(m, vector<int>(4, -1));
-    return dfs(0, 0) ;
-}
 signed main(){
     fastio
+    int n , k ;
     cin >> n >> k ;
+    int R , P , S ; 
     cin >> R >> S >> P ;
-    cost[1] = R , cost[2] = S , cost[3] = P  ;
     string t;
     cin >> t ;
-    int ans = 0;
+    string first = "" ;
+    int ans = 0 ;
     for(int i = 0; i < k; i++){
-        s = "" ;
-        for(int j = i; j < n; j += k){
-            s.push_back(t[j]) ;
+        if ( t[i] == 'r' ) {
+            first.push_back('p');
+            ans += P ;
         }
-        ans += solve() ;
+        else if ( t[i] == 's' ) {
+            first.push_back('r') ;
+            ans += R ;
+        }
+        else if ( t[i] == 'p' ){
+            first.push_back('s') ;
+            ans += S ;
+        }
     }
-    cout << ans << endl;
+    debug() << imie(ans) ;
+    for(int i = k; i < n; i++){
+        if ( t[i] == 'r' ) {
+            if ( first[i - k] != 'p' ) {
+                first.push_back('p');
+                ans += P ;
+            }
+            else{
+                first.push_back('?');
+            }
+        }
+        else if ( t[i] == 's' ) {
+            if ( first[i - k] != 'r' ) {
+                first.push_back('r');
+                ans += R ;
+            }
+            else{
+                first.push_back('?');
+            }
+        }
+        else if ( t[i] == 'p' ){
+            if ( first[i - k] != 's' ) {
+                first.push_back('s');
+                ans += S ;
+            }
+            else{
+                first.push_back('?');
+            }
+        }
+    }
+    debug() << imie(first) ;
+    cout << ans << endl ;
     return 0; 
 }
