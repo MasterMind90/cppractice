@@ -1,4 +1,20 @@
 {
+  "AC15495351": {
+    "contest_id": "abc168",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc168\\D.cpp",
+    "platform": "AtCoder",
+    "problem_index": "D",
+    "problem_name": ".. (Double Dots)",
+    "problem_url": "https://atcoder.jp/contests/abc168/tasks/abc168_d",
+    "submission_id": "AC15495351",
+    "submission_url": "https://atcoder.jp/contests/abc168/submissions/15495351",
+    "tags": [
+      "AtCoder",
+      "*400"
+    ],
+    "timestamp": "Jul/27/2020 23:36"
+  },
   "AC15511310": {
     "contest_id": "abc148",
     "language": "C++ (GCC 9.2.1)",
