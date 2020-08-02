@@ -40,44 +40,31 @@ sim dor(const c&) { ris; }
 typedef tree< pair<int,int>, null_type, less<pair<int,int> >, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef long long ll;
 const ll MOD = 1e9 + 7 ;
-const ll N = 1e5 + 10 ;
+const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int n , k , z ;
-vector<int> v ;
-int dp[N][7][2] ;
-int dfs(int x, int cur, int flag){
-    if ( 2 * cur + x == k ){
-        return 0 ;
-    }
-    if ( dp[x][cur][flag] != -1 ) return dp[x][cur][flag] ;
-    int choice1 = 0 ;
-    int choice2 = 0 ;
-    if ( x == 0 ) {
-        choice1 = v[x] + dfs(x + 1, cur, 0) ;
-    }
-    else{
-        choice1 = v[x] + dfs(x + 1, cur, 0) ;
-        if ( cur < z && flag == 0 ){
-            choice2 = v[x] + dfs(x - 1, cur + 1, 1) ;
-        }
-    }
-    return dp[x][cur][flag] = max(choice1, choice2) ;
-}
 void solve(){
+    int n , k , z ;
     cin >> n >> k >> z ;
-    k++;
-    for(int i = 0; i <= n; i++){
-        for(int j = 0; j <= k; j++){
-            for(int c = 0; c <= z; c++){
-                dp[i][j][c] = -1 ;
-            }
-        }
-    }
-    v = vector<int>(n) ;
+    vector<int> v(n) ;
     for(int i = 0; i < n; i++){
         cin >> v[i] ;
     }
-    int ans = dfs(0, 0, 0) ;
+    int sum = v[0] ;
+    int ans = 0 ;
+    int pair = 0 ; 
+    int nax = v[0] ;
+    for(int i = 1; i < k + 1; i++){
+        sum += v[i] ;
+        ans = max(ans, sum) ;
+        nax = max(nax, v[i]) ;
+        pair = max(pair, v[i] + v[i - 1]) ; 
+        int rem = k - i; 
+        if ( rem / 2 > z || rem == 0 || z == 0 ) continue ;
+        debug() << imie(rem) ;
+        debug() << imie(pair) ;
+        if ( rem & 1 && z - min(rem / 2, z) > 0 ) ans = max(ans, sum + min(rem / 2, z) * pair + v[i - 1]) ;
+        else ans = max(ans, sum + min(rem / 2, z) * pair) ;
+    }
     cout << ans << endl;
 }
 signed main(){
