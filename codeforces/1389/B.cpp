@@ -68,7 +68,7 @@ void solve(){
     k++;
     for(int i = 0; i <= n; i++){
         for(int j = 0; j <= k; j++){
-            for(int c = 0; c < 2; c++){
+            for(int c = 0; c <= z; c++){
                 dp[i][j][c] = -1 ;
             }
         }
