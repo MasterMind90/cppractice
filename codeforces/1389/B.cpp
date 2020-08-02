@@ -60,9 +60,8 @@ void solve(){
         pair = max(pair, v[i] + v[i - 1]) ; 
         int rem = k - i; 
         if ( rem / 2 > z || rem == 0 || z == 0 ) continue ;
-        debug() << imie(rem) ;
-        debug() << imie(pair) ;
-        if ( rem & 1 && z - min(rem / 2, z) > 0 ) ans = max(ans, sum + min(rem / 2, z) * pair + v[i - 1]) ;
+        int rr = z - min(rem / 2, z) ;
+        if ( rr && (rem & 1) ) ans = max(ans, sum + min(rem / 2, z) * pair + v[i - 1]) ;
         else ans = max(ans, sum + min(rem / 2, z) * pair) ;
     }
     cout << ans << endl;
