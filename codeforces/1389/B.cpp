@@ -67,7 +67,7 @@ void solve(){
     cin >> n >> k >> z ;
     k++;
     for(int i = 0; i <= n; i++){
-        for(int j = 0; j <= z; j++){
+        for(int j = 0; j <= k; j++){
             for(int c = 0; c < 2; c++){
                 dp[i][j][c] = -1 ;
             }
