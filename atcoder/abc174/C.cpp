@@ -1,7 +1,5 @@
 #ifndef LOCAL
-#pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
-#pragma GCC optimization ("unroll-loops")
+#pragma GCC optimize("O3")
 #endif
 #include "bits/stdc++.h"
 #include <ext/pb_ds/assoc_container.hpp> // Common file
@@ -46,17 +44,22 @@ const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 signed main(){
     fastio
-    int k ;
-    cin >> k ;
-    int ans = 0 ;
-    for(int i = 1; i <= (int)2e6; i++){
-    	ans *= 10 ;
-    	ans += 7 ;
-    	if ( ans % k == 0 ) {
-    		cout << i << endl;
-    		return 0 ;
-    	}
-    	ans %= k ;
+    int n ;
+    cin >> n ;
+    if ( (n & 1) == 0 ) {
+        cout << -1 << endl;
+        return 0 ;
+    }
+    int cur = 0 ;
+    for(int i = 1; i < (int)1e7; i++){
+        cur = cur * 10 ;
+        cur %= n ;
+        cur += 7 ; 
+        cur %= n ;
+        if ( cur == 0 ) {
+            cout << i << endl;
+            return 0 ;
+        }
     }
     cout << -1 << endl;
     return 0; 
