@@ -47,25 +47,25 @@ signed main(){
     int n , k ;
     cin >> n >> k ; 
     vector<int> v(n) ;
+    int ans = 0 ; 
     for(int i = 0; i < n; i++){
         cin >> v[i] ;
+        ans = max(ans, v[i]) ;
     }
-    int L = 1, R = 2e9 ;
-    int ans = -1 ;
-    while(L <= R){
-        int mid = L + (R - L) / 2;
-        int cuts = 0 ;
+    double L = 1, R = 1e9 ; 
+    for(int rep = 0; rep < 300; rep++){
+        double mid = (L + R) / 2.0;
+        int cnt = 0 ;
         for(int i = 0; i < n; i++){
-            int c = (v[i] + mid - 1) / mid ;
-            cuts += c - 1 ;
+            double c = ceil(v[i] / mid) ;
+            cnt += c - 1 ;
         }
-        if ( cuts <= k ){
-            ans = mid ;
-            R = mid - 1;
+        if ( cnt <= k ) {
+            ans = min(ans, (int)ceil(mid)) ;
+            R = mid ;
         }
-        else L = mid + 1;
+        else L = mid ;
     }
-    assert(ans != -1) ;
     cout << ans << endl;
     return 0; 
 }
