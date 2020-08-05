@@ -57,17 +57,8 @@ struct Q{
 //     }
 //     return x.R < y.R ;
 // }
-// bool compare(Q &x , Q &y){
-//     return make_pair(x.L / block, x.R) < make_pair(y.L / block, y.R) ;
-// }
 bool compare(Q &x , Q &y){
-    if ( x.L / block != y.L / block ) {
-        return x.L / block < y.L / block ;
-    }
-    if ( (x.L / block) & 1 ){
-        return x.R < y.R ;
-    }
-    return x.R > y.R ;
+    return make_pair(x.L / block, x.R) < make_pair(y.L / block, y.R) ;
 }
 signed main(){
     fastio
