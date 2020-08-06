@@ -73,22 +73,30 @@ signed main(){
     fastio
     int n , t ;
     cin >> n >> t ;
+    // scanf("%d%d", &n, &t) ;
     block = (int)sqrt(n + 0.0) + 1 ;
-    vector<int> v(n) ;
-    // int v[n] ;
+    // vector<int> v(n) ;
+    int v[n] ;
     for(int i = 0; i < n; i++){
         cin >> v[i] ;
+        // scanf("%d", &v[i]) ;
     }
-    vector<Q> q(t) ;
-    // Q q[t] ;
+    debug() << imie(range(v, v + n)) ;
+    // vector<Q> q(t) ;
+    Q q[t] ;
     for(int i = 0; i < t; i++){
         cin >> q[i].L >> q[i].R ;
+        // scanf("%d%d", &q[i].L, &q[i].R) ;
         q[i].L-- , q[i].R--; 
         q[i].idx = i ;
     }
-    sort(q.begin(), q.end(), compare) ;
-    vector<int> mp(N) ;
-    // int mp[N] = {0} ;
+    sort(q, q + t, compare) ;
+    // for(Q &c : q){
+    //     debug() << imie(c.L) imie(c.R) ;
+    // }
+    // map<int,int> mp ;
+    // vector<int> mp(N) ;
+    int mp[N] = {0} ;
     // memset(mp, 0, sizeof mp); 
     mp[v[0]]++;
     int answer = 1;
@@ -124,10 +132,13 @@ signed main(){
             }
             curR-- ;
         }
+        // debug() << imie(mp) ;
+        // debug() << imie(L + 1) imie(R + 1) imie(get()) ;
         ans[idx] = answer ;
     }
     for(int &c : ans){
         cout << c << endl;
+        // printf("%d\n", c) ;
     }
     return 0; 
 }
