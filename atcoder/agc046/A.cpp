@@ -42,13 +42,16 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int lcm(int x, int y){
-    return x / __gcd(x , y) * y ;
-}
 signed main(){
     fastio
     int x ;
     cin >> x ;
-    cout << lcm(x, 360) / x << endl;
+    for(int i = 1; ; i++){
+        if ( i * x % 360 == 0 ) {
+            cout << i << endl;
+            return false ;
+        }
+    }
+    assert(false) ;
     return 0; 
 }
