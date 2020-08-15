@@ -49,20 +49,17 @@ signed main(){
     int x , k , d ;
     cin >> x >> k >> d ;
     x = abs(x) ;
-    if ( x == 0 ) {
-    	if ( k & 1 ) {
-    		cout << d << endl;
-    	}
-    	else cout << 0 << endl;
-    	return 0; 
+    int c = (x + d - 1) / d ;
+    int ans = 0 ;
+    if ( c <= k ) {
+        int cur = x - c * d ;
+        k -= c ;
+        if ( k & 1 ) cur += d ;
+        ans = cur ;
     }
-    // 7 4 3
-    int c = min(k, x / d) ;
-    k -= c ;
-	x -= c * d ;
-	if ( k & 1 ) {
-		cout << abs(x - d) << endl;
-	}
-	else cout << x << endl;
+    else {
+        ans = x - k * d ;
+    }
+    cout << abs(ans) << endl;
     return 0; 
 }
