@@ -44,38 +44,59 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+int n ;
+int fix(int x){
+    return ( x % n + n ) % n ;
+}
 void solve(){
-    int n ;
     cin >> n ;
     string s ;
     cin >> s ;
-    vector<int> group ;
-    for(int i = 0; i < n; i++){
-        char &c = s[i] ;
-        int j = i ; 
-        int cnt = 0 ;
-        while(j < n && s[j] == c ){
-            cnt++;
-            j++ ;
-        }
-        i = j - 1; 
-        group.emplace_back(cnt) ;
+    set<char> se ;
+    for(char &c : s) se.insert(c) ;
+    // RLLRRLL
+    if ( se.size() == 1 ){
+        cout << (n + 2) / 3 << endl;
+        return;
     }
-    int m = (int) group.size() ;
+    vector<bool> vis(n) ;
     int ans = 0 ;
-    if ( m == 1 ){
-        ans = (group[0] + 2) / 3 ;
-    }
-    else if ( s[0] == s[n - 1] ) {
-        ans += (group[0] + group[m - 1]) / 3 ;
-        for(int i = 1; i < m - 1; i++){
-            ans += group[i] / 3 ;
+    bool first = true  ;
+    int counter = 0 ;
+    for(int i = 1; i < n; ){
+        if ( s[i] == s[i - 1] && first ){
+            i++;
+            continue ;
         }
-    }
-    else{
-        for(int i = 0; i < m; i++){
-            ans += group[i] / 3 ;
+        first = false ;
+        debug() << imie(i) imie(vis[i]) ;
+        if ( s[i] == 'L' && not vis[i] ){
+            debug() << imie(i) ;
+            int cnt = 0 ;
+            while(not vis[i] && s[i] == 'L' ){
+                vis[i] = true ;
+                counter++ ;
+                i++;
+                i = fix(i) ;
+                debug() << imie(i) ;
+                cnt++ ;
+            }
+            debug() << imie(cnt) ;
+            ans += cnt / 3 ;
         }
+        if ( s[i] == 'R' && not vis[i] ){
+            int cnt = 0 ;
+            while(not vis[i] && s[i] == 'R' ){
+                vis[i] = true ;
+                counter++ ;
+                i++;
+                i = fix(i) ;
+                cnt++ ;
+            }
+            debug() << imie(cnt) ;
+            ans += cnt / 3 ;
+        }
+        if ( counter == n ) break ;
     }
     cout << ans << endl;
 }
