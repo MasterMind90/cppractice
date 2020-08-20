@@ -1,4 +1,20 @@
 {
+  "AC16066869": {
+    "contest_id": "aising2019",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\aising2019\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Alternating Path",
+    "problem_url": "https://atcoder.jp/contests/aising2019/tasks/aising2019_c",
+    "submission_id": "AC16066869",
+    "submission_url": "https://atcoder.jp/contests/aising2019/submissions/16066869",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Aug/21/2020 00:05"
+  },
   "AC16196424": {
     "contest_id": "abc176",
     "language": "C++ (GCC 9.2.1)",
