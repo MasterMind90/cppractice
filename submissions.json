@@ -1,4 +1,20 @@
 {
+  "AC16211966": {
+    "contest_id": "abc176",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc176\\A.cpp",
+    "platform": "AtCoder",
+    "problem_index": "A",
+    "problem_name": "Takoyaki",
+    "problem_url": "https://atcoder.jp/contests/abc176/tasks/abc176_a",
+    "submission_id": "AC16211966",
+    "submission_url": "https://atcoder.jp/contests/abc176/submissions/16211966",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "Aug/25/2020 00:22"
+  },
   "AC16386936": {
     "contest_id": "abc177",
     "language": "C++ (GCC 9.2.1)",
