@@ -62,40 +62,35 @@ signed main(){
     for(int i = 0; i < n; i++){
         cin >> g[i] ;
     }
+    deque<pair<int,int> > q ;
     vector<vector<int> > dist(n, vector<int>(m, INF)) ;
-    vector<vector<bool> > relaxed(n, vector<bool>(m)) ;
+    q.push_front(make_pair(a, b)) ;
     dist[a][b] = 0 ;
-    priority_queue<pair<int,pair<int,int> > > q ;
-    q.emplace(0, make_pair(a, b) ) ;
     int X[] = {0, 0, -1, 1} ;
     int Y[] = {1, -1, 0, 0} ;
     while(not q.empty()){
-        auto t = q.top() ; q.pop() ;
-        int cost = -t.first ;
-        int c = t.second.first , d = t.second.second ;
-        relaxed[c][d] = true ;
+        auto f = q.front() ; q.pop_front() ;
+        int c = f.first , d = f.second ;
         for(int i = 0; i < 4; i++){
             int newx = c + X[i] , newy = d + Y[i] ;
             if ( not inRange(newx, newy) ) continue ;
-            if ( relaxed[newx][newy] ) continue ;
-            if ( dist[newx][newy] > cost ){
-                dist[newx][newy] = cost ;
-                q.emplace(-cost, make_pair(newx, newy) ) ;
+            if ( dist[newx][newy] > dist[c][d] ){
+                dist[newx][newy] = dist[c][d] ;
+                q.push_front(make_pair(newx, newy)) ;
             }
         }
         int startx = c - 2 , starty = d - 2 ;
-        for(int i = startx ; i < startx + 5; i++){
+        for(int i = startx; i < startx + 5; i++){
             for(int j = starty; j < starty + 5; j++){
-                if ( not inRange(i, j) ) continue  ;
-                if ( relaxed[i][j] ) continue ;
-                if ( dist[i][j] > cost + 1){
-                    dist[i][j] = cost + 1 ;
-                    q.emplace(-dist[i][j], make_pair(i, j) ) ;
+                if ( not inRange(i, j) ) continue ;
+                if ( dist[i][j] > dist[c][d] + 1 ){
+                    dist[i][j] = dist[c][d] + 1 ;
+                    q.push_back(make_pair(i, j) ) ;
                 }
             }
         }
     }
-    if ( dist[x][y] == INF ) {
+    if ( dist[x][y] == INF ){
         cout << -1 << endl;
     }
     else cout << dist[x][y] << endl;
