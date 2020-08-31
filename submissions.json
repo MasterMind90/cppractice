@@ -1,4 +1,20 @@
 {
+  "AC16425139": {
+    "contest_id": "abc176",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc176\\E.cpp",
+    "platform": "AtCoder",
+    "problem_index": "E",
+    "problem_name": "Bomber",
+    "problem_url": "https://atcoder.jp/contests/abc176/tasks/abc176_e",
+    "submission_id": "AC16425139",
+    "submission_url": "https://atcoder.jp/contests/abc176/submissions/16425139",
+    "tags": [
+      "AtCoder",
+      "*500"
+    ],
+    "timestamp": "Aug/31/2020 15:04"
+  },
   "AC16428031": {
     "contest_id": "abc176",
     "language": "C++ (GCC 9.2.1)",
