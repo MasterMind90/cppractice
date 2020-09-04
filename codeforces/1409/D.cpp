@@ -44,27 +44,46 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int n , s ;
-int get(int x){
-    int ans = 0 ;
-    while(x != 0){
-        ans += x % 10 ;
-        x /= 10 ;
+int get(int x, int y){
+    for(int i = 0; i < y; i++){
+        x *= 10LL ;
     }
-    return ans ;
-}
-int dfs(int cur){
-    if ( get(cur) <= s ) {
-        return 0 ;
-    }
-    if ( cur % 10 == 0 ) {
-        return 10 * dfs(cur / 10) ;
-    }
-    return 10 - cur % 10 + dfs(cur + 10 - cur % 10) ;
+    return x ;
 }
 void solve(){
+    int n , s ;
     cin >> n >> s ;
-    int ans = dfs(n) ;
+    string x ;
+    stringstream ss ;
+    ss << n ;
+    ss >> x ;
+    int cur = 0 ;
+    for(int i = 0; i < (int) x.size(); i++){
+        cur += (x[i] - '0') ;
+    }
+    if ( cur <= s ) {
+        cout << 0 << endl;
+        return ;
+    }
+    int ans = get(1, (int)x.size()) - n ;
+    cur = 0 ;
+    int sum = 0 ;
+    int m = (int) x.size() ;
+    for(int i = 0; i < (int) x.size(); i++){
+        cur += x[i] - '0' ;
+        if ( cur + 1 <= s && x[i] != '9' ) {
+            debug() << imie(sum) ;
+            debug() << imie(get(x[i] - '0' + 1, m - i - 1)) ;
+            ans = min(ans, sum + get(x[i] - '0' + 1, m - i - 1) - n) ;
+            sum += get(x[i] - '0', m - i - 1) ;
+        }
+        else sum += get(x[i] - '0' , m - i - 1) ;
+        // if ( cur + 1 < s && x[i] == '9' ) {
+        //     int tmp = cur - (x[i] - '0') ;
+
+        // }
+        debug() << imie(cur) imie(sum) ;
+    }
     cout << ans << endl;
 }
 signed main(){
