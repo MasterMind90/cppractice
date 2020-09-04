@@ -47,42 +47,44 @@ const ll INF = 1e18 + 10 ;
 int n , k ;
 string s , t ;
 int dp[201][201][201] ;
-int dfs(int x, int cura, int curk){
-    if ( x == n ) {
+int dfs(int x, int curs, int curk){
+    if ( x < 0 ) {
         return 0 ;
     }
-    if ( dp[x][cura][curk] != -1 ) return dp[x][cura][curk] ;
-    int ans = dfs(x + 1, cura, curk) ; 
-    if ( s[x] == t[0] ) {
-        ans = max(ans, dfs(x + 1, cura + 1, curk)) ;
-        if ( curk ) ans = max(ans, cura + dfs(x + 1, cura, curk - 1)) ;
+    if ( dp[x][curs][curk] != -1 ) return dp[x][curs][curk] ;
+    int ans = 0 ;
+    if ( s[x] == t[1] ) {
+        ans = max(ans, dfs(x - 1, curs + 1, curk)) ;
+        if ( curk > 0 ) ans = max(ans, curs + dfs(x - 1, curs, curk - 1)) ;
     }
-    else if ( s[x] == t[1] ) {
-        ans = max(ans, cura + dfs(x + 1, cura, curk)) ;
-        if ( curk ) ans = max(ans, dfs(x + 1, cura + 1, curk - 1)) ;
+    else if ( s[x] == t[0] ) {
+        ans = max(ans, curs + dfs(x - 1, curs, curk)) ;
+        if ( curk > 0 ) ans = max(ans, dfs(x - 1, curs + 1, curk - 1)) ;
     }
     else{
-        if ( curk ) ans = max(ans, dfs(x + 1, cura + 1, curk - 1)) ;
-        if ( curk ) ans = max(ans, cura + dfs(x + 1, cura, curk - 1)) ;
+        ans = max(ans, dfs(x - 1, curs, curk)) ;
+        if ( curk > 0 ) {
+            ans = max(ans, curs + dfs(x - 1, curs, curk - 1)) ;
+            ans = max(ans, dfs(x - 1, curs + 1, curk - 1)) ;
+        }
     }
-    return dp[x][cura][curk] = ans ;
+    return dp[x][curs][curk] = ans ;
 }
 signed main(){
     fastio
     memset(dp, -1, sizeof dp) ;
-    cin >> n >> k ; 
+    cin >> n >> k ;
     cin >> s >> t ;
     if ( t[0] == t[1] ) {
-        int cnt = 0;
+        int cnt = 0 ;
         for(char &c : s){
-            if ( c == t[0] ) cnt++ ;
+            if ( c != t[0] ) cnt++ ;
         }
-        int rem = n - cnt ;
-        int m = min(rem, k) + cnt ;
-        cout << m * (m - 1) / 2 << endl;
-        return 0 ;
+        int total = (n - cnt) + min(cnt, k) ;
+        cout << total * (total - 1) / 2 << endl;
+        return 0; 
     }
-    int ans = dfs(0, 0, k) ;
+    int ans = dfs(n - 1, 0, k) ;
     cout << ans << endl;
     return 0; 
 }
