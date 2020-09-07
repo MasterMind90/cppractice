@@ -45,33 +45,111 @@ const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 void solve(){
-    int n , k ; 
+    int n , k ;
     cin >> n >> k ;
     string s ;
     cin >> s ;
-    vector<int> window(k, '?') ;
+    vector<int> zero(n + 1) , one(n + 1) , q(n + 1) ;
     for(int i = 0; i < n; i++){
-        if ( s[i] == '?' ) continue ;
-        int pos = i % k ;
-        if ( window[pos] == '?' || window[pos] == s[i] ) {
-            window[pos] = s[i] ;
+        if ( s[i] == '0' ) {
+            zero[i + 1] = 1 ;
         }
-        else {
-            cout << "NO" << endl; 
+        else if ( s[i] == '1' ) {
+            one[i + 1] = 1 ;
+        }
+        else q[i + 1] = 1 ;
+    }
+    for(int i = 1; i < n + 1; i++){
+        zero[i] += zero[i - 1] ;
+        one[i] += one[i - 1] ;
+        q[i] += q[i - 1] ;
+    }
+    int half = k / 2 ;
+    for(int i = 1; i + k - 1 < n + 1; i++){
+        int z = zero[i + k - 1] - zero[i - 1] ;
+        int o = one[i + k - 1] - one[i - 1] ;
+        // debug() << imie(i + k) imie(one[i + k]) imie(one[i - 1]) ;
+        int qq = q[i + k - 1] - q[i - 1] ;
+        // debug() << imie(z) imie(o) ;
+        qq -= s[i - 1] == '?' ;
+        if ( z > half || o > half ){
+            cout << "NO" << endl;
             return ;
         }
     }
-    vector<int> cnt(2) ;
     for(int i = 0; i < k; i++){
-        if ( window[i] == '?' ) continue ;
-        cnt[window[i] - '0']++ ;
+        int o = 0 , z = 0 ; 
+        for(int j = i; j < n; j += k){
+            if ( s[j] == '1' ) o++ ;
+            else if ( s[j] == '0' ) z++ ;
+        }
+        if ( o && z ) {
+            cout << "NO" << endl; 
+            return ; 
+        }
+        if ( o ) {
+            for(int j = i; j < n; j += k){
+                s[j] = '1' ; 
+            }
+        }
+        else if ( z ) {
+            for(int j = i; j < n; j += k){
+                s[j] = '0' ; 
+            }
+        }
     }
-    int half = k / 2 ;
-    if ( max(cnt[0], cnt[1]) > half ) {
-        cout << "NO" << endl; 
-        return ;
+    int ONE = 0 , ZERO = 0; 
+    for(int i = 0; i < k; i++){
+        if ( s[i] == '1' ) ONE++ ;
+        else if ( s[i] == '0' ) ZERO++ ; 
     }
-    cout << "YES" << endl ;
+    int remOne = k / 2 - ONE ; 
+    int remZero = k / 2 - ZERO ; 
+    for(int i = 0; i < k; i++){
+        if ( s[i] == '?' && remZero ) {
+            for(int j = i; j < n; j += k){
+                s[j] = '0' ; 
+            }
+            remZero-- ;
+        }
+        else if ( s[i] == '?' && remOne ) {
+            for(int j = i; j < n; j += k){
+                s[j] = '1' ; 
+            }
+            remOne-- ;
+        }
+    }
+    debug() << imie(s) ;
+    zero.clear() ;
+    zero.resize(n + 1) ;
+    one.clear() ;
+    one.resize(n + 1) ;
+    for(int i = 0; i < n; i++){
+        if ( s[i] == '0' ) {
+            zero[i + 1] = 1 ;
+        }
+        else if ( s[i] == '1' ) {
+            one[i + 1] = 1 ;
+        }
+    }
+    for(int i = 1; i < n + 1; i++){
+        zero[i] += zero[i - 1] ;
+        one[i] += one[i - 1] ;
+    }
+    for(int i = 1; i + k - 1 < n + 1; i++){
+        int z = zero[i + k - 1] - zero[i - 1] ;
+        int o = one[i + k - 1] - one[i - 1] ;
+        // debug() << imie(i + k) imie(one[i + k]) imie(one[i - 1]) ;
+        int qq = q[i + k - 1] - q[i - 1] ;
+        // debug() << imie(z) imie(o) ;
+        qq -= s[i - 1] == '?' ;
+        debug() << imie(i) imie(z) imie(o) ; 
+        if ( z > half || o > half ){
+            cout << "NO" << endl;
+            return ;
+        }
+    }
+    cout << "YES" << endl;
 }
 signed main(){
     fastio
@@ -80,3 +158,6 @@ signed main(){
     while(t--) solve() ;
     return 0; 
 }
+
+// 10011
+// ?1?1
