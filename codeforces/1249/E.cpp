@@ -44,20 +44,21 @@ vector<int> a , b ;
 int dp[N][3] ;
 int dfs(int x, int cur){
     if ( x == -1 ) {
+        if ( cur == 2 ) return cost ;
         return 0 ;
     }
     if ( dp[x][cur] != -1 ) return dp[x][cur] ;
     int ans = INF ; 
     if ( cur == 0 ) {
         ans = min(ans, a[x] + dfs(x - 1, 1)) ;
-        ans = min(ans, cost + b[x] + dfs(x - 1, 2)) ;
+        ans = min(ans, b[x] + dfs(x - 1, 2)) ;
     }
     else if ( cur == 1 ){
         ans = min(ans, a[x] + dfs(x - 1, 1)) ;
-        ans = min(ans, cost + b[x] + dfs(x - 1, 2)) ;
+        ans = min(ans, b[x] + dfs(x - 1, 2)) ;
     }
     else if ( cur == 2 ){
-        ans = min(ans, a[x] + dfs(x - 1, 1)) ;
+        ans = min(ans, cost + a[x] + dfs(x - 1, 1)) ;
         ans = min(ans, b[x] + dfs(x - 1, 2)) ;
     }
     return dp[x][cur] = ans ;
