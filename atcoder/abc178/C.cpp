@@ -55,12 +55,12 @@ int dfs(int x, int a, int b){
     }
     if ( dp[x][a][b] != -1 ) return dp[x][a][b] ;
     int ans = 0 ;
-    ans += dfs(x + 1, 1, b) ;
-    ans %= MOD ;
-    ans += dfs(x + 1, a, 1) ;
-    ans %= MOD ;
-    ans += 8 * dfs(x + 1, a , b) ;
-    ans %= MOD ;
+    for(int i = 0; i < 10; i++){
+        if ( i == 0 ) ans += dfs(x + 1, 1, b) ;
+        else if ( i == 9 ) ans += dfs(x + 1, a, 1) ;
+        else ans += dfs(x + 1, a , b) ;
+        ans %= MOD ;
+    }
     return dp[x][a][b] = ans ;
 }
 signed main(){
