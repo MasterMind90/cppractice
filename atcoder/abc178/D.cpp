@@ -42,23 +42,21 @@ sim dor(const c&) { ris; }
 typedef tree< pair<int,int>, null_type, less<pair<int,int> >, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef long long ll;
 const ll MOD = 1e9 + 7 ;
-const ll N = 1e6 + 10 ;
+const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 int s ;
 int dp[2005] ;
-int dfs(int sum){
-    if ( sum == 0 ) {
+int dfs(int cur){
+    if ( cur == 0 ) {
         return 1 ;
     }
-    if ( dp[sum] != -1 ) return dp[sum] ;
+    if ( dp[cur] != -1 ) return dp[cur] ;
     int ans = 0 ;
-    for(int i = 3; i <= s; i++){
-        if ( sum - i >= 0 ){
-            ans += dfs(sum - i) ;
-        }
+    for(int i = 3; i <= cur; i++){
+        ans += dfs(cur - i) ;
         ans %= MOD ;
     }
-    return dp[sum] = ans ;
+    return dp[cur] = ans % MOD ; 
 }
 signed main(){
     fastio
