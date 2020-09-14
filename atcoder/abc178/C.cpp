@@ -44,29 +44,23 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 1e6 + 10 ;
 const ll INF = 1e18 + 10 ;
-int n ; 
-int dp[N][2][2] ; 
+int n ;
+int dp[N][2][2] ;
 int dfs(int x, int a, int b){
     if ( x == n ) {
         if ( a == 1 && b == 1 ) {
             return 1 ;
         }
-        return 0 ; 
+        return 0 ;
     }
     if ( dp[x][a][b] != -1 ) return dp[x][a][b] ;
     int ans = 0 ;
-    for(int i = 0; i < 10; i++){
-        if ( i == 0 ) {
-            ans += dfs(x + 1, 1, b) ;
-        }
-        else if ( i == 9 ) {
-            ans += dfs(x + 1, a, 1) ;
-        }
-        else{
-            ans += dfs(x + 1, a, b) ;
-        }
-        ans %= MOD ;
-    }
+    ans += dfs(x + 1, 1, b) ;
+    ans %= MOD ;
+    ans += dfs(x + 1, a, 1) ;
+    ans %= MOD ;
+    ans += 8 * dfs(x + 1, a , b) ;
+    ans %= MOD ;
     return dp[x][a][b] = ans ;
 }
 signed main(){
