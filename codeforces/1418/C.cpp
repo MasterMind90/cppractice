@@ -44,25 +44,43 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-void solve(){
-    int n ;
-    cin >> n ;
-    deque<int> v(n);
-    for(int i = 0; i < n; i++){
-        cin >> v[i] ;
+int n ; 
+vector<int> v ;
+vector<vector<vector<int> > > dp ;
+int dfs(int x, int cur, int k){
+    if ( x == n ) {
+        return 0 ;
     }
-    int ans = v[0] == 1 ;
-    if ( v[0] == 1 ) v.pop_front() ;
-    for(int i = 0; i < (int)v.size(); i++){
-        if ( v[i] == 1 ) {
-            int cnt = 0 ;
-            while(i < (int)v.size() && v[i] == 1 ) {
-                cnt++ ;
-                i++ ;
-            }
-            ans += cnt / 3 ;
+    if ( dp[x][cur][k] != -1 ) return dp[x][cur][k] ;
+    int ans = INF ;
+    if ( k == 0 ) {
+        if ( cur == 0 ) {
+            ans = min(ans, ll(v[x] == 1) + dfs(x + 1, cur, k + 1)) ;
+            ans = min(ans, ll(v[x] == 1) + dfs(x + 1, !cur, 0)) ;
+        }
+        else {
+            ans = min(ans, dfs(x + 1, cur, k + 1)) ;
+            ans = min(ans, dfs(x + 1, !cur, 0)) ;
         }
     }
+    else {
+        if ( cur == 0 ) {
+            ans = min(ans, ll(v[x] == 1) + dfs(x + 1, !cur, 0)) ;
+        }
+        else {
+            ans = min(ans, dfs(x + 1, !cur, 0)) ;
+        }
+    }
+    return dp[x][cur][k] = ans ;
+}
+void solve(){
+    cin >> n ;
+    dp = vector<vector<vector<int> > >(n, vector<vector<int> >(2, vector<int>(3, -1))) ;
+    v = vector<int>(n) ;
+    for(int &x : v){
+        cin >> x ;
+    }
+    int ans = dfs(0, 0, 0) ;
     cout << ans << endl;
 }
 signed main(){
