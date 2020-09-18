@@ -7126,6 +7126,24 @@
     ],
     "timestamp": "Mar/07/2020 12:31"
   },
+  "CF93126061": {
+    "contest_id": 1215,
+    "language": "GNU C++17",
+    "path": "codeforces\\1215\\D.cpp",
+    "platform": "Codeforces",
+    "problem_index": "D",
+    "problem_name": "Ticket Game",
+    "problem_url": "https://codeforces.com/contest/1215/problem/D",
+    "submission_id": "CF93126061",
+    "submission_url": "https://codeforces.com/contest/1215/submission/93126061",
+    "tags": [
+      "games",
+      "greedy",
+      "math",
+      "*1700"
+    ],
+    "timestamp": "Sep/18/2020 17:27"
+  },
   "CF93392813": {
     "contest_id": 1419,
     "language": "GNU C++17",
