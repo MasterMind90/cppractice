@@ -44,17 +44,29 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+int n , q ;
+vector<int> v ;
+vector<vector<int> > dp ;
+int dfs(int x, int f){
+    if ( x == n ) {
+        return 0 ;
+    }
+    if ( dp[x][f] != -1 ) return dp[x][f] ;
+    int ans = dfs(x + 1, f) ;
+    if ( f == 0 ) {
+        ans = max(ans, v[x] + dfs(x + 1, !f)) ;
+    }
+    else ans = max(ans, -v[x] + dfs(x + 1, !f)) ;
+    return dp[x][f] = ans ;
+}
 void solve(){
-    int n , q ;
     cin >> n >> q ;
-    vector<int> v(n) ;
-    for(int i = 0; i < n; i++){
-        cin >> v[i] ;
+    v = vector<int>(n) ;
+    dp = vector<vector<int> >(n + 1, vector<int>(2, -1)) ;
+    for(int &x : v){
+        cin >> x ;
     }
-    int ans = v[0] ;
-    for(int i = 1; i < n; i++){
-        if ( v[i] > v[i - 1] ) ans += v[i] - v[i - 1] ;
-    }
+    int ans = dfs(0, 0) ; 
     cout << ans << endl;
 }
 signed main(){
