@@ -44,33 +44,101 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+int n ;
+vector<int> a , b , c ;
+vector<vector<vector<int> > > dp ;
+int dfs(int x, int last, int start){
+    if ( x == n ) {
+        if ( start == 0 ) {
+            return last != a[0] ;
+        }
+        if ( start == 1 ) {
+            return last != b[0] ;
+        }
+        if ( start == 2 ) {
+            return last != c[0] ;
+        }
+        return 0 ;
+    }
+    if ( dp[x][last][start] != -1 ) return dp[x][last][start] ;
+    int ans = 0 ;
+    int choice1 = 0 ;
+    int choice2 = 0 ;
+    int choice3 = 0 ;
+    if ( last == 101 ) {
+        choice1 |= dfs(x + 1, a[x], 0) ;
+        choice2 |= dfs(x + 1, b[x], 1) ;
+        choice3 |= dfs(x + 1, c[x], 2) ;
+    }
+    if ( last != a[x] ) {
+        choice1 |= dfs(x + 1, a[x], start) ;
+    }
+    if ( last != b[x] ) {
+        choice2 |= dfs(x + 1, b[x], start) ;
+    }
+    if ( last != c[x] ){
+        choice3 |= dfs(x + 1, c[x], start) ;
+    }
+    ans = choice1 | choice2 ;
+    ans |= choice3 ;
+    return dp[x][last][start] = ans ;
+}
+vector<int> answer ;
+void build(int x, int last, int start){
+    if ( x == n ) {
+        return ;
+    }
+    int ans = 0 ;
+    int choice1 = 0 ;
+    int choice2 = 0 ;
+    int choice3 = 0 ;
+    if ( last == 101 ) {
+        choice1 |= dfs(x + 1, a[x], 0) ;
+        choice2 |= dfs(x + 1, b[x], 1) ;
+        choice3 |= dfs(x + 1, c[x], 2) ;
+    }
+    if ( last != a[x] ) {
+        choice1 |= dfs(x + 1, a[x], start) ;
+    }
+    if ( last != b[x] ) {
+        choice2 |= dfs(x + 1, b[x], start) ;
+    }
+    if ( last != c[x] ){
+        choice3 |= dfs(x + 1, c[x], start) ;
+    }
+    ans = choice1 | choice2 ;
+    ans |= choice3 ;
+    int optimal = dfs(x, last, start) ;
+    if ( optimal == choice1 ) {
+        answer.push_back(a[x]) ;
+        build(x + 1, a[x], start) ;
+    }
+    else if ( optimal == choice2 ) {
+        answer.push_back(b[x]) ;
+        build(x + 1, b[x], start) ;
+    }
+    else if ( optimal == choice3 ){
+        answer.push_back(c[x]) ;
+        build(x + 1, c[x], start) ;
+    }
+}
 void solve(){
-    int n ; 
     cin >> n ;
-    vector<int> a[3] ;
-    a[0] = a[1] = a[2] = vector<int>(n) ;
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < n; j++){
-            cin >> a[i][j] ;
-        }
+    a = b = c = vector<int>(n) ;
+    dp = vector<vector<vector<int> > >(n, vector<vector<int> >(102, vector<int>(4, -1)));
+    for(int i = 0; i < n; i++){
+        cin >> a[i] ;
     }
-    vector<int> ans(n) ; 
-    ans[0] = a[0][0] ;
-    for(int i = 1; i < n - 1; i++){
-        for(int j = 0; j < 3; j++){
-            if ( a[j][i] != ans[i - 1] ) {
-                ans[i] = a[j][i] ;
-                break ;
-            }
-        }
+    for(int i = 0; i < n; i++){
+        cin >> b[i] ;
     }
-    for(int j = 0; j < 3; j++){
-        if ( a[j][n - 1] != ans[n - 2] && a[j][n - 1] != ans[0] ) {
-            ans[n - 1] = a[j][n - 1] ;
-            break ;
-        }
+    for(int i = 0; i < n; i++){
+        cin >> c[i] ;
     }
-    for(int &c : ans){
+    answer.clear() ;
+    int ans = dfs(0, 101, 0) ;
+    build(0, 101, 0) ;
+    for(int &c : answer){
         cout << c << ' ' ;
     }
     cout << endl;
@@ -79,6 +147,8 @@ signed main(){
     fastio
     int t ;
     cin >> t ;
-    while(t--) solve() ;
+    while(t--) {
+        solve() ;
+    }
     return 0; 
 }
