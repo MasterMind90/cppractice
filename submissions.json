@@ -7126,6 +7126,22 @@
     ],
     "timestamp": "Mar/07/2020 12:31"
   },
+  "CF94868524": {
+    "contest_id": 586,
+    "language": "GNU C++17",
+    "path": "codeforces\\586\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Gennady the Dentist",
+    "problem_url": "https://codeforces.com/contest/586/problem/C",
+    "submission_id": "CF94868524",
+    "submission_url": "https://codeforces.com/contest/586/submission/94868524",
+    "tags": [
+      "implementation",
+      "*1800"
+    ],
+    "timestamp": "Oct/06/2020 20:31"
+  },
   "CF94876569": {
     "contest_id": 1420,
     "language": "GNU C++17",
