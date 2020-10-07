@@ -3,13 +3,13 @@
 using namespace std;
 
 int main(){
-    string s ;
-    cin >> s ;
-    if ( s.back() == 's' ) {
-        s += "es" ;
+    string x ;
+    cin >> x ;
+    if ( x.back() == 's' ) {
+        x.push_back('e') ;
+        x.push_back('s') ;
     }
-    else s += "s" ;
-    cout << s << endl;
-
+    else x.push_back('s') ;
+    cout << x << endl;
     return 0 ;
 }
