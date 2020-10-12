@@ -7126,6 +7126,24 @@
     ],
     "timestamp": "Mar/07/2020 12:31"
   },
+  "CF95330502": {
+    "contest_id": 1430,
+    "language": "GNU C++17",
+    "path": "codeforces\\1430\\E.cpp",
+    "platform": "Codeforces",
+    "problem_index": "E",
+    "problem_name": "String Reversal",
+    "problem_url": "https://codeforces.com/contest/1430/problem/E",
+    "submission_id": "CF95330502",
+    "submission_url": "https://codeforces.com/contest/1430/submission/95330502",
+    "tags": [
+      "data structures",
+      "greedy",
+      "strings",
+      "*1900"
+    ],
+    "timestamp": "Oct/12/2020 12:51"
+  },
   "CF95407097": {
     "contest_id": 1187,
     "language": "GNU C++17",
