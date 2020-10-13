@@ -7126,6 +7126,25 @@
     ],
     "timestamp": "Mar/07/2020 12:31"
   },
+  "CF95409520": {
+    "contest_id": 1324,
+    "language": "GNU C++17",
+    "path": "codeforces\\1324\\F.cpp",
+    "platform": "Codeforces",
+    "problem_index": "F",
+    "problem_name": "Maximum White Subtree",
+    "problem_url": "https://codeforces.com/contest/1324/problem/F",
+    "submission_id": "CF95409520",
+    "submission_url": "https://codeforces.com/contest/1324/submission/95409520",
+    "tags": [
+      "dfs and similar",
+      "dp",
+      "graphs",
+      "trees",
+      "*1800"
+    ],
+    "timestamp": "Oct/13/2020 12:39"
+  },
   "CF95570354": {
     "contest_id": 217,
     "language": "GNU C++17",
