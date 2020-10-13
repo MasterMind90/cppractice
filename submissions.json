@@ -1,4 +1,20 @@
 {
+  "AC17378281": {
+    "contest_id": "abc179",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc179\\A.cpp",
+    "platform": "AtCoder",
+    "problem_index": "A",
+    "problem_name": "Plural Form",
+    "problem_url": "https://atcoder.jp/contests/abc179/tasks/abc179_a",
+    "submission_id": "AC17378281",
+    "submission_url": "https://atcoder.jp/contests/abc179/submissions/17378281",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "Oct/13/2020 10:59"
+  },
   "AC17378315": {
     "contest_id": "abc179",
     "language": "C++ (GCC 9.2.1)",
