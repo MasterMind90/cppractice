@@ -42,31 +42,29 @@ sim dor(const c&) { ris; }
 typedef tree< pair<int,int>, null_type, less<pair<int,int> >, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef long long ll;
 const ll MOD = 1e9 + 7 ;
-const ll N = 1e4 + 10 ;
+const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 signed main(){
     fastio
-    int n , k ; 
-    cin >> n >> k ;
+    int n , m ;
+    cin >> n >> m;
     queue<int> q ;
+    vector<int> dist(10001, INF) ;
+
     q.push(n) ;
-    vector<int> dist(N, INF) ;
     dist[n] = 0 ;
     while(not q.empty()){
         int f = q.front() ; q.pop() ;
-        if ( f * 2 < N && dist[f * 2] > dist[f] + 1){
-            dist[f * 2] = dist[f] + 1 ; 
-            q.push(f * 2) ;
-        }
-        // if ( f + 1 < N && dist[f + 1] > dist[f] + 1 ){
-        //     dist[f + 1] = dist[f] + 1 ;
-        //     q.push(f + 1) ;
-        // }
-        if ( f - 1 >= 0 && dist[f - 1] > dist[f] + 1 ) {
+        if ( f == m ) break ;
+        if ( f - 1 >= 0 && dist[f - 1] == INF ) {
             dist[f - 1] = dist[f] + 1 ;
             q.push(f - 1) ;
         }
+        if ( f * 2 < 10001 && dist[f * 2] == INF ) {
+            dist[f * 2] = dist[f] + 1 ;
+            q.push(f * 2) ;
+        }
     }
-    cout << dist[k] << endl;
+    cout << dist[m] << endl;
     return 0; 
 }
