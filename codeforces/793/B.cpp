@@ -75,7 +75,6 @@ signed main(){
     // 3 --> down 
     // 4 no direction 
     deque<pair<pair<int,int>,int> > q ; 
-    //
     q.emplace_back(make_pair(start.first , start.second), 0) ; 
     q.emplace_back(make_pair(start.first , start.second), 1) ; 
     q.emplace_back(make_pair(start.first , start.second), 2) ; 
