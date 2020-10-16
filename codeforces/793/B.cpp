@@ -44,23 +44,20 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int n , m ;
 vector<vector<char> > g ;
-vector<vector<int> > turns , vis ;
+vector<vector<int> > turns ;
+int n , m ;
 bool inRange(int x, int y){
     if ( x < 0 || x >= n ) return false ;
     if ( y < 0 || y >= m ) return false ;
-    // if ( vis[x][y] ) return false ;
     if ( g[x][y] == '*' ) return false ;
-    // if ( cur > 2 ) return false ;
     return true ;
 }
 signed main(){
     fastio
-    cin >> n >> m ; 
+    cin >> n >> m ;
     g = vector<vector<char> >(n, vector<char>(m)) ;
     turns = vector<vector<int> >(n, vector<int>(m, INF)) ;
-    vis = vector<vector<int> >(n, vector<int>(m, 0)) ;
     pair<int,int> start , end ;
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
@@ -69,76 +66,54 @@ signed main(){
             else if ( g[i][j] == 'T' ) end = make_pair(i, j) ;
         }
     }
-    // 0 --> right 
-    // 1 --> left 
-    // 2 --> up 
-    // 3 --> down 
-    // 4 no direction 
-    deque<pair<pair<int,int>,int> > q ; 
-    q.emplace_back(make_pair(start.first , start.second), 0) ; 
-    q.emplace_back(make_pair(start.first , start.second), 1) ; 
-    q.emplace_back(make_pair(start.first , start.second), 2) ; 
-    q.emplace_back(make_pair(start.first , start.second), 3) ; 
+    deque<pair<pair<int,int>, int> > q ;
+    q.emplace_back(start, 0) ; // right 
+    q.emplace_back(start, 1) ; // left 
+    q.emplace_back(start, 2) ; // up 
+    q.emplace_back(start, 3) ; // down 
     turns[start.first][start.second] = 0 ;
-    int X[] = {0, 0, 1, -1} ; 
-    int Y[] = {-1, 1, 0, 0} ;
+    vector<int> X = {0, 0, -1, 1} ;
+    vector<int> Y = {1, -1, 0, 0} ;
     while(not q.empty()){
         auto f = q.front() ; q.pop_front() ;
         debug() << imie(f) ;
-        int curx = f.first.first , cury = f.first.second , dir = f.second ;
+        int x = f.first.first , y = f.first.second , dir = f.second ;
         for(int i = 0; i < 4; i++){
-            int newx = curx + X[i] ;
-            int newy = cury + Y[i] ;
+            int newx = x + X[i] , newy = y + Y[i] ;
             if ( not inRange(newx, newy) ) continue ;
-            if ( dir == 0 || dir == 1 ) { // right
-                if ( i == 0 || i == 1) { // right
-                    if ( turns[newx][newy] > turns[curx][cury] ) {
-                        turns[newx][newy] = turns[curx][cury] ; 
-                        q.push_front(make_pair(make_pair(newx, newy), i)) ;
-                    }
-                }
-                else{
-                    if ( turns[newx][newy] > turns[curx][cury] + 1 ) {
-                        turns[newx][newy] = turns[curx][cury] + 1 ; 
-                        q.push_back(make_pair(make_pair(newx, newy), i)) ;
-                    }
-                }
-            }
-            else if ( dir == 2 || dir == 3 ) { // right
-                if ( i == 0 || i == 1) { // right
-                    if ( turns[newx][newy] > turns[curx][cury] + 1 ) {
-                        turns[newx][newy] = turns[curx][cury] + 1 ; 
-                        q.push_back(make_pair(make_pair(newx, newy), i)) ;
+            if ( dir == 0 || dir == 1 ) {
+                if ( i == 0 || i == 1 ) {
+                    if ( turns[newx][newy] > turns[x][y] ) {
+                        turns[newx][newy] = turns[x][y] ;
+                        q.emplace_front(make_pair(newx, newy), i) ;
                     }
                 }
                 else {
-                    if ( turns[newx][newy] > turns[curx][cury] ) {
-                        turns[newx][newy] = turns[curx][cury] ; 
-                        q.push_front(make_pair(make_pair(newx, newy), i)) ;
+                    if ( turns[newx][newy] > turns[x][y] + 1 ) {
+                        turns[newx][newy] = turns[x][y] + 1 ;
+                        q.emplace_back(make_pair(newx, newy), i) ;
+                    }
+                }
+            }
+            else if ( dir == 2 || dir == 3 ) {
+                if ( i == 0 || i == 1 ) {
+                    if ( turns[newx][newy] > turns[x][y] + 1 ) {
+                        turns[newx][newy] = turns[x][y] + 1 ;
+                        q.emplace_back(make_pair(newx, newy), i) ;
+                    }
+                }
+                else {
+                    if ( turns[newx][newy] > turns[x][y] ) {
+                        turns[newx][newy] = turns[x][y] ;
+                        q.emplace_front(make_pair(newx, newy), i) ;
                     }
                 }
             }
         }
     }
-    // for(int i = 0; i < n; i++){
-    //     for(int j = 0; j < m; j++){
-    //         if ( turns[i][j] == INF ) cout << '*' ;
-    //         else cout << turns[i][j] ;
-    //     }
-    //     cout << endl;
-    // }
     if ( turns[end.first][end.second] <= 2 ) {
         cout << "YES" << endl;
     }
     else cout << "NO" << endl;
     return 0; 
 }
- 
-// ------------------------#----------
-// -----------S------------#----------
-// ------------------------#----------
-// ---##########-----------#----------
-// ------------------------#----------
-// -------------####################--
-// -----------------------------------
-// #########################----------
