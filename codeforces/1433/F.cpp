@@ -58,7 +58,8 @@ int dfs(int x, int y, int cnt, int sum){
         return answer = dfs(x + 1, 0, m / 2, sum) ;
     }
     if ( answer != -1 ) return answer ;
-    int ans = -INF ;
+    int ans = 0 ;
+    if ( sum != 0 ) ans = -INF ;
     if ( cnt ) {
         ans = max(ans, v[x][y] + dfs(x, y + 1, cnt - 1, (sum + v[x][y]) % k )) ; 
         ans = max(ans, dfs(x, y + 1, cnt, sum)) ;
@@ -79,6 +80,6 @@ signed main(){
         }
     }
     int ans = dfs(0, 0, m / 2, 0) ;
-    cout << max(ans, 0LL) << endl;
+    cout << ans << endl;
     return 0; 
 }
