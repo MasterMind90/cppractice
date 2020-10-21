@@ -1,4 +1,20 @@
 {
+  "AC17557896": {
+    "contest_id": "arc105",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\arc105\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "MAX-=min",
+    "problem_url": "https://atcoder.jp/contests/arc105/tasks/arc105_b",
+    "submission_id": "AC17557896",
+    "submission_url": "https://atcoder.jp/contests/arc105/submissions/17557896",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Oct/21/2020 14:32"
+  },
   "AC17558461": {
     "contest_id": "arc105",
     "language": "C++ (GCC 9.2.1)",
