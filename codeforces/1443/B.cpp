@@ -44,41 +44,41 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int a , b ;
-int n ;
-string s ;
-vector<vector<int> > dp ;
-int dfs(int x, int last){
-    if ( x == n ) {
-        return 0 ;
-    }
-    if ( dp[x][last] != -1 ) return dp[x][last] ;
-    int ans = INF ;
-    if ( s[x] == '1' ) {
-        if ( last ) {
-            ans = dfs(x + 1, last) ;
-        }
-        else {
-            ans = a + dfs(x + 1, 1) ;
-        }
-    }
-    else{
-        if ( last ) {
-            ans = min(ans, dfs(x + 1, 0)) ;
-            ans = min(ans, b + dfs(x + 1, 1)) ;
-        }
-        else {
-            ans = min(ans, dfs(x + 1, 0)) ;
-        }
-    }
-    return dp[x][last] = ans ;
-}
 void solve(){
+    int a , b ;
     cin >> a >> b ;
+    string s ;
     cin >> s ;
-    n = (int) s.size() ;
-    dp = vector<vector<int> >(n, vector<int>(2, -1)) ;
-    int ans = dfs(0, 0) ;
+    while(not s.empty() && s.back() == '0') s.pop_back() ;
+    reverse(s.begin(), s.end()) ;
+    while(not s.empty() && s.back() == '0') s.pop_back() ;
+    reverse(s.begin(), s.end()) ;
+    vector<int> group ;
+    int n = (int) s.size() ;
+    for(int i = 0; i < n; ){
+        char &c = s[i] ;
+        int j = i ; 
+        int cnt = 0 ;
+        while(j < n && s[j] == c){
+            j++ ;
+            cnt++ ;
+        }
+        i = j ;
+        group.emplace_back(cnt) ;
+    }
+    debug() << imie(group) ;
+    int ans = 0 ; 
+    int cnt = 0 ;
+    int m = (int) group.size();
+    for(int i = 1; i < m; i += 2){
+        if ( group[i] * b + a < 2 * a ){
+            ans += group[i] * b ;
+            cnt++ ;
+        }
+    }
+    debug() << imie(m) imie(ans) imie(cnt);
+    int total = (m + 1) / 2 - cnt ;
+    ans += total * a ;
     cout << ans << endl;
 }
 signed main(){
