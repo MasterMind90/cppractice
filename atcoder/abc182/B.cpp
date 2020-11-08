@@ -49,21 +49,21 @@ signed main(){
     int n ;
     cin >> n ;
     vector<int> v(n) ;
-    for(int i = 0; i < n; i++){
-    	cin >> v[i] ;
+    for(int &c : v){
+        cin >> c ;
     }
+    int ans = 0 ;
     int nax = 0 ;
-    int answer = 0 ;
-    for(int k = 2; k <= 1000; k++){
-    	int cnt = 0 ;
-    	for(int i = 0; i < n; i++){
-    		if ( v[i] % k == 0 ) cnt++ ;
-    	}
-    	if ( cnt > nax ) {
-    		nax = cnt ;
-    		answer = k ;
-    	}
+    for(int i = 2; i <= 1000; i++){
+        int cnt = 0 ;
+        for(int j = 0; j < n; j++){
+            if ( v[j] % i == 0 ) cnt++ ;
+        }
+        if ( cnt > nax ) {
+            ans = i ;
+            nax = cnt ;
+        }
     }
-    cout << answer << endl;
+    cout << ans << endl;
     return 0; 
 }
