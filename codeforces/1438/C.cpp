@@ -44,27 +44,45 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+int n , m ;
+vector<vector<int> > v , mark ;
+vector<int> X = {1, -1, 0, 0} ;
+vector<int> Y = {0,  0,-1, 1} ;
 void solve(){
-    int n , m ;
     cin >> n >> m ;
-    vector<vector<int> > v(n, vector<int>(m)) ;
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < m; j++){
+    v = vector<vector<int> >(n + 2, vector<int>(m + 2, -1)) ;
+    mark = vector<vector<int> >(n + 2, vector<int>(m + 2, 0)) ;
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= m; j++){
             cin >> v[i][j] ;
-            if ( (i + j) & 1 ){
-                if ( v[i][j] % 2 == 0 ) {
-                    v[i][j]++ ;
-                }
+        }
+    }
+    for(int i = 1; i <= n; i++){
+        if ( i & 1 ) {
+            for(int j = 1; j <= m; j += 2){
+                if ( v[i][j] & 1 ) v[i][j]++ ;
             }
-            else {
-                if ( v[i][j] % 2 == 1 ){
-                    v[i][j]++ ;
-                }
+        }
+        else {
+            for(int j = 2; j <= m; j += 2){
+                if ( v[i][j] & 1 ) v[i][j]++ ;
             }
         }
     }
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < m; j++){
+    for(int i = 1; i <= n; i++){
+        if ( i & 1 ) {
+            for(int j = 2; j <= m; j += 2){
+                if ( v[i][j] % 2 == 0 ) v[i][j]++ ;
+            }
+        }
+        else {
+            for(int j = 1; j <= m; j += 2){
+                if ( v[i][j] % 2 == 0 ) v[i][j]++ ;
+            }
+        }
+    }
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= m; j++){
             cout << v[i][j] << ' ' ;
         }
         cout << endl;
