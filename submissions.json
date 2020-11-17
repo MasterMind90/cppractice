@@ -1,4 +1,20 @@
 {
+  "AC18191612": {
+    "contest_id": "abc180",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc180\\A.cpp",
+    "platform": "AtCoder",
+    "problem_index": "A",
+    "problem_name": "box",
+    "problem_url": "https://atcoder.jp/contests/abc180/tasks/abc180_a",
+    "submission_id": "AC18191612",
+    "submission_url": "https://atcoder.jp/contests/abc180/submissions/18191612",
+    "tags": [
+      "AtCoder",
+      "*100"
+    ],
+    "timestamp": "Nov/17/2020 15:03"
+  },
   "AC18191790": {
     "contest_id": "abc183",
     "language": "C++ (GCC 9.2.1)",
