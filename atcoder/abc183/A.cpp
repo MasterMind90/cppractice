@@ -1,10 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
 
 int main(){
-    int x ;
-    cin >> x ;
-    cout << max(x, 0) << endl;
-    return 0 ;
+  int x ; 
+  cin >> x ; 
+  cout << max(x, 0) << endl;
 }
