@@ -50,19 +50,23 @@ void solve(){
     string s ;
     cin >> s ;
     int cost = 0 ; 
+    for(char &x : s){
+        if ( x == '0' ) cost += a ;
+        else cost += b ; 
+    }
     int first =  0 ;
+    for(char &x : s){
+        if ( x == '0' ) {
+            first += c + b ; 
+        }
+        else first += b ; 
+    }
     int second = 0 ;
     for(char &x : s){
-        if ( x == '0' ){
-            cost += a ;
-            first += c + b ; 
-            second += a ;
-        } 
-        else {
-            first += b ; 
-            second += c + a ;
-            cost += b ; 
+        if ( x == '1' ) {
+            second += c + a ; 
         }
+        else second += a ; 
     }
     cout << min({first, second, cost}) << endl;
 }
@@ -73,14 +77,3 @@ signed main(){
     while(t--) solve() ;
     return 0; 
 }
-/*
-00
-00
-
-01
-11
-
-01
-10
-
-*/
