@@ -1,4 +1,20 @@
 {
+  "AC18411013": {
+    "contest_id": "abc062",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc062\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Picture Frame",
+    "problem_url": "https://atcoder.jp/contests/abc062/tasks/abc062_b",
+    "submission_id": "AC18411013",
+    "submission_url": "https://atcoder.jp/contests/abc062/submissions/18411013",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "Nov/25/2020 23:16"
+  },
   "AC18416842": {
     "contest_id": "abc055",
     "language": "C++ (GCC 9.2.1)",
