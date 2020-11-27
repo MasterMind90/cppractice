@@ -44,46 +44,30 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-bool comp(int a , int b){
-    int ma = a %10;
-    int mb = b%10;
-    if (ma > mb)
-        return true;
+signed main(){
+    fastio
+    vector<int> v(5) ;
+    int n = 5 ;
+    for(int i = 0; i < n; i++){
+    	cin >> v[i] ;
+    }
+    sort(v.begin(), v.end()) ;
+    int ans = INF ;
+    do{
+    	debug() << imie(v) ;
+    	int time = 0 ;
+    	// 7 13
+    	for(int i = 0; i < n - 1; i++){
+    		time += v[i] ; 
+    		// time = 57
+    		if ( time % 10 != 0 ) time += (10 - time % 10) ;
+    		// while(time % 10 != 0) time++ ; 
+    	}
+    	time += v.back() ;
+    	debug() << imie(time) ;
+    	ans = min(ans, time) ;
 
-    return false;
-}
-signed main () {
-    vector<int> s1;
-    vector<int> s2;
-    vector<int> m(5);
-    for ( int i = 0; i < 5; i++){
-        cin >> m[i];
-    }
-    for  (int i =0 ; i < 5; i++){
-        if ( m[i] %10==0){
-            s1.push_back(m[i]);
-        }
-        else
-            s2.push_back(m[i]);
-    }
-    sort(s2.begin(),s2.end(),comp);
-    int sum = 0 ; 
-    if (!s2.empty()){
-        for ( int i =0; i < (int)s2.size()-1; i++){
-            sum+=s2[i];
-            while (sum%10!=0)
-                sum++;
-        }
-    }
-    debug() << imie(s1) ;
-    debug() << imie(s2) ;
-    if (!s1.empty()){
-        for ( int i =0; i < (int)s1.size();i++){
-            sum+=s1[i];
-        }
-    }
-    if ( !s2.empty()){
-        sum += s2[(int)s2.size()-1];
-    }
-    cout << sum;
+    }while(next_permutation(v.begin(), v.end())) ;
+    cout << ans << endl;
+    return 0; 
 }
