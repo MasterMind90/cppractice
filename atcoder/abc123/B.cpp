@@ -60,8 +60,7 @@ signed main(){
     	for(int i = 0; i < n - 1; i++){
     		time += v[i] ; 
     		// time = 57
-    		if ( time % 10 != 0 ) time += (10 - time % 10) ;
-    		// while(time % 10 != 0) time++ ; 
+    		while(time % 10 != 0) time++ ;
     	}
     	time += v.back() ;
     	debug() << imie(time) ;
