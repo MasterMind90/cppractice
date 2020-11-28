@@ -191,28 +191,36 @@ signed main(){
     }
     // # of ways to reach the i cell 
     vector<int> dp(n, 0) ;
-    vector<int> SUM(n + 1, 0) ;
-    dp[0] = 1 ;
-    SUM[1] = 1; 
+    FenwickTree<int> t(dp) ;
+    t.point_update(0, 1) ;
+    // dp[0] = 1 ;
     for(int i = 1; i < n; i++){
     	int sum = 0 ; 
     	for(int j = 0; j < m; j++){
+    		debug() << imie(v[j]) ;
     		int L = max(0LL, i - v[j].second) ; 
     		int R = i - v[j].first ; 
-    		if ( R < 0 ) continue ;
+    		if (R < 0) continue ;
     		debug() << imie(L) imie(R) ;
-    		debug() << imie(SUM[R + 1] - SUM[L]) ;
-    		sum += SUM[R + 1] - SUM[L] ;
+    		sum += t.range_sum(L, R) ; 
     		sum %= MOD ;
+    		debug() << imie(L) imie(R) imie(sum);
     		// for(int k = v[j].first; k <= v[j].second; k++){
     		// 	if ( i - k >= 0 ){
     		// 		dp[i] += dp[i - k] ;
     		// 	}
     		// }
     	}
-    	dp[i] = sum ;
-    	SUM[i + 1] = SUM[i] + dp[i] ;
+
+		t.point_update(i, sum) ;
     }
-    cout << dp[n - 1] << endl;
+    // debug() << imie(dp) ;
+    debug() << imie(t.point_sum(n - 1)) ;
+    cout << t.point_sum(n - 1) << endl;
     return 0; 
 }
+
+/*
+i = 50 ; 
+2 7
+*/
