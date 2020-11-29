@@ -1,4 +1,20 @@
 {
+  "AC18486419": {
+    "contest_id": "abc057",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc057\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Checkpoints",
+    "problem_url": "https://atcoder.jp/contests/abc057/tasks/abc057_b",
+    "submission_id": "AC18486419",
+    "submission_url": "https://atcoder.jp/contests/abc057/submissions/18486419",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "Nov/29/2020 10:35"
+  },
   "AC18486491": {
     "contest_id": "abc057",
     "language": "C++ (GCC 9.2.1)",
