@@ -44,28 +44,30 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-string s ;
-int n ;
-vector<vector<int> > dp ;
-int dfs(int x, int cur){
-    if ( x == n ) {
-        if ( cur == 0 ) return 0 ;
-        return -INF ;
-    }
-    if ( dp[x][cur] != -1 ) return dp[x][cur] ;
-    int ans = dfs(x + 1, cur) ; // leave it 
-    ans = max(ans, 1 + dfs(x + 1, (cur + s[x] - '0') % 3 )) ; // take it 
-    return dp[x][cur] = ans ;
-}
 signed main(){
     fastio
+    string s ;
     cin >> s ;
-    n = (int) s.size() ;
-    dp = vector<vector<int> >(n, vector<int>(3, - 1) ) ; 
-    int ans = dfs(0, 0) ;
-    if ( ans == 0 ) {
+    int n = (int) s.size() ;
+    int nix = INF ;
+    for(int subset = 1; subset < (1 << n); subset++){
+        int ans = 0 ;
+        int cnt = 0 ;
+        for(int i = 0; i < n; i++){
+            if ( subset & (1 << i) ){
+                ans *= 10 ;
+                ans += (s[i] - '0') ;
+            }
+            else cnt++ ;
+        }
+        if ( ans % 3 == 0 ) {
+            nix = min(nix, cnt) ;
+        }
+    }
+    if ( nix == INF ) {
         cout << -1 << endl;
     }
-    else cout << n - ans << endl;
+    else cout << nix << endl;
+
     return 0; 
 }
