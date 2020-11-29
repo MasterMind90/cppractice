@@ -49,7 +49,7 @@ signed main(){
     string s ;
     cin >> s ;
     int n = (int) s.size() ;
-    int nix = INF ;
+    int nax = 0 ;
     for(int subset = 1; subset < (1 << n); subset++){
         int ans = 0 ;
         int cnt = 0 ;
@@ -57,17 +57,17 @@ signed main(){
             if ( subset & (1 << i) ){
                 ans *= 10 ;
                 ans += (s[i] - '0') ;
+                cnt++ ;
             }
-            else cnt++ ;
         }
         if ( ans % 3 == 0 ) {
-            nix = min(nix, cnt) ;
+            nax = max(nax, cnt) ;
         }
     }
-    if ( nix == INF ) {
+    if ( nax == 0 ) {
         cout << -1 << endl;
     }
-    else cout << nix << endl;
+    else cout << n - nax << endl;
 
     return 0; 
 }
