@@ -1,4 +1,20 @@
 {
+  "AC18513894": {
+    "contest_id": "abc075",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc075\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Minesweeper",
+    "problem_url": "https://atcoder.jp/contests/abc075/tasks/abc075_b",
+    "submission_id": "AC18513894",
+    "submission_url": "https://atcoder.jp/contests/abc075/submissions/18513894",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "Dec/01/2020 10:38"
+  },
   "AC18514593": {
     "contest_id": "abc169",
     "language": "C++ (GCC 9.2.1)",
