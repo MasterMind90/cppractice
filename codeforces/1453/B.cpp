@@ -44,32 +44,66 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-void solve(){
-	int n ; 
+// so idea is set all to the first element 
+// minus the biggest difference 
+void solve() { 
+	int n ;
 	cin >> n ;
 	vector<int> v(n) ;
 	for(int i = 0; i < n; i++){
 		cin >> v[i] ;
 	}
-	int difference = 0 ; 
-	for(int i = 1; i < n; i++){
-		difference += abs(v[i] - v[i - 1]) ;
+	if ( n == 2  ) {
+		cout << 0 << endl;
+		return ;
 	}
-	debug() << imie(difference) ;
+	vector<int> diff ;
+	for(int i = 1; i < n; i++){
+		diff.emplace_back(abs(v[i] - v[i - 1])) ;
+	}
+	int m = (int) diff.size() ;
+	vector<int> pre(m) ;
+	for(int i = 0; i < m; i++){
+		if ( i == 0 ) pre[i] = diff[0] ;
+		else pre[i] = pre[i - 1] + diff[i] ; 
+	}
+	vector<int> suf(m) ;
+	for(int i = m - 1; i >= 0; i--){
+		if ( i == m - 1 ) suf[i] = diff[i] ;
+		else suf[i] = suf[i + 1] + diff[i] ;
+	}
+	// 99 96 97 95
+	// 3 1 2
+	// 3 4 6
+	// 6 3 2
+	auto getSuf = [&](int x) -> int{
+		if ( x == m ) {
+			return 0 ;
+		}
+		return suf[x] ; 
+	};
+	auto getPre = [&](int x) -> int{
+		if ( x == 0 ) {
+			return 0 ;
+		}
+		x-- ;
+		return pre[x] ; 
+	};
 	int ans = INF ;
+	// 3 5 20 23 
+	// 0 1 2  3
 	for(int i = 0; i < n; i++){
 		if ( i == 0 ) {
-			ans = min(ans, difference - abs(v[i + 1] - v[i]) ) ;
+			ans = min(ans, getSuf(i + 1)) ;
 		}
 		else if ( i == n - 1 ) {
-			ans = min(ans, difference - abs(v[i] - v[i - 1])) ;
+			ans = min(ans, getPre(i - 1)) ;
 		}
 		else {
-			ans = min(ans, difference - (abs(v[i] - v[i - 1]) + abs(v[i] - v[i + 1])) + abs(v[i - 1] - v[i + 1]) ) ;
+			ans = min(ans, getSuf(i + 1) + getPre(i - 1) + abs(v[i + 1] - v[i - 1])) ;
 		}
 	}
-	cout << ans << endl;
-
+	cout << ans <<endl;
 }
 signed main(){
     fastio
