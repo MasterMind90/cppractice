@@ -1,4 +1,20 @@
 {
+  "AC18642140": {
+    "contest_id": "abc175",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc175\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Walking Takahashi",
+    "problem_url": "https://atcoder.jp/contests/abc175/tasks/abc175_c",
+    "submission_id": "AC18642140",
+    "submission_url": "https://atcoder.jp/contests/abc175/submissions/18642140",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Dec/08/2020 12:08"
+  },
   "AC18642195": {
     "contest_id": "abc175",
     "language": "C++ (GCC 9.2.1)",
