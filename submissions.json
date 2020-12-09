@@ -1,4 +1,21 @@
 {
+  "CF100742552": {
+    "contest_id": 225,
+    "language": "GNU C++17",
+    "path": "codeforces\\225\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Barcode",
+    "problem_url": "https://codeforces.com/contest/225/problem/C",
+    "submission_id": "CF100742552",
+    "submission_url": "https://codeforces.com/contest/225/submission/100742552",
+    "tags": [
+      "dp",
+      "matrices",
+      "*1700"
+    ],
+    "timestamp": "Dec/09/2020 09:09"
+  },
   "CF100772341": {
     "contest_id": 435,
     "language": "GNU C++17",
