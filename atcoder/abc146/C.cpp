@@ -44,14 +44,6 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
-int g(int x){
-	int cnt = 0 ; 
-	while(x != 0){
-		cnt++ ;
-		x /= 10 ;
-	}
-	return cnt ;
-}
 signed main(){
     fastio
     int a , b , x ;
@@ -60,8 +52,12 @@ signed main(){
     int answer = 0 ;
     while(L <= R){
     	int mid = L + (R - L) / 2 ;
-    	string s = to_string(mid) ;
-    	int cnt = s.size() ;
+    	int c = mid ;
+    	int cnt = 0 ;
+    	while(c != 0) {
+    		cnt++ ;
+    		c /= 10 ;
+    	}
     	int F = a * mid + b * cnt ; 
     	if ( F <= x ) {
     		answer = mid ;
