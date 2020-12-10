@@ -1,4 +1,20 @@
 {
+  "AC18668868": {
+    "contest_id": "abc146",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc146\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Buy an Integer",
+    "problem_url": "https://atcoder.jp/contests/abc146/tasks/abc146_c",
+    "submission_id": "AC18668868",
+    "submission_url": "https://atcoder.jp/contests/abc146/submissions/18668868",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Dec/10/2020 10:56"
+  },
   "AC18699433": {
     "contest_id": "abc178",
     "language": "C++ (GCC 9.2.1)",
