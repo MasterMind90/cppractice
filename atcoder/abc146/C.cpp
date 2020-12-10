@@ -60,7 +60,8 @@ signed main(){
     int answer = 0 ;
     while(L <= R){
     	int mid = L + (R - L) / 2 ;
-    	int cnt = g(mid) ;
+    	string s = to_string(mid) ;
+    	int cnt = s.size() ;
     	int F = a * mid + b * cnt ; 
     	if ( F <= x ) {
     		answer = mid ;
