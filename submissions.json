@@ -1,4 +1,20 @@
 {
+  "CF100972833": {
+    "contest_id": 606,
+    "language": "GNU C++17",
+    "path": "codeforces\\606\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "Magic Spheres",
+    "problem_url": "https://codeforces.com/contest/606/problem/A",
+    "submission_id": "CF100972833",
+    "submission_url": "https://codeforces.com/contest/606/submission/100972833",
+    "tags": [
+      "implementation",
+      "*1200"
+    ],
+    "timestamp": "Dec/11/2020 22:05"
+  },
   "CF100973045": {
     "contest_id": 596,
     "language": "GNU C++17",
