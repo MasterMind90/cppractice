@@ -44,26 +44,75 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+int n , m ;
+int F(int x){
+	return x * (x + 1) / 2;
+}
+pair<int,int> go(int start, int ending){
+	int L = start, R = ending ;
+	int ans = -1 ;
+	while(L <= R){
+		int mid = L + (R - L) / 2 ;
+		if ( F(mid) - F(start - 1) <= m ) {
+			ans = mid ;
+			L = mid + 1 ;
+		}
+		else R = mid - 1 ;
+	}
+	debug() << imie(ans) ;
+	return make_pair(ans, F(ans) - F(start - 1))  ;
+}
 signed main(){
     fastio
-    int n , m ;
     cin >> n >> m ;
-    set<int> s ;
+    vector<int> v(n) ;
     for(int i = 0; i < n; i++){
-    	int x ;
-    	cin >> x ;
-    	s.insert(x) ;
+    	cin >> v[i] ;
     }
-    vector<int> ans ;
-    for(int i = 1; ; i++){
-    	if ( i > m ) break ;
-    	if ( s.count(i) ) continue ;
-    	m -= i ;
-    	ans.emplace_back(i) ;
+    sort(v.begin(), v.end()) ;
+    vector<pair<int,int> > answer ; 
+    int total = 0 ;
+    if ( v.front() != 1 ) {
+    	pair<int,int> ans = go(1, v.front() - 1) ;
+    	if ( ans.first != -1 ) {
+    		total += ans.first ;
+    		m -= ans.second ;
+    		answer.emplace_back(1, ans.first) ;
+    	}
     }
-    cout << ans.size() << endl ;
-    for(int &c : ans){
-    	cout << c << ' ' ;
+    for(int i = 1; i < n; i++){
+    	int diff = v[i] - v[i - 1] ;
+    	if ( diff > 1 ) {
+    		pair<int,int> ans = go(v[i - 1] + 1, v[i] - 1) ;
+    		if ( ans.first == -1 ) break ;
+    		if ( ans.first != v[i] - 1 ) {
+    			total += (ans.first - v[i - 1]) ;
+    			m -= ans.second ;
+    			answer.emplace_back(v[i - 1] + 1, ans.first) ;
+    			break ;
+    		}
+    		else {
+    			total += (ans.first - v[i - 1]) ;
+    			m -= ans.second ;
+    			answer.emplace_back(v[i - 1] + 1, ans.first) ;
+    		}
+    	}
+    }
+    if ( m > 0 ) {
+    	if ( v.back() != (int)1e9 ) {
+    		pair<int,int> ans = go(v.back() + 1, (int) 1e9) ;
+    		if ( ans.first != -1 ) {
+    			total += (ans.first - v.back()) ;
+    			answer.emplace_back(v.back() + 1, ans.first) ;
+    		}
+    	}
+
+    }
+    cout << total << endl;
+    for(auto &seg : answer){
+    	for(int i = seg.first ; i <= seg.second; i++){
+    		cout << i << ' ' ;
+    	}
     }
     cout << endl;
     return 0; 
