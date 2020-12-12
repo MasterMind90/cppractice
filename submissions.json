@@ -1,4 +1,21 @@
 {
+  "CF101060818": {
+    "contest_id": 659,
+    "language": "GNU C++17",
+    "path": "codeforces\\659\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Tanya and Toys",
+    "problem_url": "https://codeforces.com/contest/659/problem/C",
+    "submission_id": "CF101060818",
+    "submission_url": "https://codeforces.com/contest/659/submission/101060818",
+    "tags": [
+      "greedy",
+      "implementation",
+      "*1200"
+    ],
+    "timestamp": "Dec/12/2020 23:09"
+  },
   "CF101128064": {
     "contest_id": 44,
     "language": "GNU C++17",
