@@ -1,4 +1,20 @@
 {
+  "CF101017741": {
+    "contest_id": 322,
+    "language": "GNU C++17",
+    "path": "codeforces\\322\\A.cpp",
+    "platform": "Codeforces",
+    "problem_index": "A",
+    "problem_name": "Ciel and Dancing",
+    "problem_url": "https://codeforces.com/contest/322/problem/A",
+    "submission_id": "CF101017741",
+    "submission_url": "https://codeforces.com/contest/322/submission/101017741",
+    "tags": [
+      "greedy",
+      "*1000"
+    ],
+    "timestamp": "Dec/12/2020 14:13"
+  },
   "CF101018661": {
     "contest_id": 401,
     "language": "GNU C++17",
