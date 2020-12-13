@@ -1,4 +1,20 @@
 {
+  "CF101132462": {
+    "contest_id": 63,
+    "language": "GNU C++17",
+    "path": "codeforces\\63\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Settlers' Training",
+    "problem_url": "https://codeforces.com/contest/63/problem/B",
+    "submission_id": "CF101132462",
+    "submission_url": "https://codeforces.com/contest/63/submission/101132462",
+    "tags": [
+      "implementation",
+      "*1200"
+    ],
+    "timestamp": "Dec/13/2020 23:32"
+  },
   "CF101191315": {
     "contest_id": 1111,
     "language": "GNU C++17",
