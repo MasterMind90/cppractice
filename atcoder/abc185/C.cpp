@@ -44,46 +44,22 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+int n ;
+vector<vector<int> > dp ;
+int dfs(int x, int cut){
+	if ( x == n ){
+		return cut == 1 ;
+	}
+	if ( dp[x][cut] != -1 ) return dp[x][cut] ;
+	int ans = dfs(x + 1, cut) ;
+	if ( cut ) ans += dfs(x + 1, cut - 1) ;
+	return dp[x][cut] = ans ;
+}
 signed main(){
     fastio
-    int n ;
     cin >> n ;
-    n -= 12 ;
-    int x = n ;
-    n += 11 ;
-    vector<int> nom ;
-    vector<int> den ;
-    for(int i = 1; i <= n; i++){
-    	nom.emplace_back(i) ;
-    }
-    for(int i = 1; i <= 11; i++){
-    	den.emplace_back(i) ;
-    }
-    for(int i = 1; i <= x; i++){
-    	den.emplace_back(i) ;
-    }
-    for(int &c : nom){
-    	for(int &d : den){
-    		int g = __gcd(c, d) ;
-    		c /= g; 
-    		d /= g;
-    	}
-    }
-    debug() << imie(nom) ;
-    debug() << imie(den) ;
-    int bast = 1 ;
-    for(int &c : nom){
-    	bast *= c ;
-    }
-    int maqam = 1 ;
-    for(int &c : den){
-    	maqam *= c ;
-    }
-    int answer = bast / maqam ;
-    cout << answer << endl;
-    // 1 x 2 x 3 x 4 x 5 x 6 x 7 x 8 x ... x 49
-    // ________________________________________
-    // 1 x 2 x 3 x ... x 11 x 1 x 2 x ... x 38
+    dp = vector<vector<int> > (n + 1, vector<int>(13, -1)) ;
+    int ans = dfs(1 , 12) ;
+    cout << ans << endl;
     return 0; 
 }
-// equation = 49! / (38! * 11!)
