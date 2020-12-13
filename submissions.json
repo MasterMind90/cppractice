@@ -1,4 +1,21 @@
 {
+  "CF101128612": {
+    "contest_id": 413,
+    "language": "GNU C++17",
+    "path": "codeforces\\413\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Jeopardy!",
+    "problem_url": "https://codeforces.com/contest/413/problem/C",
+    "submission_id": "CF101128612",
+    "submission_url": "https://codeforces.com/contest/413/submission/101128612",
+    "tags": [
+      "greedy",
+      "math",
+      "*1400"
+    ],
+    "timestamp": "Dec/13/2020 21:41"
+  },
   "CF101132227": {
     "contest_id": 825,
     "language": "GNU C++17",
