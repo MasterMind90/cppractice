@@ -1,4 +1,20 @@
 {
+  "CF101128064": {
+    "contest_id": 44,
+    "language": "GNU C++17",
+    "path": "codeforces\\44\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Cola",
+    "problem_url": "https://codeforces.com/contest/44/problem/B",
+    "submission_id": "CF101128064",
+    "submission_url": "https://codeforces.com/contest/44/submission/101128064",
+    "tags": [
+      "implementation",
+      "*1500"
+    ],
+    "timestamp": "Dec/13/2020 21:29"
+  },
   "CF101128612": {
     "contest_id": 413,
     "language": "GNU C++17",
