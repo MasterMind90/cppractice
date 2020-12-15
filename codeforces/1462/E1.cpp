@@ -44,32 +44,46 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+
 void solve(){
 	int n ;
 	cin >> n ;
 	vector<int> v(n) ;
+	vector<int> pos[n + 5] ;
 	for(int i = 0; i < n; i++){
-		cin >> v[i];
+		cin >> v[i] ;
+		pos[v[i]].emplace_back(i) ;
 	}
-	sort(v.begin(), v.end()) ;
-	int answer = 0 ;
-	for(int i = 0; i < n; i++){
-		int L = i + 2, R = n - 1 ;
-		int ans = -1 ;
-		while(L <= R){
-			int mid = L + (R - L) / 2;
-			if ( v[mid] - v[i] <= 2 ){
-				ans = mid ;
-				L = mid + 1 ;
+	auto get = [&](int val, int L, int R) -> unsigned long long{
+		if ( val <= 0 ) return 0 ;
+		if ( val > n ) return 0 ;
+		if ( pos[val].empty() ) return 0 ;
+		vector<int> &t = pos[val] ;
+		debug() << imie(val) imie(t) ;
+		return upper_bound(t.begin(), t.end(), R) - lower_bound(t.begin(), t.end(), L) ;
+	};
+	unsigned long long ans = 0 ;
+	for(int i = 1; i < n - 1; i++){
+		debug() << imie(i) ;
+		// case one: all equal 
+		int val = v[i] ;
+		set<pair<int,int> > s ;
+		for(int j = val - 2; j <= val + 2; j++){
+			for(int k = val - 2; k <= val + 2; k++){
+				if (s.count(make_pair(j, k))) continue ;
+				vector<int> t ;
+				t.emplace_back(val) ;
+				t.emplace_back(j) ;
+				t.emplace_back(k) ;
+				sort(t.begin(), t.end()) ;
+				if ( t.back() - t.front() <= 2 ) {
+					s.emplace(j, k) ;
+					ans += get(j, 0, i - 1) * get(k, i + 1, n - 1) ;
+				}
 			}
-			else R = mid - 1 ;
-		}
-		if ( ans != -1 ) {
-			int len = ans - i ;
-			answer += len * (len - 1) / 2 ;
 		}
 	}
-	cout << answer << endl;
+	cout << ans << endl;
 }
 signed main(){
     fastio
