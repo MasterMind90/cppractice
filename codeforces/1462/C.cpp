@@ -44,31 +44,19 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+vector<int> v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 19, 29, 39, 49, 59, 69, 79, 89, 189, 289, 389, 489, 589, 689, 789, 1789, 2789, 3789, 4789, 5789, 6789, 16789, 26789, 36789, 46789, 56789, 156789, 256789, 356789, 456789, 1456789, 2456789, 3456789, 13456789, 23456789, 123456789, -1, -1, -1, -1, -1 } ;
 void solve(){
 	int n ;
 	cin >> n ;
-	string s = "123456789" ;
-	int answer = INF ;
-	for(int mask = 1; mask < (1 << 9); mask++){
-		int ans = 0 ;
-		int sum = 0 ;
-		for(int i = 0; i < 9; i++){
-			if ( (1 << i) & mask ) {
-				ans *= 10 ;
-				ans += s[i] - '0' ;
-				sum += s[i] - '0' ;
-			}
-		}
-		if ( sum == n ) {
-			answer = min(answer, ans) ;
-		}
-	}
-	cout << ((answer == INF) ? -1 : answer) << endl;
+	cout << v[n] << endl;
 }
 signed main(){
     fastio
     int t ;
     cin >> t ;
-    while(t--) solve() ;
+    while(t--){
+    	solve() ;
+    }
     return 0; 
 }
+
