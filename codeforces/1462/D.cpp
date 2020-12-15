@@ -48,42 +48,56 @@ void solve(){
 	int n ;
 	cin >> n ;
 	vector<int> v(n) ;
-	int SUM = 0 ;
-	for(int &c : v){
-		cin >> c ;
-		SUM += c ;
+	vector<int> sum(n + 1) ;
+	for(int i = 0; i < n; i++){
+		cin >> v[i] ;
+		sum[i + 1] = v[i] ;
+	}
+	for(int i = 1; i < n + 1; i++){
+		sum[i] += sum[i - 1] ;
 	}
 	vector<int> div ;
-	for(int i = 1; i * i <= SUM; i++){
-		if ( SUM % i == 0 ){
+	for(int i = 1; i * i <= sum[n]; i++){
+		if ( sum[n] % i == 0 ) {
 			div.emplace_back(i) ;
-			if ( SUM / i != i ) div.emplace_back(SUM / i) ;
+			if ( sum[n] / i != i ) {
+				div.emplace_back(sum[n] / i) ;
+			}
 		}
 	}
-	int ans = INF ;
-	for(int &c : div){
-		int sum = 0 ;
-		int cnt = 0 ;
+	int answer = n - 1; 
+	for(int i : div){
+		int start = 1 ;
 		int total = 0 ;
-		bool ok = true ;
-		for(int i = 0; i < n; i++){
-			sum += v[i] ;
-			cnt++ ;
-			if ( sum == c ) {
-				sum = 0 ;
-				total += cnt - 1 ;
-				cnt = 0 ;
+		debug() << imie(i) ;
+		while(true){
+			int L = start , R = n ;
+			int ans = -1 ;
+			while(L <= R){
+				int mid = L + (R - L) / 2 ;
+				if ( sum[mid] - sum[start - 1] == i ){
+					ans = mid ;
+					break ;
+				}
+				if ( sum[mid] - sum[start - 1] > i ){
+					R = mid - 1 ;
+				}
+				else L = mid + 1 ;
 			}
-			if ( sum > c ) {
-				ok = false ;
+			debug() << imie(ans) ;
+			if ( ans == -1 ) break ;
+			debug() << imie(ans) imie(start) ;
+			total += ans - start ;
+			start = ans + 1;
+			debug() << imie(start) ;
+			if ( ans == n  )  {
+				debug() << imie(total) ;
+				answer = min(answer, total) ;
 				break ;
 			}
 		}
-		if ( ok ) {
-			ans = min(ans, total) ;
-		}
 	}
-	cout << ans << endl;
+	cout << answer << endl;
 }
 signed main(){
     fastio
