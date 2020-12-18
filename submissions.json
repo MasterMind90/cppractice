@@ -1,4 +1,20 @@
 {
+  "AC18847470": {
+    "contest_id": "abc125",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc125\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "GCD on Blackboard",
+    "problem_url": "https://atcoder.jp/contests/abc125/tasks/abc125_c",
+    "submission_id": "AC18847470",
+    "submission_url": "https://atcoder.jp/contests/abc125/submissions/18847470",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Dec/18/2020 18:04"
+  },
   "AC18908706": {
     "contest_id": "abc186",
     "language": "C++ (GCC 9.2.1)",
