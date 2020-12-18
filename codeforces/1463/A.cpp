@@ -49,12 +49,12 @@ signed main(){
     int t ;
     cin >> t ;
     while(t--) {
-    	int a , b , c ;
-    	cin >> a >> b >> c ;
+    	int a , b , c ; 
+    	cin >> a >> b >> c ; 
     	int sum = a + b + c ;
-    	int cnt9 = sum / 9 ; 
-    	if ( sum % 9 == 0 && a >= cnt9 && b >= cnt9 && c >= cnt9 ) {
-    		cout << "YES" << endl;
+    	int cnt = sum / 9 ; 
+    	if ( (a + b + c) % 9 == 0 && a >= cnt && b >= cnt && c >= cnt ){
+    		cout << "YES" << endl ;
     	}
     	else cout << "NO" << endl;
     }
