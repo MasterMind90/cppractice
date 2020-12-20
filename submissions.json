@@ -1,4 +1,20 @@
 {
+  "AC18914687": {
+    "contest_id": "abc174",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc174\\C.cpp",
+    "platform": "AtCoder",
+    "problem_index": "C",
+    "problem_name": "Repsept",
+    "problem_url": "https://atcoder.jp/contests/abc174/tasks/abc174_c",
+    "submission_id": "AC18914687",
+    "submission_url": "https://atcoder.jp/contests/abc174/submissions/18914687",
+    "tags": [
+      "AtCoder",
+      "*300"
+    ],
+    "timestamp": "Dec/20/2020 19:54"
+  },
   "AC18915067": {
     "contest_id": "abc073",
     "language": "C++ (GCC 9.2.1)",
