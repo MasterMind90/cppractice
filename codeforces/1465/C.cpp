@@ -45,36 +45,46 @@ const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 int n , m ;
-vector<int> rep ;
-int Find(int x){
-	if ( x == rep[x] ) return x ;
-	return rep[x] = Find(rep[x]) ;
-}
-void Union(int a, int b){
-	int A = Find(a) ;
-	int B = Find(b) ;
-	if ( A == B ) return ;
-	rep[A] = B ;
+vector<vector<int> > g ;
+vector<bool> vis ;
+bool cycle = false ;
+vector<int> in ;
+void dfs(int x){
+	in[x] = 1 ;
+	vis[x] = true ;
+	for(int &c : g[x]){
+		if ( vis[c] ) {
+			if ( in[c] ) cycle = true ;
+		}
+		else dfs(c) ;
+	}
+	in[x] = 0 ;
 }
 void solve(){
 	cin >> n >> m ;
-	rep = vector<int>(n) ;
-	for(int i = 0; i < n; i++){
-		rep[i] = i ;
-	}
-	int ans = 0 ;
+	g = vector<vector<int> >(n) ;
+	vis = vector<bool>(n) ;
+	in = vector<int>(n) ;
+	vector<pair<int,int> > v(m) ;
+	int miss = 0 ;
 	for(int i = 0; i < m; i++){
-		int a , b ;
-		cin >> a >> b ;
-		a--, b--;
-		if ( a == b ) continue ;
-		ans++ ;
-		int A = Find(a) ;
-		int B = Find(b) ;
-		if ( A == B ) ans++ ;
-		Union(a, b) ;
+		cin >> v[i].first >> v[i].second ;
+		v[i].first--;
+		v[i].second--;
+		if ( v[i].first != v[i].second ) {
+			g[v[i].first].emplace_back(v[i].second) ;
+			miss++;
+		}
 	}
-	cout << ans << endl;
+	int cnt = 0 ;
+	for(int i = 0; i < n; i++){
+		if ( not vis[i] ) {
+			cycle = false ;
+			dfs(i) ;
+			if ( cycle ) cnt++ ;
+		}
+	}
+	cout << cnt + miss << endl;
 }
 signed main(){
     fastio
