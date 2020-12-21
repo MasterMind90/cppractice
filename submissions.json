@@ -1,4 +1,21 @@
 {
+  "CF101978908": {
+    "contest_id": 272,
+    "language": "GNU C++17",
+    "path": "codeforces\\272\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "Dima and Sequence",
+    "problem_url": "https://codeforces.com/contest/272/problem/B",
+    "submission_id": "CF101978908",
+    "submission_url": "https://codeforces.com/contest/272/submission/101978908",
+    "tags": [
+      "implementation",
+      "math",
+      "*1400"
+    ],
+    "timestamp": "Dec/21/2020 18:28"
+  },
   "CF102143824": {
     "contest_id": 376,
     "language": "GNU C++17",
