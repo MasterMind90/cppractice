@@ -1,4 +1,20 @@
 {
+  "AC18928375": {
+    "contest_id": "abc100",
+    "language": "C++ (GCC 9.2.1)",
+    "path": "atcoder\\abc100\\B.cpp",
+    "platform": "AtCoder",
+    "problem_index": "B",
+    "problem_name": "Ringo's Favorite Numbers",
+    "problem_url": "https://atcoder.jp/contests/abc100/tasks/abc100_b",
+    "submission_id": "AC18928375",
+    "submission_url": "https://atcoder.jp/contests/abc100/submissions/18928375",
+    "tags": [
+      "AtCoder",
+      "*200"
+    ],
+    "timestamp": "Dec/21/2020 18:14"
+  },
   "AC18928676": {
     "contest_id": "abc051",
     "language": "C++ (GCC 9.2.1)",
