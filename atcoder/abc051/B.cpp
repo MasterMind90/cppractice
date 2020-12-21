@@ -42,7 +42,7 @@ sim dor(const c&) { ris; }
 typedef tree< pair<int,int>, null_type, less<pair<int,int> >, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef long long ll;
 const ll MOD = 1e9 + 7 ;
-const ll N = 2e5 + 10 ;
+const ll N = 1e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 signed main(){
     fastio
@@ -51,10 +51,10 @@ signed main(){
     int ans = 0 ;
     for(int x = 0; x <= k; x++){
     	for(int y = 0; y <= k; y++){
-    		int z = s - x - y ; 
-    		if ( z >=0 && z <= k ) ans++ ;
+    		int z = s - x - y ;
+    		if ( z >= 0 && z <= k ) ans++ ;
     	}
     }
     cout << ans << endl;
-    return 0; 
+    return 0 ;
 }
