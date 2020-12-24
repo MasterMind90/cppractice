@@ -1,4 +1,21 @@
 {
+  "CF102266405": {
+    "contest_id": 812,
+    "language": "GNU C++17",
+    "path": "codeforces\\812\\C.cpp",
+    "platform": "Codeforces",
+    "problem_index": "C",
+    "problem_name": "Sagheer and Nubian Market",
+    "problem_url": "https://codeforces.com/contest/812/problem/C",
+    "submission_id": "CF102266405",
+    "submission_url": "https://codeforces.com/contest/812/submission/102266405",
+    "tags": [
+      "binary search",
+      "sortings",
+      "*1500"
+    ],
+    "timestamp": "Dec/24/2020 23:20"
+  },
   "CF102333707": {
     "contest_id": 304,
     "language": "GNU C++17",
