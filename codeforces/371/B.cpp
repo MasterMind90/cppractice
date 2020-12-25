@@ -44,46 +44,30 @@ typedef long long ll;
 const ll MOD = 1e9 + 7 ;
 const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
+map<pair<int,int>, int > mp ;
+int dfs(int a, int b){
+	if ( a == b ) {
+		return 0 ;
+	}
+	if ( a < b ) swap(a, b) ;
+	if ( mp.count(make_pair(a, b))) return mp[make_pair(a, b)] ;
+	int ans = INF ;
+	if ( a % 2 == 0 ){
+		ans = min(ans, 1 + dfs(a / 2, b)) ;
+	}
+	if ( a % 3 == 0 ) {
+		ans = min(ans, 1 + dfs(a / 3, b)) ;
+	}
+	if ( a % 5 == 0 ) {
+		ans = min(ans, 1 + dfs(a / 5, b)) ;
+	}
+	return mp[make_pair(a, b)] = ans ;
+}
 signed main(){
     fastio
     int a , b ;
     cin >> a >> b ;
-    int two1 = 0 ;
-    int three1 = 0 ;
-    int five1 = 0 ;
-    while(a % 2 == 0){
-    	a /= 2 ;
-    	two1++ ;
-    }
-    while(a % 3 == 0){
-    	a /= 3 ;
-    	three1++ ;
-    }
-    while(a % 5 == 0){
-    	a /= 5 ;
-    	five1++ ;
-    }
-    int two2 = 0 ;
-    int three2 = 0 ;
-    int five2 = 0 ;
-    while(b % 2 == 0){
-    	b /= 2 ;
-    	two2++ ;
-    }
-    while(b % 3 == 0){
-    	b /= 3 ;
-    	three2++ ;
-    }
-    while(b % 5 == 0){
-    	b /= 5 ;
-    	five2++ ;
-    }
-    if ( a == b ) {
-	    int ans = abs(two2 - two1) ;
-	    ans += abs(three2 - three1) ;
-	    ans += abs(five2 - five1) ;
-	    cout << ans << endl;
-    }
-    else cout << -1 << endl;
+    int ans = dfs(a, b) ;
+    cout << (ans == INF ? -1 : ans) << endl;
     return 0; 
 }
