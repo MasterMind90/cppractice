@@ -42,32 +42,32 @@ sim dor(const c&) { ris; }
 typedef tree< pair<int,int>, null_type, less<pair<int,int> >, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef long long ll;
 const ll MOD = 1e9 + 7 ;
-const ll N = 2e5 + 10 ;
+const ll N = 1e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 void solve(){
 	int n ;
 	cin >> n ;
 	vector<int> v(n) ;
+	vector<int> vis(2 * n + 5) ;
 	for(int i = 0; i < n; i++){
 		cin >> v[i] ;
 	}
-	vector<bool> flag(2 * n + 5) ;
 	for(int i = n - 1; i >= 0; i--){
-		if ( flag[v[i] + 1] == false ) {
-			flag[v[i] + 1] = true ;
+		if ( not vis[v[i] + 1] ){
+			vis[v[i] + 1] = true ;
 		}
-		else flag[v[i]] = true ;
+		else vis[v[i]] = true ;
 	}
 	int ans = 0 ;
-	for(int i = 0; i < 2 * n + 5; i++){
-		ans += flag[i] ;
+	for(int &c : vis){
+		ans += c ;
 	}
 	cout << ans << endl;
 }
 signed main(){
     fastio
     int t ;
-    cin >> t ;
+    cin >> t; 
     while(t--) solve() ;
     return 0; 
 }
