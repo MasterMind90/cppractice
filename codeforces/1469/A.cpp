@@ -48,11 +48,33 @@ void solve(){
 	string s ;
 	cin >> s ;
 	int n = (int) s.size() ;
-	if ( n & 1 ) {
-		cout << "NO" << endl;
-		return ;
+	int cur = 0 ;
+	for(int i = 0; i < n; i++){
+		char &c = s[i] ;
+		if ( c == '(' ) {
+			cur++ ;
+		}
+		else if ( c == ')' ) {
+			cur-- ;
+		}
+		else {
+			if ( i + 1 < n && s[i + 1] == ')' && cur == 1 ) {
+				debug() << imie(cur) ;
+				cur++ ;
+			}
+			else if ( cur ) {
+				cur-- ;
+			}
+			else {
+				cur++ ;
+			}
+		}
+		if ( cur < 0 ){
+			cout << "NO" << endl;
+			return ; 
+		}
 	}
-	if ( s.front() == ')' || s.back() == '(' ){
+	if ( cur != 0 ){
 		cout << "NO" << endl;
 		return ;
 	}
