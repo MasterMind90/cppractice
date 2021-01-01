@@ -53,10 +53,12 @@ signed main(){
     }
     else {
     	int ans = (n / k) * (n / k) * (n / k) ; 
-    	int a = ((2 - k) / (2 * k)) ;
-    	int b = ((2 * n - k) / (2 * k) ) ;
-    	int cnt = b - a + 1 ;
-    	if ( n == 1 ) cnt = 0 ;
+    	int cnt = 0 ;
+    	for(int i = 1; i < n + 1; i++){
+    		if ( i % k == k / 2 ){
+    			cnt++ ;
+    		}
+    	}
     	ans += cnt * cnt * cnt ;
     	cout << ans << endl;
     }
