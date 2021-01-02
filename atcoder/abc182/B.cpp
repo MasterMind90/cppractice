@@ -46,28 +46,24 @@ const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 signed main(){
     fastio
-    int n ; 
-    cin >> n ; 
-    vector<int> cnt(1001) ; 
+    int n ;
+    cin >> n ;
+    vector<int> v(n) ;
     for(int i = 0; i < n; i++){
-    	int x ; 
-    	cin >> x; 
-    	for(int j = 1; j * j <= x; j++){
-    		if ( x % j == 0 ) {
-    			cnt[j]++ ; 
-    			if ( x / j != j ) cnt[x / j]++ ; 
-    		}
+    	cin >> v[i] ;
+    }
+    int nax = 0 ;
+    int answer = 0 ;
+    for(int k = 2; k <= 1000; k++){
+    	int cnt = 0 ;
+    	for(int i = 0; i < n; i++){
+    		if ( v[i] % k == 0 ) cnt++ ;
+    	}
+    	if ( cnt > nax ) {
+    		nax = cnt ;
+    		answer = k ;
     	}
     }
-    int nax = 0 ; 
-    int val = -1 ; 
-    for(int i = 2; i < 1001; i++){
-    	if ( cnt[i] > nax ) {
-    		val = i ; 
-    		nax = cnt[i] ; 
-    	}
-    }
-    cout << val << endl;
-
+    cout << answer << endl;
     return 0; 
 }
