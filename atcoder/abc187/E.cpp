@@ -179,28 +179,97 @@ class dfs_forest : public forest<T> {
     assert((int) order.size() == n);
   }
 };
+template <typename T>
+class lca_forest : public dfs_forest<T> {
+  public:
+  using dfs_forest<T>::edges;
+  using dfs_forest<T>::g;
+  using dfs_forest<T>::n;
+  using dfs_forest<T>::pv;
+  using dfs_forest<T>::pos;
+  using dfs_forest<T>::end;
+  using dfs_forest<T>::depth;
+  int h;
+  vector< vector<int> > pr;
+  lca_forest(int _n) : dfs_forest<T>(_n) {
+  }
+  inline void build_lca() {
+    assert(!pv.empty());
+    int max_depth = 0;
+    for (int i = 0; i < n; i++) {
+      max_depth = max(max_depth, depth[i]);
+    }
+    h = 1;
+    while ((1 << h) <= max_depth) {
+      h++;
+    }
+    pr.resize(n);
+    for (int i = 0; i < n; i++) {
+      pr[i].resize(h);
+      pr[i][0] = pv[i];
+    }
+    for (int j = 1; j < h; j++) {
+      for (int i = 0; i < n; i++) {
+        pr[i][j] = (pr[i][j - 1] == -1 ? -1 : pr[pr[i][j - 1]][j - 1]);
+      }
+    }
+  }
+  inline bool anc(int x, int y) {
+    return (pos[x] <= pos[y] && end[y] <= end[x]);
+  }
+  inline int lca(int x, int y) {
+    // maybe optimize?
+    // if depth[x] > depth[y], swap
+    // then go from j = log(depth[x])?
+    assert(!pr.empty());
+    if (anc(x, y)) {
+      return x;
+    }
+    if (anc(y, x)) {
+      return y;
+    }
+    for (int j = h - 1; j >= 0; j--) {
+      if (pr[x][j] != -1 && !anc(pr[x][j], y)) {
+        x = pr[x][j];
+      }
+    }
+    return pr[x][0];
+  }
+};
 signed main(){
     fastio
-    int n ; 
-    cin >> n ; 
-    dfs_forest<int> g(n) ;
-    vector<int> a(n), b(n) ;
+    // lca_forest<int> g(5) ;
+    // g.add(0, 1, 5) ;
+    // g.add(0, 2, 5) ;
+    // g.add(2, 3, 5) ;
+    // g.add(2, 4, 5) ;
+    // g.dfs(0) ;
+    // g.build_lca() ;
+    // cout << g.lca(3, 4) << endl;
+    int n ;
+    cin >> n ;
+    vector<int> a(n) , b(n) ;
+    lca_forest<int> g(n) ;
     for(int i = 0; i < n - 1; i++){
-    	cin >> a[i] >> b[i] ;
-    	a[i]-- , b[i]-- ;
+    	cin >> a[i] >> b[i];
+    	a[i]--, b[i]--;
+    	debug() << imie(a[i]) imie(b[i]) ;
     	g.add(a[i], b[i], 0) ;
     }
     g.dfs(0) ;
+    g.build_lca() ;
     int q ;
     cin >> q ;
-    for(int i = 0; i < q; i++){
-    	int t , e , x ;
-    	cin >> t >> e >> x ;
-    	e--;
-    	int A = a[e] ;
-    	int B = b[e] ;
-    	if ( t == 1 ) {
-    		if ( g.depth[A] < g.depth[B] ) {
+    while(q--){
+    	int t , index , x;
+    	cin >> t >> index >> x;
+    	index--;
+    	int A = a[index] ;
+    	int B = b[index] ;
+    	int L = g.lca(A, B) ;
+    	debug() << imie(A) imie(B) imie(L) ;
+    	if ( t == 1 ){
+    		if ( L == A ) {
     			g.cost[0] += x ;
     			g.cost[B] -= x ;
     		}
@@ -209,19 +278,21 @@ signed main(){
     		}
     	}
     	else {
-    		if ( g.depth[A] < g.depth[B] ) {
-    			g.cost[B] += x ;
-    		}
-    		else {
+    		if ( L == B ) {
     			g.cost[0] += x ;
     			g.cost[A] -= x ;
     		}
+    		else {
+    			g.cost[B] += x ;
+    		}
     	}
+	    debug() << imie(g.cost) ;
     }
+    debug() << imie(g.cost) ;
     g.dfs(0) ;
+    debug() << imie(g.cost) ;
     for(int i = 0; i < n; i++){
     	cout << g.cost[i] << endl;
     }
-
     return 0; 
 }
