@@ -46,37 +46,76 @@ const ll N = 2e5 + 10 ;
 const ll INF = 1e18 + 10 ;
 void solve(){
 	int n , x ;
-	cin >> n >> x;
-	deque<pair<int,int> > v ;
+	cin >> n >> x ;
+	vector<int> v(n) ;
+	int index = -1 ;
 	for(int i = 0; i < n; i++){
-		int x ;
-		cin >> x ;
-		v.emplace_back(x, 1) ;
+		cin >> v[i] ;
 	}
-	bool f = true ;
-	int ans = 0 ;
-	while(not v.empty()){
-		int front = v.front().first ;
-		int cnt = v.front().second ;
-		debug() << imie(front) imie(cnt) ;
-		v.pop_front() ;
-		debug() << imie(v) ;
-		ans += front * cnt ;
-		if ( f ) {
-			if ( front % x == 0 ) {
-				v.emplace_back(front / x, cnt * x) ;
-			}
-			else {
-				f = false ;
-			}
+	for(int i = 0; i < n; i++){
+		if ( v[i] % x != 0 ) {
+			index = i ;
+			break ;
 		}
 	}
+	int ans = 0 ;
+	// if ( index != -1 ) {
+	// 	for(int i = 0; i < index; i++){
+	// 		if ( v[i] % x == 0 ) {
+	// 			ans += 2 * v[i] ;
+	// 		}
+	// 	}
+	// 	for(int i = index; i < n; i++){
+	// 		ans += v[i] ;
+	// 	}
+	// 	cout << ans << endl ;
+	// 	return ;
+	// }
+	vector<int> cnt(n, 1) ;
+	bool ok = false ;
+	for(int i = 0; i < 32; i++){
+		debug() << imie(v) ;
+		debug() << imie(cnt) ;
+		for(int j = 0; j < n; j++){
+			if ( v[j] % x == 0 ) {
+				ans += cnt[j] * v[j] ;
+				// ans += (v[j] / cnt[j]) * 2 ;
+				cnt[j] *= x ;
+				v[j] /= x ;
+			}
+			else {
+				debug() << imie(j) imie(ans) ;
+				for(int k = 0; k < n; k++){
+					ans += cnt[k] * v[k] ;
+					// ans += v[k] / cnt[k] ;
+				}
+				ok = true ;
+				break ;
+			}
+		}
+		if ( ok ) break ;
+	}
 	cout << ans << endl;
+	// for(int i = 0; ; i++){
+	// 	i %= n ;
+	// 	if ( v[i] % x == 0 ) {
+	// 		ans += cnt[i] * v[i] ;
+	// 		cnt[i] *= x ;
+	// 		v[i] /= x ;
+	// 	}
+
+	// }
+
+	// 8 6
+	// 8 6
+	// 2 => 4
+	// 2 => 
+	// 8 6 4 4 3 3
 }
 signed main(){
     fastio
     int t ;
-    cin >> t;
+    cin >> t ;
     while(t--) solve() ;
     return 0; 
 }
