@@ -51,37 +51,60 @@ void solve(){
 	for(int i = 0; i < n; i++){
 		cin >> v[i] ;
 	}
-	auto get = [&](int index){
-		if ( index <= 0 || index >= n - 1 ) return 0 ;
-		if ( v[index] > v[index - 1] && v[index] > v[index + 1] ){
-			return 1 ;
-		}
-		if ( v[index] < v[index - 1] && v[index] < v[index + 1] ){
-			return 1 ;
-		}
-		return 0 ;
-	} ;
-	int answer = 0 ;
-	for(int i = 0; i < n; i++){
-		answer += get(i) ;
+	if ( n <= 3 ) {
+		cout << 0 << endl;
+		return ;
 	}
-	int best = answer ;
+	debug() << imie(v) ;
+	vector<int> valleyLeft(n) ;
+	vector<int> hillLeft(n) ;
 	for(int i = 1; i < n - 1; i++){
-		int remove = get(i) + get(i - 1) + get(i + 1) ;
-		int original = v[i] ;
-		for(int c : {v[i - 1] , v[i + 1]}){
-			v[i] = c ;
-			best = min(best, answer - remove + get(i) + get(i + 1) + get(i - 1)) ;
+		if ( v[i] < v[i - 1] && v[i] < v[i + 1] ) {
+			valleyLeft[i + 1] = 1; 
 		}
-		v[i] = original ; 
+		if ( v[i] > v[i - 1] && v[i] > v[i + 1] ) {
+			hillLeft[i + 1] = 1; 
+		}
 	}
-	cout << best << endl;
+	for(int i = 1; i < n; i++){
+		valleyLeft[i] += valleyLeft[i - 1] ;
+		hillLeft[i] += hillLeft[i - 1] ;
+	}
+	vector<int> valleyRight(n) ;
+	vector<int> hillRight(n) ;
+	for(int i = n - 2; i > 0; i--){
+		if ( v[i] < v[i - 1] && v[i] < v[i + 1] ) {
+			valleyRight[i - 1] = 1; 
+		}
+		if ( v[i] > v[i - 1] && v[i] > v[i + 1] ) {
+			hillRight[i - 1] = 1; 
+		}
+	}
+	for(int i = n - 2; i >= 0; i--){
+		valleyRight[i] += valleyRight[i + 1] ;
+		hillRight[i] += hillRight[i + 1] ;
+	}
+	debug() << imie(valleyLeft) ;
+	debug() << imie(hillLeft) ;
+	debug() << imie(valleyRight) ;
+	debug() << imie(hillRight) ;
+	int ans = INF ;
+	for(int i = 1; i < n - 1; i++){
+		// make it same as the next one 
+		ans = min(ans, valleyLeft[i - 1] + hillLeft[i - 1] + valleyRight[i + 1] + hillRight[i + 1] + ((i - 2 >= 0 && v[i - 1] > v[i + 1] && v[i - 1] > v[i - 2]) ||  (i - 2 >= 0 && v[i - 1] < v[i + 1] && v[i - 1] < v[i - 2])) ) ;
+		// make it same as the prev one 
+		ans = min(ans, valleyLeft[i - 1] + hillLeft[i - 1] + valleyRight[i + 1] + hillRight[i + 1] + ((i + 2 < n && v[i + 1] > v[i - 1] && v[i + 1] > v[i + 2]) ||  (i + 2 < n && v[i + 1] < v[i - 1] && v[i + 1] < v[i + 2])) ) ;
+	}
+	if ( ans == INF ) {
+		cout << 0 << endl;
+	}
+	else cout << ans << endl;
 }
 signed main(){
     fastio
     int t ;
-    cin >> t;
+    cin >> t ;
     while(t--) solve() ;
-
     return 0; 
 }
+// 1 2 1 2 1
