@@ -1,4 +1,20 @@
 {
+  "CF104295367": {
+    "contest_id": 1473,
+    "language": "GNU C++17",
+    "path": "codeforces\\1473\\B.cpp",
+    "platform": "Codeforces",
+    "problem_index": "B",
+    "problem_name": "String LCM",
+    "problem_url": "https://codeforces.com/contest/1473/problem/B",
+    "submission_id": "CF104295367",
+    "submission_url": "https://codeforces.com/contest/1473/submission/104295367",
+    "tags": [
+      "math",
+      "strings"
+    ],
+    "timestamp": "Jan/14/2021 16:50"
+  },
   "CF104315190": {
     "contest_id": 1473,
     "language": "GNU C++17",
